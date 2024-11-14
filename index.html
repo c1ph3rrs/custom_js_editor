@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TinyMCE Example</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tiny.cloud/1/jfdujg0vceh6n8s78zuyo4j5js3iw3d8mmwgjo53o9yt8p9d/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+</head>
+<body>
+    <header>
+        <h1>Welcome to TinyMCE!</h1>
+    </header>
+    <main>
+        <textarea id="menu2"></textarea>
+    </main>
+    <footer>
+        <p>&copy; 2023 Awesome Corp</p>
+    </footer>
+    <script>
+
+        const today = new Date();
+        const formattedDate = today.toISOString().split('T')[0]; 
+
+        const variables = {
+            contract_no: 'CK73822',
+            user_name: 'Suyel',
+            date: formattedDate,
+            company_name: 'Awesome Corp',
+            property_type: {
+                kind: "Markhiya Villa-1",
+                location: "MARKHIYA, Doha",
+                flat: "M106",
+                building: "2024/PR9"
+            },
+            landloard: {
+                name: "Erada Real Estate",
+                company: "Erada Real Estate",
+                phone: "",
+                cr: ""
+            },
+            tenant: {
+                name: "MOHAMED AKL",
+                nationality: "Egypt",
+                id: "2024/TN79",
+                pobox: "",
+                mobile: "97455853955",
+                email: ""
+            }
+        };
+
+        tinymce.init({
+            selector: 'textarea#menu2',
+            plugins: 'code',
+            toolbar: false,
+            menubar: 'file edit view insert format tools variable',
+            menu: {
+                variable: { title: 'Variables', items: 'date landlord property_type tenant companyname' }
+            },
+            setup: (editor) => {
+                let toggleState = false;
+
+                editor.ui.registry.addMenuItem('date', {
+                    text: 'Date',
+                    onAction: () => {
+                        
+                        editor.insertContent(`<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1">${formattedDate}</span>`);
+                    }
+                });
+
+                editor.ui.registry.addNestedMenuItem('landlord', {
+                    text: 'Landlord',
+                    getSubmenuItems: () => [
+                        {
+                            type: 'menuitem',
+                            text: 'Name',
+                            onAction: () => editor.insertContent(`<span><b style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1">${variables.landloard.name}</b><span>`)
+                        },
+                        {
+                            type: 'menuitem',
+                            text: 'Company Name',
+                            onAction: () => editor.insertContent(`<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1">${variables.landloard.company}</span>`)
+                        },
+                        {
+                            type: 'menuitem',
+                            text: 'Phone No',
+                            onAction: () => editor.insertContent(`<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1">${variables.landloard.phone}</span>`)
+                        },
+                        {
+                            type: 'menuitem',
+                            text: 'Cr No',
+                            onAction: () => editor.insertContent(`<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1">${variables.landloard.cr}</span>`)
+                        }
+                    ]
+                    // onAction: () => editor.insertContent(`<b>${variables.user_name}</b>`)
+                });
+
+                editor.ui.registry.addNestedMenuItem('property_type', {
+                    text: 'Property Type',
+                    getSubmenuItems: () => [
+                        {
+                            type: 'menuitem',
+                            text: 'Kind of Property',
+                            onAction: () => editor.insertContent(`<span><b style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1">${variables.property_type.kind}</b><span>`)
+                        },
+                        {
+                            type: 'menuitem',
+                            text: 'Location',
+                            onAction: () => editor.insertContent(`<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1">${variables.property_type.location}</span>`)
+                        },
+                        {
+                            type: 'menuitem',
+                            text: 'Flat No',
+                            onAction: () => editor.insertContent(`<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1">${variables.property_type.flat}</span>`)
+                        },
+                        {
+                            type: 'menuitem',
+                            text: 'Building No',
+                            onAction: () => editor.insertContent(`<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1">${variables.property_type.building}</span>`)
+                        }
+                    ]
+                });
+
+                editor.ui.registry.addNestedMenuItem('tenant', {
+                    text: 'Tenant',
+                    getSubmenuItems: () => [
+                        {
+                            type: 'menuitem',
+                            text: 'Tenant Name',
+                            onAction: () => editor.insertContent(`<span><b style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1">${variables.tenant.name}</b><span>`)
+                        },
+                        {
+                            type: 'menuitem',
+                            text: 'Nationality',
+                            onAction: () => editor.insertContent(`<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1">${variables.tenant.nationality}</span>`)
+                        },
+                        {
+                            type: 'menuitem',
+                            text: 'ID',
+                            onAction: () => editor.insertContent(`<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1">${variables.tenant.id}</span>`)
+                        },
+                        {
+                            type: 'menuitem',
+                            text: 'PO. BOX',
+                            onAction: () => editor.insertContent(`<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1">${variables.tenant.pobox}</span>`)
+                        },
+                        {
+                            type: 'menuitem',
+                            text: 'Mobile',
+                            onAction: () => editor.insertContent(`<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1">${variables.tenant.mobile}</span>`)
+                        },
+                        {
+                            type: 'menuitem',
+                            text: 'Email',
+                            onAction: () => editor.insertContent(`<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1">${variables.tenant.email}</span>`)
+                        }
+                    ]
+                    // onAction: () => editor.insertContent(`<b>${variables.user_name}</b>`)
+                });
+
+                editor.ui.registry.addToggleMenuItem('companyname', {
+                    text: 'Company Name',
+                    onAction: () => {
+                        toggleState = !toggleState;
+                        editor.insertContent(`<p class="toggle-item">Here's some content inserted from a toggle menu!</p>`);
+                    },
+                    onSetup: (api) => {
+                        api.setActive(toggleState);
+                        return () => {};
+                    }
+                });
+
+                editor.on('input', function () {
+                    const bookmark = editor.selection.getBookmark(2); // Save the cursor position
+                    let content = editor.getContent();
+
+                    // Replace placeholders with variable values
+                    Object.keys(variables).forEach(key => {
+                        const regex = new RegExp(`\\{${key}\\}`, 'g'); // Match {key}
+                        content = content.replace(regex, variables[key]); // Replace with variable value
+                    });
+
+                    editor.setContent(content, { format: 'raw' }); // Update content
+                    editor.selection.moveToBookmark(bookmark); // Restore the cursor position
+                });
+
+            }
+        });
+    </script>
+</body>
+</html>
