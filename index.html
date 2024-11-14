@@ -46,6 +46,12 @@
                 pobox: "",
                 mobile: "97455853955",
                 email: ""
+            },
+            period_of_tenancy: {
+                from: "01/Jan/2024",
+                to: "31/Dec/2024",
+                monthly_rent: "0.00 QAR",
+                amw: " Zero"
             }
         };
 
@@ -55,7 +61,7 @@
             toolbar: false,
             menubar: 'file edit view insert format tools variable',
             menu: {
-                variable: { title: 'Variables', items: 'date landlord property_type tenant companyname' }
+                variable: { title: 'Variables', items: 'date landlord property_type tenant periodoftenancy' }
             },
             setup: (editor) => {
                 let toggleState = false;
@@ -158,16 +164,30 @@
                     // onAction: () => editor.insertContent(`<b>${variables.user_name}</b>`)
                 });
 
-                editor.ui.registry.addToggleMenuItem('companyname', {
-                    text: 'Company Name',
-                    onAction: () => {
-                        toggleState = !toggleState;
-                        editor.insertContent(`<p class="toggle-item">Here's some content inserted from a toggle menu!</p>`);
-                    },
-                    onSetup: (api) => {
-                        api.setActive(toggleState);
-                        return () => {};
-                    }
+                editor.ui.registry.addNestedMenuItem('periodoftenancy', {
+                    text: 'Period of tenancy',
+                    getSubmenuItems: () => [
+                        {
+                            type: 'menuitem',
+                            text: 'From',
+                            onAction: () => editor.insertContent(`<span><b style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1">${variables.period_of_tenancy.from}</b><span>`)
+                        },
+                        {
+                            type: 'menuitem',
+                            text: 'To',
+                            onAction: () => editor.insertContent(`<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1">${variables.period_of_tenancy.to}</span>`)
+                        },
+                        {
+                            type: 'menuitem',
+                            text: 'Monthly Rent',
+                            onAction: () => editor.insertContent(`<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1">${variables.period_of_tenancy.monthly_rent}</span>`)
+                        },
+                        {
+                            type: 'menuitem',
+                            text: 'Amount in words',
+                            onAction: () => editor.insertContent(`<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1">${variables.period_of_tenancy.amw}</span>`)
+                        }
+                    ]
                 });
 
                 editor.on('input', function () {
