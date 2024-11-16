@@ -19,41 +19,101 @@
     </footer>
     <script>
 
+
         const today = new Date();
         const formattedDate = today.toISOString().split('T')[0]; 
 
         const variables = {
-            contract_no: 'CK73822',
-            user_name: 'Suyel',
-            date: formattedDate,
-            company_name: 'Awesome Corp',
-            property_type: {
-                kind: "Markhiya Villa-1",
-                location: "MARKHIYA, Doha",
-                flat: "M106",
-                building: "2024/PR9"
+            contract_date: formattedDate,
+            customer: {
+                tenant_no: "2024/TN42",
+                trn: "TRN123456789",
+                customer_name: "Jamal Hamza",
+                mobile_number: "+974 44448888",
+                phone_number: "+974 12345678",
+                fax_number: "+974 11223344",
+                email_address: "jamal.hamza@example.com",
+                po_box: "12345",
+                area: "Doha",
+                city: "Doha",
+                nationality_english: "Pakistan",
+                nationality_arabic: "پاکستان",
+                remarks: "Customer in good standing.",
             },
-            landloard: {
-                name: "Erada Real Estate",
-                company: "Erada Real Estate",
-                phone: "",
-                cr: ""
+            landlord: {
+                landlord_no: "2024/LL23",
+                landlord_name: "JsjXjh",
+                mobile_number: "+971 511730706",
+                phone_number: "+971 12345678",
+                fax_number: "+971 11223344",
+                email_address: "landlord@example.com",
+                po_box: "67890",
+                area: "Ajman",
+                city: "Ajman",
+                nationality_english: "Pakistan",
+                nationality_arabic: "پاکستان",
+                landlord_commission: 500,
+                remarks: "Landlord requires timely payments.",
             },
-            tenant: {
-                name: "MOHAMED AKL",
-                nationality: "Egypt",
-                id: "2024/TN79",
-                pobox: "",
-                mobile: "97455853955",
-                email: ""
+            property: {
+                property_no: "2024/PR34",
+                property_name: "H Star",
+                plot_no: "PLT-009",
+                property_type: "Building",
+                area: "Central Ajman",
+                city: "Ajman",
+                property_price: 1000000,
+                property_description: "A commercial building with retail spaces.",
+                no_of_floors: 4,
             },
-            period_of_tenancy: {
-                from: "01/Jan/2024",
-                to: "31/Dec/2024",
-                monthly_rent: "0.00 QAR",
-                amw: " Zero"
-            }
-        };
+            room_type: {
+                value: "Dukkan",
+            },
+            contract: {
+                purchase_invoice_no: "POS 9728 328 3289",
+                contract_status: "active",
+                contract_type: "residential",
+                contract_no: "00321452",
+                iq_invoice_no: "INV/2024/000102",
+                flat_no: "SHOP-2",
+                furnished_type: "unfurnished",
+                rent_from: "2024-10-13T00:00:00",
+                rent_to: "2025-10-12T00:00:00",
+                vat_payment_date: null,
+                gross_amount: 54000,
+                total_discount_amount: 0,
+                vat_item_title: "5% VAT - (Exclusive)",
+                vat_per: 5,
+                vat_amount: 2700,
+                is_vat_paid: true,
+                rental_amount: 54000,
+                net_amount: 56700,
+                total_cheques: 6,
+                total_paid_cheques: 2,
+                total_paid_amount: 18900,
+                total_partly_paid_cheques: 1,
+                total_partly_paid_amount: 4500,
+                total_due_cheques: 0,
+                total_due_amount: 0,
+                early_close_charge: 0,
+                remarks: "No additional remarks at this time.",
+            },
+            premises_condition: {
+                english_content: "The property is in good condition with no defects.",
+                arabic_content: "العقار في حالة جيدة ولا توجد به عيوب.",
+            },
+            payments_condition: {
+                english_content: "The payments will be made on a quarterly basis.",
+                arabic_content: "سيتم دفع المدفوعات على أساس ربع سنوي.",
+            },
+            other_charges: {
+                amount: "2000",
+                vat: 5,
+                sub_total: 2000,
+                vat_amount: 100,
+                total_amount: 2100,
+            },
+            };
 
         tinymce.init({
             selector: 'textarea#menu2',
@@ -61,34 +121,12 @@
             toolbar: 'undo redo | link image | code',
             menubar: 'file edit view insert format tools variable',
             menu: {
-                variable: { title: 'Variables', items: 'date landlord property_type tenant periodoftenancy' }
+                variable: { title: 'Variables', items: 'date customer landlord property room_type contract premises_condition payments_condition other_charges' }
             },
             image_title: true,
             automatic_uploads: true,
             file_picker_types: 'image',
             file_picker_callback: (cb, value, meta) => {
-                // const input = document.createElement('input');
-                // input.setAttribute('type', 'file');
-                // input.setAttribute('accept', 'image/*');
-
-                // input.addEventListener('change', (e) => {
-                // const file = e.target.files[0];
-
-                // const reader = new FileReader();
-                // reader.addEventListener('load', () => {
-                //     const id = 'blobid' + (new Date()).getTime();
-                //     const blobCache =  tinymce.activeEditor.editorUpload.blobCache;
-                //     const base64 = reader.result.split(',')[1];
-                //     const blobInfo = blobCache.create(id, file, base64);
-                //     blobCache.add(blobInfo);
-
-                //     cb(blobInfo.blobUri(), { title: file.name });
-                // });
-                // reader.readAsDataURL(file);
-                // });
-
-                // input.click();
-
                 const url = prompt('Enter the image URL:');
                 if (url) {
                     cb(url, { title: 'Image from URL' });
@@ -98,141 +136,44 @@
                 let toggleState = false;
 
                 editor.ui.registry.addMenuItem('date', {
-                    text: 'Date',
+                    text: 'Contract Date',
                     onAction: () => {
-                        
-                        editor.insertContent(`<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1">${formattedDate}</span>`);
+                        editor.insertContent(`<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1">${variables.contract_date}</span>`);
                     }
                 });
 
-                editor.ui.registry.addNestedMenuItem('landlord', {
-                    text: 'Landlord',
-                    getSubmenuItems: () => [
-                        {
+                const createNestedMenuItem = (key, label, items) => {
+                    editor.ui.registry.addNestedMenuItem(key, {
+                        text: label,
+                        getSubmenuItems: () => items.map(item => ({
                             type: 'menuitem',
-                            text: 'Name',
-                            onAction: () => editor.insertContent(`<span><b style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1">${variables.landloard.name}</b><span>`)
-                        },
-                        {
-                            type: 'menuitem',
-                            text: 'Company Name',
-                            onAction: () => editor.insertContent(`<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1">${variables.landloard.company}</span>`)
-                        },
-                        {
-                            type: 'menuitem',
-                            text: 'Phone No',
-                            onAction: () => editor.insertContent(`<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1">${variables.landloard.phone}</span>`)
-                        },
-                        {
-                            type: 'menuitem',
-                            text: 'Cr No',
-                            onAction: () => editor.insertContent(`<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1">${variables.landloard.cr}</span>`)
-                        }
-                    ]
-                    // onAction: () => editor.insertContent(`<b>${variables.user_name}</b>`)
-                });
+                            text: item.label,
+                            onAction: () => editor.insertContent(`<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1">${item.value}</span>`)
+                        }))
+                    });
+                };
 
-                editor.ui.registry.addNestedMenuItem('property_type', {
-                    text: 'Property Type',
-                    getSubmenuItems: () => [
-                        {
-                            type: 'menuitem',
-                            text: 'Kind of Property',
-                            onAction: () => editor.insertContent(`<span><b style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1">${variables.property_type.kind}</b><span>`)
-                        },
-                        {
-                            type: 'menuitem',
-                            text: 'Location',
-                            onAction: () => editor.insertContent(`<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1">${variables.property_type.location}</span>`)
-                        },
-                        {
-                            type: 'menuitem',
-                            text: 'Flat No',
-                            onAction: () => editor.insertContent(`<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1">${variables.property_type.flat}</span>`)
-                        },
-                        {
-                            type: 'menuitem',
-                            text: 'Building No',
-                            onAction: () => editor.insertContent(`<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1">${variables.property_type.building}</span>`)
-                        }
-                    ]
-                });
-
-                editor.ui.registry.addNestedMenuItem('tenant', {
-                    text: 'Tenant',
-                    getSubmenuItems: () => [
-                        {
-                            type: 'menuitem',
-                            text: 'Tenant Name',
-                            onAction: () => editor.insertContent(`<span><b style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1">${variables.tenant.name}</b><span>`)
-                        },
-                        {
-                            type: 'menuitem',
-                            text: 'Nationality',
-                            onAction: () => editor.insertContent(`<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1">${variables.tenant.nationality}</span>`)
-                        },
-                        {
-                            type: 'menuitem',
-                            text: 'ID',
-                            onAction: () => editor.insertContent(`<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1">${variables.tenant.id}</span>`)
-                        },
-                        {
-                            type: 'menuitem',
-                            text: 'PO. BOX',
-                            onAction: () => editor.insertContent(`<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1">${variables.tenant.pobox}</span>`)
-                        },
-                        {
-                            type: 'menuitem',
-                            text: 'Mobile',
-                            onAction: () => editor.insertContent(`<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1">${variables.tenant.mobile}</span>`)
-                        },
-                        {
-                            type: 'menuitem',
-                            text: 'Email',
-                            onAction: () => editor.insertContent(`<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1">${variables.tenant.email}</span>`)
-                        }
-                    ]
-                    // onAction: () => editor.insertContent(`<b>${variables.user_name}</b>`)
-                });
-
-                editor.ui.registry.addNestedMenuItem('periodoftenancy', {
-                    text: 'Period of tenancy',
-                    getSubmenuItems: () => [
-                        {
-                            type: 'menuitem',
-                            text: 'From',
-                            onAction: () => editor.insertContent(`<span><b style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1">${variables.period_of_tenancy.from}</b><span>`)
-                        },
-                        {
-                            type: 'menuitem',
-                            text: 'To',
-                            onAction: () => editor.insertContent(`<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1">${variables.period_of_tenancy.to}</span>`)
-                        },
-                        {
-                            type: 'menuitem',
-                            text: 'Monthly Rent',
-                            onAction: () => editor.insertContent(`<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1">${variables.period_of_tenancy.monthly_rent}</span>`)
-                        },
-                        {
-                            type: 'menuitem',
-                            text: 'Amount in words',
-                            onAction: () => editor.insertContent(`<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1">${variables.period_of_tenancy.amw}</span>`)
-                        }
-                    ]
+                Object.keys(variables).forEach(key => {
+                    const items = Object.keys(variables[key]).map(subKey => ({
+                        label: subKey.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
+                        value: variables[key][subKey]
+                    }));
+                    createNestedMenuItem(key, key.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase()), items);
                 });
 
                 editor.on('input', function () {
-                    const bookmark = editor.selection.getBookmark(2); // Save the cursor position
+                    const bookmark = editor.selection.getBookmark(2);
                     let content = editor.getContent();
 
-                    // Replace placeholders with variable values
                     Object.keys(variables).forEach(key => {
-                        const regex = new RegExp(`\\{${key}\\}`, 'g'); // Match {key}
-                        content = content.replace(regex, variables[key]); // Replace with variable value
+                        const regex = new RegExp(`\\{${key}\\}`, 'g'); 
+                        content = content.replace(regex, variables[key]); 
                     });
 
-                    editor.setContent(content, { format: 'raw' }); // Update content
-                    editor.selection.moveToBookmark(bookmark); // Restore the cursor position
+                    console.log(content);
+
+                    editor.setContent(content, { format: 'raw' }); 
+                    editor.selection.moveToBookmark(bookmark); 
                 });
 
             }
