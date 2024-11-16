@@ -113,12 +113,12 @@
                 vat_amount: 100,
                 total_amount: 2100,
             },
-            };
+        };
 
         tinymce.init({
             selector: 'textarea#menu2',
             plugins: 'image code',
-            toolbar: 'undo redo | link image | code',
+            toolbar: 'undo redo | link image | code | hr | vertical-line',
             menubar: 'file edit view insert format tools variable',
             menu: {
                 variable: { title: 'Variables', items: 'date customer landlord property room_type contract premises_condition payments_condition other_charges' }
@@ -139,6 +139,13 @@
                     text: 'Contract Date',
                     onAction: () => {
                         editor.insertContent(`<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1">${variables.contract_date}</span>`);
+                    }
+                });
+
+                editor.ui.registry.addButton('vertical-line', {
+                    text: 'Vertical Line',
+                    onAction: () => {
+                        editor.insertContent('<div style="display: inline-block; width: 1px; height: 100px; background-color: #000;"></div>');
                     }
                 });
 
