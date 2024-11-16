@@ -117,8 +117,13 @@
 
         tinymce.init({
             selector: 'textarea#menu2',
-            plugins: 'image code',
-            toolbar: 'undo redo | link image | code | hr | vertical-line',
+            toolbar_mode: 'floating',
+            plugins: [
+                "advlist", "anchor", "autolink", "charmap", "code", "fullscreen", 
+                "help", "image", "insertdatetime", "link", "lists", "media", 
+                "preview", "searchreplace", "table", "visualblocks", "accordion"
+            ],
+            toolbar: 'undo redo styles bold italic alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | code | hr | vertical-line ltr rtl',
             menubar: 'file edit view insert format tools variable',
             menu: {
                 variable: { title: 'Variables', items: 'date customer landlord property room_type contract premises_condition payments_condition other_charges' }
