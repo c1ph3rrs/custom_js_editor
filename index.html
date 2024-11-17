@@ -173,21 +173,16 @@
                     createNestedMenuItem(key, key.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase()), items);
                 });
 
+                
+
                 editor.on('input', function () {
-                    const bookmark = editor.selection.getBookmark(2);
                     let content = editor.getContent();
-
-                    Object.keys(variables).forEach(key => {
-                        const regex = new RegExp(`\\{${key}\\}`, 'g'); 
-                        content = content.replace(regex, variables[key]); 
-                    });
-
                     console.log(content);
-
-                    editor.setContent(content, { format: 'raw' }); 
-                    editor.selection.moveToBookmark(bookmark); 
                 });
 
+                
+
+                
             }
         });
     </script>
