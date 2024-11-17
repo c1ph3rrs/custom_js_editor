@@ -164,6 +164,7 @@
                         const subItems = Object.keys(customObjData[key]).map(subKey => ({
                             type: 'menuitem',
                             text: `${key}.${subKey}`,
+                            // text: `${key}.${subKey}`,
                             onAction: () => {
                                 const placeholder = `{{${key}.${subKey}}}`;
                                 const value = customObjData[key][subKey];
