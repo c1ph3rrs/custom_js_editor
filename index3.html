@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TinyMCE Editor with Variables</title>
+    <script src="https://cdn.tiny.cloud/1/jfdujg0vceh6n8s78zuyo4j5js3iw3d8mmwgjo53o9yt8p9d/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+</head>
+<body>
+    <header>
+        <h1>Design Your Layout with Variables</h1>
+    </header>
+    <main>
+        <textarea id="editor"></textarea>
+        <button onclick="saveContent()">Save Content</button>
+    </main>
+    <footer>
+        <p>&copy; 2024 Awesome Corp</p>
+    </footer>
+    <script>
+        const today = new Date();
+        const formattedDate = today.toISOString().split('T')[0];
+
+        const customObjData = {
+            contract_date: formattedDate,
+            customer: {
+                tenant_no: "2024/TN42",
+                trn: "TRN123456789",
+                customer_name: "Jamal Hamza",
+                mobile_number: "+974 44448888",
+                phone_number: "+974 12345678",
+                fax_number: "+974 11223344",
+                email_address: "jamal.hamza@example.com",
+                po_box: "12345",
+                area: "Doha",
+                city: "Doha",
+                nationality_english: "Pakistan",
+                nationality_arabic: "پاکستان",
+                remarks: "Customer in good standing.",
+            },
+            landlord: {
+                landlord_no: "2024/LL23",
+                landlord_name: "JsjXjh",
+                mobile_number: "+971 511730706",
+                phone_number: "+971 12345678",
+                fax_number: "+971 11223344",
+                email_address: "landlord@example.com",
+                po_box: "67890",
+                area: "Ajman",
+                city: "Ajman",
+                nationality_english: "Pakistan",
+                nationality_arabic: "پاکستان",
+                landlord_commission: 500,
+                remarks: "Landlord requires timely payments.",
+            },
+            property: {
+                property_no: "2024/PR34",
+                property_name: "H Star",
+                plot_no: "PLT-009",
+                property_type: "Building",
+                area: "Central Ajman",
+                city: "Ajman",
+                property_price: 1000000,
+                property_description: "A commercial building with retail spaces.",
+                no_of_floors: 4,
+            },
+        };
+
+        tinymce.init({
+            selector: 'textarea#editor',
+            toolbar_mode: 'floating',
+            plugins: [
+                "advlist", "anchor", "autolink", "charmap", "code", "fullscreen", 
+                "help", "image", "insertdatetime", "link", "lists", "media", 
+                "preview", "searchreplace", "table", "visualblocks", "accordion"
+            ],
+            toolbar: 'undo redo styles bold italic alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | code | hr | vertical-line ltr rtl',
+            menubar: 'file edit view insert format tools variable',
+            menu: {
+                variable: { title: 'Variables', items: 'date customer landlord property room_type contract premises_condition payments_condition other_charges' }
+            },
+            image_title: true,
+            automatic_uploads: true,
+            file_picker_types: 'image',
+            file_picker_callback: (cb, value, meta) => {
+                const url = prompt('Enter the image URL:');
+                if (url) {
+                    cb(url, { title: 'Image from URL' });
+                }
+            },
+            setup: (editor) => {
+
+                editor.ui.registry.addMenuItem('date', {
+                    text: 'Contract Date',
+                    onAction: () => {
+                        editor.insertContent(`<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1">${variables.contract_date}</span>`);
+                    }
+                });
+
+                editor.ui.registry.addButton('vertical-line', {
+                    text: 'Vertical Line',
+                    onAction: () => {
+                        editor.insertContent('<div style="display: inline-block; width: 1px; height: 100px; background-color: #000;"></div>');
+                    }
+                });
+
+                
+
+                const replacePlaceholdersWithValues = (template, data) => {
+                    return template.replace(/\{\{(.*?)\}\}/g, (match, path) => {
+                        const keys = path.split('.');
+                        let value = data;
+                        for (const key of keys) {
+                            value = value[key];
+                            if (value === undefined) return match; // Keep placeholder if value not found
+                        }
+                        return value;
+                    });
+                };
+
+                const replaceValuesWithPlaceholders = (content, data) => {
+                    const escapeRegExp = (string) => {
+                        return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // Escapes special characters
+                    };
+
+                    // Flatten the nested data object
+                    const flattenObject = (obj, prefix = '') => {
+                        return Object.keys(obj).reduce((acc, key) => {
+                            const fullKey = prefix ? `${prefix}.${key}` : key;
+                            if (typeof obj[key] === 'object') {
+                                Object.assign(acc, flattenObject(obj[key], fullKey));
+                            } else {
+                                acc[fullKey] = obj[key];
+                            }
+                            return acc;
+                        }, {});
+                    };
+
+                    const flatData = flattenObject(data);
+                    console.log('Flattened Data:', flatData); // Debug the flattened data
+
+                    // Sort keys by length to prioritize longer matches
+                    const sortedKeys = Object.keys(flatData).sort((a, b) => b.length - a.length);
+
+                    sortedKeys.forEach(key => {
+                        const placeholder = `{{${key}}}`;
+                        const value = flatData[key];
+                        if (typeof value === 'string') {
+                            const escapedValue = escapeRegExp(value.trim()); // Escape special characters
+                            const regex = new RegExp(escapedValue, 'g'); // Global match
+                            content = content.replace(regex, placeholder);
+                        }
+                    });
+
+                    return content;
+                };
+
+
+                
+
+
+                const createNestedMenu = () => {
+                    Object.keys(customObjData).forEach(key => {
+                        const subItems = Object.keys(customObjData[key]).map(subKey => ({
+                            type: 'menuitem',
+                            text: `${key}.${subKey}`,
+                            onAction: () => {
+                                const placeholder = `{{${key}.${subKey}}}`;
+                                const value = customObjData[key][subKey];
+                                editor.insertContent(
+                                    `<span style="background-color: #f0f0f0; padding: 2px 4px; border-radius: 3px;">${value}</span>`
+                                );
+                            },
+                        }));
+
+                        editor.ui.registry.addNestedMenuItem(key, {
+                            text: key.charAt(0).toUpperCase() + key.slice(1),
+                            getSubmenuItems: () => subItems,
+                        });
+                    });
+                };
+
+                createNestedMenu();
+
+                window.loadContent = (template, data) => {
+                    const renderedContent = replacePlaceholdersWithValues(template, data);
+                    editor.setContent(renderedContent);
+                    console.log('Rendered Content Loaded:', renderedContent);
+                };
+
+                window.saveContent = () => {
+                    const content = editor.getContent();
+                    const rawContent = replaceValuesWithPlaceholders(content, customObjData);
+                    console.log('Content Saved with Placeholders:', rawContent);
+                };
+            }
+        });
+
+        // const template = '<p>Customer Name: {{customer.customer_name}}</p><p>Mobile: {{customer.mobile_number}}</p>';
+        // setTimeout(() => {
+        //     loadContent(template, customObjData);
+        // }, 1000);
+    </script>
+</body>
+</html>
