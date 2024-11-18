@@ -18,15 +18,12 @@
         <p>&copy; 2024 Awesome Corp</p>
     </footer>
     <script>
-        const today = new Date();
-        const formattedDate = today.toISOString().split('T')[0];
 
         const customObjData = {
-            contract_date: formattedDate,
             customer: {
                 tenant_no: "2024/TN42",
-                trn: "TRN123456789",
-                customer_name: "Jamal Hamza",
+                trn: "Tenant TRN",
+                customer_name: "Customer Name (English)",
                 mobile_number: "+974 44448888",
                 phone_number: "+974 12345678",
                 fax_number: "+974 11223344",
@@ -64,6 +61,53 @@
                 property_description: "A commercial building with retail spaces.",
                 no_of_floors: 4,
             },
+            room_type: {
+                value: "Dukkan",
+            },
+            contract: {
+                purchase_invoice_no: "POS 9728 328 3289",
+                contract_status: "active",
+                contract_type: "residential",
+                contract_no: "00321452",
+                iq_invoice_no: "INV/2024/000102",
+                flat_no: "SHOP-2",
+                furnished_type: "unfurnished",
+                rent_from: "2024-10-13T00:00:00",
+                rent_to: "2025-10-12T00:00:00",
+                vat_payment_date: null,
+                gross_amount: 54000,
+                total_discount_amount: 0,
+                vat_item_title: "5% VAT - (Exclusive)",
+                vat_per: 5,
+                vat_amount: 2700,
+                is_vat_paid: true,
+                rental_amount: 54000,
+                net_amount: 56700,
+                total_cheques: 6,
+                total_paid_cheques: 2,
+                total_paid_amount: 18900,
+                total_partly_paid_cheques: 1,
+                total_partly_paid_amount: 4500,
+                total_due_cheques: 0,
+                total_due_amount: 0,
+                early_close_charge: 0,
+                remarks: "No additional remarks at this time.",
+            },
+            premises_condition: {
+                english_content: "The property is in good condition with no defects.",
+                arabic_content: "العقار في حالة جيدة ولا توجد به عيوب.",
+            },
+            payments_condition: {
+                english_content: "The payments will be made on a quarterly basis.",
+                arabic_content: "سيتم دفع المدفوعات على أساس ربع سنوي.",
+            },
+            other_charges: {
+                amount: "2000",
+                vat: 5,
+                sub_total: 2000,
+                vat_amount: 100,
+                total_amount: 2100,
+            },
         };
 
         tinymce.init({
@@ -90,12 +134,6 @@
             },
             setup: (editor) => {
 
-                editor.ui.registry.addMenuItem('date', {
-                    text: 'Contract Date',
-                    onAction: () => {
-                        editor.insertContent(`<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1">${variables.contract_date}</span>`);
-                    }
-                });
 
                 editor.ui.registry.addButton('vertical-line', {
                     text: 'Vertical Line',
@@ -112,51 +150,50 @@
                         let value = data;
                         for (const key of keys) {
                             value = value[key];
-                            if (value === undefined) return match; // Keep placeholder if value not found
+                            if (value === undefined) return match; 
                         }
                         return value;
                     });
                 };
 
                 const replaceValuesWithPlaceholders = (content, data) => {
-                    const escapeRegExp = (string) => {
-                        return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // Escapes special characters
-                    };
+    const flattenObject = (obj, prefix = '') => {
+        if (obj === null || obj === undefined) {
+            return {}; 
+        }
 
-                    // Flatten the nested data object
-                    const flattenObject = (obj, prefix = '') => {
-                        return Object.keys(obj).reduce((acc, key) => {
-                            const fullKey = prefix ? `${prefix}.${key}` : key;
-                            if (typeof obj[key] === 'object') {
-                                Object.assign(acc, flattenObject(obj[key], fullKey));
-                            } else {
-                                acc[fullKey] = obj[key];
-                            }
-                            return acc;
-                        }, {});
-                    };
+        return Object.keys(obj).reduce((acc, key) => {
+            const fullKey = prefix ? `${prefix}.${key}` : key;
+            const value = obj[key];
 
-                    const flatData = flattenObject(data);
-                    console.log('Flattened Data:', flatData); // Debug the flattened data
+            if (typeof value === 'object' && value !== null) {
+                Object.assign(acc, flattenObject(value, fullKey));
+            } else {
+                acc[fullKey] = value;
+            }
 
-                    // Sort keys by length to prioritize longer matches
-                    const sortedKeys = Object.keys(flatData).sort((a, b) => b.length - a.length);
+            return acc;
+        }, {});
+    };
 
-                    sortedKeys.forEach(key => {
-                        const placeholder = `{{${key}}}`;
-                        const value = flatData[key];
-                        if (typeof value === 'string') {
-                            const escapedValue = escapeRegExp(value.trim()); // Escape special characters
-                            const regex = new RegExp(escapedValue, 'g'); // Global match
-                            content = content.replace(regex, placeholder);
-                        }
-                    });
+    const flatData = flattenObject(data);
 
-                    return content;
-                };
+    console.log('Flattened Data:', flatData);
+
+    Object.keys(flatData).forEach(key => {
+        const placeholder = `{{${key}}}`;
+        const value = flatData[key];
+
+        if (typeof value === 'string' || typeof value === 'number') {
+            const regex = new RegExp(`<span[^>]*>${value}</span>`, 'g'); 
+            content = content.replace(regex, placeholder); 
+        }
+    });
+
+    return content;
+};
 
 
-                
 
 
                 const createNestedMenu = () => {
@@ -164,7 +201,6 @@
                         const subItems = Object.keys(customObjData[key]).map(subKey => ({
                             type: 'menuitem',
                             text: `${key}.${subKey}`,
-                            // text: `${key}.${subKey}`,
                             onAction: () => {
                                 const placeholder = `{{${key}.${subKey}}}`;
                                 const value = customObjData[key][subKey];
@@ -197,10 +233,10 @@
             }
         });
 
-        // const template = '<p>Customer Name: {{customer.customer_name}}</p><p>Mobile: {{customer.mobile_number}}</p>';
-        // setTimeout(() => {
-        //     loadContent(template, customObjData);
-        // }, 1000);
+        const template = '<p>Customer Name: {{customer.customer_name}}</p><p>Mobile: {{customer.mobile_number}}</p>';
+        setTimeout(() => {
+            loadContent(template, customObjData);
+        }, 1000);
     </script>
 </body>
 </html>
