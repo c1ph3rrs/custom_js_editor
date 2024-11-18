@@ -134,7 +134,6 @@
             },
             setup: (editor) => {
 
-
                 editor.ui.registry.addButton('vertical-line', {
                     text: 'Vertical Line',
                     onAction: () => {
@@ -142,9 +141,7 @@
                     }
                 });
 
-                
-
-                const replacePlaceholdersWithValues = (template, data) => {
+                const replacePlaceholdersWithDisplayText = (template, data) => {
                     return template.replace(/\{\{(.*?)\}\}/g, (match, path) => {
                         const keys = path.split('.');
                         let value = data;
@@ -152,11 +149,11 @@
                             value = value[key];
                             if (value === undefined) return match; 
                         }
-                        return value;
+                        return keys[keys.length - 1].split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
                     });
                 };
 
-                const replaceValuesWithPlaceholders = (content, data) => {
+                const replaceDisplayTextWithPlaceholders = (content, data) => {
                     const flattenObject = (obj, prefix = '') => {
                         if (obj === null || obj === undefined) {
                             return {}; 
@@ -179,34 +176,25 @@
                     const flatData = flattenObject(data);
 
                     console.log('Flattened Data:', flatData);
-
+                
                     Object.keys(flatData).forEach(key => {
                         const placeholder = `{{${key}}}`;
-                        const value = flatData[key];
-
-                        if (typeof value === 'string' || typeof value === 'number') {
-                            const regex = new RegExp(`<span[^>]*>${value}</span>`, 'g'); 
-                            content = content.replace(regex, placeholder); 
-                        }
+                        const displayText = key.split('.').pop().split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+                        const regex = new RegExp(`\\b${displayText}\\b`, 'g');
+                        content = content.replace(regex, placeholder);
                     });
 
                     return content;
                 };
 
-
-
-
                 const createNestedMenu = () => {
                     Object.keys(customObjData).forEach(key => {
                         const subItems = Object.keys(customObjData[key]).map(subKey => ({
                             type: 'menuitem',
-                            text: `${key}.${subKey}`,
+                            text: subKey.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
                             onAction: () => {
-                                const placeholder = `{{${key}.${subKey}}}`;
-                                const value = customObjData[key][subKey];
-                                editor.insertContent(
-                                    `<span style="background-color: #f0f0f0; padding: 2px 4px; border-radius: 3px;">${value}</span>`
-                                );
+                                const displayText = subKey.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+                                editor.insertContent(`<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1">${displayText}</span>`);
                             },
                         }));
 
@@ -220,23 +208,23 @@
                 createNestedMenu();
 
                 window.loadContent = (template, data) => {
-                    const renderedContent = replacePlaceholdersWithValues(template, data);
+                    const renderedContent = replacePlaceholdersWithDisplayText(template, data);
                     editor.setContent(renderedContent);
                     console.log('Rendered Content Loaded:', renderedContent);
                 };
 
                 window.saveContent = () => {
                     const content = editor.getContent();
-                    const rawContent = replaceValuesWithPlaceholders(content, customObjData);
+                    const rawContent = replaceDisplayTextWithPlaceholders(content, customObjData);
                     console.log('Content Saved with Placeholders:', rawContent);
                 };
             }
         });
 
-        const template = '<p>Customer Name: {{customer.customer_name}}</p><p>Mobile: {{customer.mobile_number}}</p>';
-        setTimeout(() => {
-            loadContent(template, customObjData);
-        }, 1000);
+        // const template = '<p>Dear {{landlord.landlord_name}},</p><p>Your payment is pending {{contract.gross_amount}} from {{contract.rent_from}}</p>';
+        // setTimeout(() => {
+        //     loadContent(template, customObjData);
+        // }, 1000);
     </script>
 </body>
 </html>
