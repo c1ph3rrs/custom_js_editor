@@ -157,41 +157,41 @@
                 };
 
                 const replaceValuesWithPlaceholders = (content, data) => {
-    const flattenObject = (obj, prefix = '') => {
-        if (obj === null || obj === undefined) {
-            return {}; 
-        }
+                    const flattenObject = (obj, prefix = '') => {
+                        if (obj === null || obj === undefined) {
+                            return {}; 
+                        }
 
-        return Object.keys(obj).reduce((acc, key) => {
-            const fullKey = prefix ? `${prefix}.${key}` : key;
-            const value = obj[key];
+                        return Object.keys(obj).reduce((acc, key) => {
+                            const fullKey = prefix ? `${prefix}.${key}` : key;
+                            const value = obj[key];
 
-            if (typeof value === 'object' && value !== null) {
-                Object.assign(acc, flattenObject(value, fullKey));
-            } else {
-                acc[fullKey] = value;
-            }
+                            if (typeof value === 'object' && value !== null) {
+                                Object.assign(acc, flattenObject(value, fullKey));
+                            } else {
+                                acc[fullKey] = value;
+                            }
 
-            return acc;
-        }, {});
-    };
+                            return acc;
+                        }, {});
+                    };
 
-    const flatData = flattenObject(data);
+                    const flatData = flattenObject(data);
 
-    console.log('Flattened Data:', flatData);
+                    console.log('Flattened Data:', flatData);
 
-    Object.keys(flatData).forEach(key => {
-        const placeholder = `{{${key}}}`;
-        const value = flatData[key];
+                    Object.keys(flatData).forEach(key => {
+                        const placeholder = `{{${key}}}`;
+                        const value = flatData[key];
 
-        if (typeof value === 'string' || typeof value === 'number') {
-            const regex = new RegExp(`<span[^>]*>${value}</span>`, 'g'); 
-            content = content.replace(regex, placeholder); 
-        }
-    });
+                        if (typeof value === 'string' || typeof value === 'number') {
+                            const regex = new RegExp(`<span[^>]*>${value}</span>`, 'g'); 
+                            content = content.replace(regex, placeholder); 
+                        }
+                    });
 
-    return content;
-};
+                    return content;
+                };
 
 
 
