@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TinyMCE Editor with Variables</title>
+    <script src="https://cdn.tiny.cloud/1/jfdujg0vceh6n8s78zuyo4j5js3iw3d8mmwgjo53o9yt8p9d/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+</head>
+<body>
+    <header>
+        <h1>Design Your Layout with Variables</h1>
+    </header>
+    <main>
+        <textarea id="editor"></textarea>
+        <button onclick="saveContent()">Save Content</button>
+        <button onclick="viewPreview()">View Preview</button>
+    </main>
+    <footer>
+        <p>&copy; 2024 Awesome Corp</p>
+    </footer>
+    <script>
+
+
+        const customMenuOptions = {
+            tenant: {
+                tenant_no: "Tenant No",
+                trn: "TRN",
+                customer_name: "Tenant Name",
+                mobile_number: "Mobile Number",
+                phone_number: "Phone Number",
+                fax_number: "Fax. Number",
+                email_address: "Email Address",
+                po_box: "P.O. Box",
+                area: "Area",
+                city: "City",
+                nationality_english: "Nationality (English)",
+                nationality_arabic: "Nationality (Arabic)",
+                remarks: "Remarks",
+            },
+            landlord: {
+                landlord_no: "Landlord ID",
+                landlord_name: "Landlord Name",
+                mobile_number: "Mobile Number",
+                phone_number: "Phone Number",
+                fax_number: "Fax. Number",
+                email_address: "Email Address",
+                po_box: "P.O. Box",
+                area: "Area",
+                city: "City",
+                nationality_english: "Nationality (English)",
+                nationality_arabic: "Nationality (Arabic)",
+                landlord_commission: "Landlord Comission",
+                remarks: "Remarks",
+            },
+            property: {
+                property_no: "Property ID",
+                property_name: "Property Name",
+                plot_no: "Plot Number",
+                property_type: "Property Type",
+                area: "Area",
+                city: "City",
+                property_price: "Property Price",
+                property_description: "Property Description",
+                no_of_floors: "Number of Floors",
+                unit_type: "Unit Type"
+            },
+            contract: {
+                purchase_invoice_no: "Purchase Invoice",
+                contract_status: "Contract Status",
+                contract_type: "Contract Type",
+                contract_no: "Contract Number",
+                iq_invoice_no: "iQ Invoice Number",
+                flat_no: "Unit Number",
+                furnished_type: "Furnished Type",
+                rent_from: "Rent From (dd/mm/yyyy)",
+                rent_to: "Rent To (dd/mm/yyyy)",
+                vat_payment_date: "VAT Payment Date (dd/mm/yyyy)",
+                gross_amount: "Gross Amount",
+                total_discount_amount: "Total Discount Amount",
+                vat_item_title: "VAT Title",
+                vat_per: "VAT Percentage",
+                vat_amount: 'VAT Amount',
+                is_vat_paid: 'VAT Paid (Yes/No)',
+                rental_amount: 'Rental Amount',
+                net_amount: 'Net Amount',
+                total_cheques: 'Total Installments',
+                total_paid_cheques: 'Total Paid Installments',
+                total_paid_amount: 'Total Paid Amount',
+                total_partly_paid_cheques: 'Total Partly Paid Installments',
+                total_partly_paid_amount: 'Total Partly Paid Amount',
+                total_due_cheques: 'Total Due Installment',
+                total_due_amount: 'Total Due Amount',
+                early_close_charge: 'Early Close Charge',
+                remarks: 'Remarks',
+            },
+            premisesCondition: {
+                english_content: 'English Content',
+                arabic_content: 'Arabic Content',
+            },
+            paymentsCondition: {
+                english_content: 'English Content',
+                arabic_content: 'Arabic Content',
+            },
+            otherCharges: {
+                sub_total: 'Subtotal',
+                vat_title: 'VAT Title',
+                vat: 'VAT Percent',
+                vat_amount: 'VAT Amount',
+                total_amount: 'Total Amount',
+            },
+        };
+
+        const customObjData = {
+            customer: {
+                tenant_no: "2024/TN42",
+                trn: "Tenant TRN",
+                customer_name: "Hayman",
+                mobile_number: "+974 44448888",
+                phone_number: "+974 12345678",
+                fax_number: "+974 11223344",
+                email_address: "jamal.hamza@example.com",
+                po_box: "12345",
+                area: "Doha",
+                city: "Doha",
+                nationality_english: "Pakistan",
+                nationality_arabic: "پاکستان",
+                remarks: "Customer in good standing.",
+            },
+            landlord: {
+                landlord_no: "2024/LL23",
+                landlord_name: "JsjXjh",
+                mobile_number: "+971 511730706",
+                phone_number: "+971 12345678",
+                fax_number: "+971 11223344",
+                email_address: "landlord@example.com",
+                po_box: "67890",
+                area: "Ajman",
+                city: "Ajman",
+                nationality_english: "Pakistan",
+                nationality_arabic: "پاکستان",
+                landlord_commission: 500,
+                remarks: "Landlord requires timely payments.",
+            },
+            property: {
+                property_no: "2024/PR34",
+                property_name: "H Star",
+                plot_no: "PLT-009",
+                property_type: "Building",
+                area: "Central Ajman",
+                city: "Ajman",
+                property_price: 1000000,
+                property_description: "A commercial building with retail spaces.",
+                no_of_floors: 4,
+            },
+            room_type: {
+                value: "Dukkan",
+            },
+            contract: {
+                purchase_invoice_no: "POS 9728 328 3289",
+                contract_status: "active",
+                contract_type: "residential",
+                contract_no: "00321452",
+                iq_invoice_no: "INV/2024/000102",
+                flat_no: "SHOP-2",
+                furnished_type: "unfurnished",
+                rent_from: "2024-10-13T00:00:00",
+                rent_to: "2025-10-12T00:00:00",
+                vat_payment_date: null,
+                gross_amount: 54000,
+                total_discount_amount: 0,
+                vat_item_title: "5% VAT - (Exclusive)",
+                vat_per: 5,
+                vat_amount: 2700,
+                is_vat_paid: true,
+                rental_amount: 54000,
+                net_amount: 56700,
+                total_cheques: 6,
+                total_paid_cheques: 2,
+                total_paid_amount: 18900,
+                total_partly_paid_cheques: 1,
+                total_partly_paid_amount: 4500,
+                total_due_cheques: 0,
+                total_due_amount: 0,
+                early_close_charge: 0,
+                remarks: "No additional remarks at this time.",
+            },
+            premises_condition: {
+                english_content: "The property is in good condition with no defects.",
+                arabic_content: "العقار في حالة جيدة ولا توجد به عيوب.",
+            },
+            payments_condition: {
+                english_content: "The payments will be made on a quarterly basis.",
+                arabic_content: "سيتم دفع المدفوعات على أساس ربع سنوي.",
+            },
+            other_charges: {
+                amount: "2000",
+                vat: 5,
+                sub_total: 2000,
+                vat_amount: 100,
+                total_amount: 2100,
+            },
+        };
+
+        tinymce.init({
+            selector: 'textarea#editor',
+            toolbar_mode: 'floating',
+            plugins: [
+                "advlist", "anchor", "autolink", "charmap", "code", "fullscreen", 
+                "help", "image", "insertdatetime", "link", "lists", "media", 
+                "preview", "searchreplace", "table", "visualblocks", "accordion"
+            ],
+            toolbar: 'undo redo styles bold italic alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | code | hr | vertical-line ltr rtl',
+            menubar: 'file edit view insert format tools variable',
+            menu: {
+                variable: { title: 'Variables', items: 'date customer landlord property room_type contract premisesCondition paymentsCondition otherCharges' }
+            },
+            image_title: true,
+            automatic_uploads: true,
+            file_picker_types: 'image',
+            file_picker_callback: (cb, value, meta) => {
+                const url = prompt('Enter the image URL:');
+                if (url) {
+                    cb(url, { title: 'Image from URL' });
+                }
+            },
+            setup: (editor) => {
+
+                uiEditor = editor;
+
+                editor.ui.registry.addButton('vertical-line', {
+                    text: 'Vertical Line',
+                    onAction: () => {
+                        editor.insertContent('<div style="display: inline-block; width: 1px; height: 100px; background-color: #000;"></div>');
+                    }
+                });
+
+                const replacePlaceholdersWithDisplayText = (template, data) => {
+                    return template.replace(/\{\{(.*?)\}\}/g, (match, path) => {
+                        const keys = path.split('.');
+                        let value = data;
+                        for (const key of keys) {
+                            value = value[key];
+                            if (value === undefined) return match; 
+                        }
+                        return value;
+                    });
+                };
+
+                const replaceDisplayTextWithPlaceholders = (content, data) => {
+                    const flattenObject = (obj, prefix = '') => {
+                        if (obj === null || obj === undefined) {
+                            return {}; 
+                        }
+
+                        return Object.keys(obj).reduce((acc, key) => {
+                            const fullKey = prefix ? `${prefix}.${key}` : key;
+                            const value = obj[key];
+
+                            if (typeof value === 'object' && value !== null) {
+                                Object.assign(acc, flattenObject(value, fullKey));
+                            } else {
+                                acc[fullKey] = value;
+                            }
+
+                            return acc;
+                        }, {});
+                    };
+
+                    const flatData = flattenObject(data);
+
+                    console.log('Flattened Data:', flatData);
+                
+                    Object.keys(flatData).forEach(key => {
+                        const placeholder = `{{${key}}}`;
+                        const displayText = flatData[key];
+                        const regex = new RegExp(`\\b${displayText}\\b`, 'g');
+                        content = content.replace(regex, placeholder);
+                    });
+
+                    return content;
+                };
+
+                const createNestedMenu = () => {
+                    Object.keys(customMenuOptions).forEach(key => {
+                        const subItems = Object.keys(customMenuOptions[key]).map(subKey => ({
+                            type: 'menuitem',
+                            text: customMenuOptions[key][subKey],
+                            onAction: () => {
+                                const displayText = customMenuOptions[key][subKey];
+                                editor.insertContent(`<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1">${displayText}</span>`);
+                            },
+                        }));
+
+                        editor.ui.registry.addNestedMenuItem(key, {
+                            text: key.charAt(0).toUpperCase() + key.slice(1).replace(/([A-Z])/g, ' $1').trim(),
+                            getSubmenuItems: () => subItems,
+                        });
+                    });
+                };
+
+                createNestedMenu();
+
+                window.loadContent = (template, data) => {
+                    const renderedContent = replacePlaceholdersWithDisplayText(template, data);
+                    editor.setContent(renderedContent);
+                    console.log('Rendered Content Loaded:', renderedContent);
+                };
+
+                window.saveContent = () => {
+                    const content = editor.getContent();
+                    const rawContent = replaceDisplayTextWithPlaceholders(content, customMenuOptions);
+                    console.log('Content Saved with Placeholders:', rawContent);
+                };
+
+                function flattenObjectData(obj, parent = '', res = {}) {
+                    for (let key in obj) {
+                        let propName = parent ? `${parent}.${key}` : key;
+                        if (typeof obj[key] === 'object' && obj[key] !== null) {
+                            flattenObjectData(obj[key], propName, res);
+                        } else {
+                            res[propName] = obj[key];
+                        }
+                    }
+                    return res;
+                }
+
+                function loaderRenderTemplate(template, data) {
+                    const flatData = flattenObjectData(data);
+                    let renderedContent = template;
+
+                    Object.keys(flatData).forEach(key => {
+                        const placeholder = `{{${key}}}`;
+                        const value = flatData[key];
+                        const regex = new RegExp(placeholder, 'g');
+                        renderedContent = renderedContent.replace(regex, value);
+                    });
+
+                    return renderedContent;
+                }
+
+                window.loadTemplateWithObjectVariables = (template, data) => {
+                    const renderedContent = loaderRenderTemplate(template, data);
+                    editor = tinymce.activeEditor;
+                    if (editor) {
+                        editor.setContent(renderedContent);
+                        console.log('Rendered Content Loaded:', renderedContent);
+                    } else {
+                        console.error('Editor is not initialized. Please ensure TinyMCE is properly set up and initialized before calling this function.');
+                    }
+                }
+
+                window.viewPreview = () => {
+                    editor.execCommand('mcePreview');
+                }
+
+
+            }
+
+        });
+
+        const template = '<p>Dear <span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1;">{{landlord.landlord_name}}</span></p>';
+        setTimeout(() => {
+            loadTemplateWithObjectVariables(template, customMenuOptions);
+        }, 1000);
+
+        
+    </script>
+</body>
+</html>
+
+
+
+<!-- 
+Subtotal
+Vat Title
+Vat Percentage
+Vat Amount
+Total Amount
+
+
+
+
+Unit Number // Contract
+Unit Type //
+
+Date // (dd/mm/yyyy)
+Customer => Tenant
+Paid (Y/N) => VAT Paid (YES/ No)
+Attactment Avaiable (Yes/No) -->
