@@ -353,6 +353,9 @@
                     editor.execCommand('mcePreview');
                 }
 
+            editor.on('init', () => {
+                editor.getContainer().style.height = '100vh';
+            });
 
             }
 
