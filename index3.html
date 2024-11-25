@@ -20,95 +20,208 @@
     <script>
 
         const customObjData = {
-            customer: {
-                tenant_no: "2024/TN42",
-                trn: "Tenant TRN",
-                customer_name: "Customer Name (English)",
-                mobile_number: "+974 44448888",
-                phone_number: "+974 12345678",
-                fax_number: "+974 11223344",
-                email_address: "jamal.hamza@example.com",
+            tenant: {
+                tenant_no: "T98765",
+                trn: "TRN567890",
+                customer_name: {
+                    text_en: "John Doe",
+                    text_ar: "جون دو"
+                },
+                mobile_number: "+971501234567",
+                phone_number: "+97144123456",
+                fax_number: "+97144123457",
+                email_address: "johndoe@example.com",
                 po_box: "12345",
-                area: "Doha",
-                city: "Doha",
-                nationality_english: "Pakistan",
-                nationality_arabic: "پاکستان",
-                remarks: "Customer in good standing.",
-            },
-            landlord: {
-                landlord_no: "2024/LL23",
-                landlord_name: "JsjXjh",
-                mobile_number: "+971 511730706",
-                phone_number: "+971 12345678",
-                fax_number: "+971 11223344",
-                email_address: "landlord@example.com",
-                po_box: "67890",
-                area: "Ajman",
-                city: "Ajman",
-                nationality_english: "Pakistan",
-                nationality_arabic: "پاکستان",
-                landlord_commission: 500,
-                remarks: "Landlord requires timely payments.",
+                area: "Downtown",
+                city: "Dubai",
+                nationality: {
+                    text_en: "American",
+                },
+                remarks: "Preferred tenant, handles payments promptly."
             },
             property: {
-                property_no: "2024/PR34",
-                property_name: "H Star",
-                plot_no: "PLT-009",
-                property_type: "Building",
-                area: "Central Ajman",
-                city: "Ajman",
-                property_price: 1000000,
-                property_description: "A commercial building with retail spaces.",
-                no_of_floors: 4,
-            },
-            room_type: {
-                value: "Dukkan",
+                property_no: "P12345",
+                property_name: "Sunrise Apartments",
+                plot_no: "PLT56789",
+                property_type: "Residential",
+                area: "Jumeirah",
+                city: "Dubai",
+                property_price: "5000000",
+                property_description: "A luxury 3-bedroom apartment with sea views.",
+                no_of_floors: "15",
+                unit_type: "3BHK"
             },
             contract: {
-                purchase_invoice_no: "POS 9728 328 3289",
-                contract_status: "active",
-                contract_type: "residential",
-                contract_no: "00321452",
-                iq_invoice_no: "INV/2024/000102",
-                flat_no: "SHOP-2",
-                furnished_type: "unfurnished",
-                rent_from: "2024-10-13T00:00:00",
-                rent_to: "2025-10-12T00:00:00",
-                vat_payment_date: null,
-                gross_amount: 54000,
-                total_discount_amount: 0,
-                vat_item_title: "5% VAT - (Exclusive)",
-                vat_per: 5,
-                vat_amount: 2700,
-                is_vat_paid: true,
-                rental_amount: 54000,
-                net_amount: 56700,
-                total_cheques: 6,
-                total_paid_cheques: 2,
-                total_paid_amount: 18900,
-                total_partly_paid_cheques: 1,
-                total_partly_paid_amount: 4500,
-                total_due_cheques: 0,
-                total_due_amount: 0,
-                early_close_charge: 0,
-                remarks: "No additional remarks at this time.",
+                purchase_invoice_no: "INV12345",
+                contract_status: {
+                    text_en: "Active",
+                    text_ar: "نشط"
+                },
+                contract_type: {
+                    text_en: "Fixed Term Lease",
+                    text_ar: "عقد إيجار محدد المدة"
+                },
+                contract_no: "C56789",
+                iq_invoice_no: "IQ12345",
+                flat_no: "5A",
+                furnished_type: {
+                    text_en: "Fully Furnished",
+                    text_ar: "مفروش بالكامل"
+                },
+                rent_from: {
+                    text_en: "01/01/2024",
+                    text_ar: "01/01/2024"
+                },
+                rent_to: {
+                    text_en: "31/12/2024",
+                    text_ar: "31/12/2024"
+                },
+                vat: {
+                    payment_date_en: "15/01/2024",
+                    payment_date_ar: "15/01/2024",
+                    vat_item_title: "Residential VAT",
+                    vat_per: "5%",
+                    vat_amount: "2500",
+                    is_vat_paid: "Yes"
+                },
+                gross_amount: "50000",
+                total_discount_amount: "5000",
+                rental_amount: "45000",
+                net_amount: "42500",
+                net_amount_in_words: {
+                    text_en: "Forty-Two Thousand Five Hundred Dirhams",
+                    text_ar: "اثنان وأربعون ألف وخمسمائة درهم"
+                },
+                total_cheques: "12",
+                total_paid_cheques: "6",
+                total_paid_amount: "22500",
+                total_partly_paid_cheques: "2",
+                total_partly_paid_amount: "7500",
+                total_due_cheques: "4",
+                total_due_amount: "12500",
+                early_close_charge: "1500",
+                remarks: "Contract renewal pending for next year.",
+                premises_condition: {
+                    text_en: "Excellent",
+                    text_ar: "ممتاز"
+                },
+                payment_condition: {
+                    text_en: "Monthly advance payment",
+                    text_ar: "دفعة مقدمة شهرية"
+                }
             },
-            premises_condition: {
-                english_content: "The property is in good condition with no defects.",
-                arabic_content: "العقار في حالة جيدة ولا توجد به عيوب.",
-            },
-            payments_condition: {
-                english_content: "The payments will be made on a quarterly basis.",
-                arabic_content: "سيتم دفع المدفوعات على أساس ربع سنوي.",
-            },
-            other_charges: {
-                amount: "2000",
-                vat: 5,
-                sub_total: 2000,
-                vat_amount: 100,
-                total_amount: 2100,
-            },
+            otherCharges: {
+                sub_total: "2000",
+                vat_title: "Service VAT",
+                vat: "5%",
+                vat_amount: "100",
+                total_amount: "2100"
+            }
         };
+
+
+        const customMenuOptions = {
+            tenant: {
+                tenant_no: "Tenant No",
+                trn: "TRN",
+                customer_name: {
+                    text_en: "Tenant Name (English)",
+                    text_ar: "Tenant Name (Arabic)"
+                },
+                mobile_number: "Mobile Number",
+                phone_number: "Phone Number",
+                fax_number: "Fax. Number",
+                email_address: "Email Address",
+                po_box: "P.O. Box",
+                area: "Area",
+                city: "City",
+                nationality: {
+                    text_en: "Nationality",
+                    //text_ar: "Nationality (Arabic)",
+                },
+                remarks: "Remarks",
+            }, 
+            property: {
+                property_no: "Property ID",
+                property_name: "Property Name",
+                plot_no: "Plot Number",
+                property_type: "Property Type",
+                area: "Area",
+                city: "City",
+                property_price: "Property Price",
+                property_description: "Property Description",
+                no_of_floors: "Number of Floors",
+                unit_type: "Unit Type"
+            },
+            contract: {
+                purchase_invoice_no: "Purchase Invoice",
+                contract_status: {
+                    text_en: "Contract Status in English",
+                    text_ar: "Contract Status in Arabic",
+                },
+                contract_type: {
+                    text_en: "Contract Type in English",
+                    text_ar: "Contract Type in Arabic",
+                },
+                contract_no: "Contract Number",
+                iq_invoice_no: "iQ Invoice Number",
+                flat_no: "Unit Number", 
+                furnished_type:{
+                    text_en: "Furnished Type in English",
+                    text_ar: "Furnished Type in Arabic",
+                },
+                rent_from: {
+                    text_en: "Contract Starts From in English, dd/mm/yyyy",
+                    text_ar: "Contract Starts From in Arabic, dd/mm/yyyy",
+                },
+                rent_to: {
+                    text_en: "Contract Ends On in English, dd/mm/yyyy",
+                    text_ar: "Contract Ends On in Arabic, dd/mm/yyyy",
+                },
+                vat: {
+                    payment_date_en: "VAT Payment Date in English, dd/mm/yyyy",
+                    payment_date_ar: "VAT Payment Date in Arabic, dd/mm/yyyy",
+                    vat_item_title: "VAT Title",
+                    vat_per: "VAT Percentage",
+                    vat_amount: 'VAT Amount',
+                    is_vat_paid: 'VAT Paid Yes / No',
+                }, 
+                gross_amount: "Gross Amount",
+                total_discount_amount: "Total Discount Amount",
+                rental_amount: 'Rental Amount',
+                net_amount: 'Net Amount',
+                net_amount_in_words: {
+                    text_en: "Net Amount in English, in words",
+                    text_ar: "Net Amount in Arabic, in words",
+                },
+                total_cheques: 'Total Installments',
+                total_paid_cheques: 'Total Paid Installments',
+                total_paid_amount: 'Total Paid Amount',
+                total_partly_paid_cheques: 'Total Partly Paid Installments',
+                total_partly_paid_amount: 'Total Partly Paid Amount',
+                total_due_cheques: 'Total Due Installment',
+                total_due_amount: 'Total Due Amount',
+                early_close_charge: 'Early Close Charge',
+                remarks: 'Remarks',
+                premises_condition: {
+                    text_en: 'Premises Condition in English',
+                    text_ar: 'Premises Condition in Arabic',
+                },
+                payment_condition: {
+                    text_en: 'Payment Condition in English',
+                    text_ar: 'Payment Condition in Arabic'
+                }   
+            },
+            otherCharges: {
+                sub_total: 'Subtotal',
+                vat_title: 'VAT Title',
+                vat: 'VAT Percent',
+                vat_amount: 'VAT Amount',
+                total_amount: 'Total Amount',
+            }
+        };
+
+        
 
         tinymce.init({
             selector: 'textarea#editor',
@@ -207,10 +320,49 @@
 
                 createNestedMenu();
 
+
+                function setEditorContentWithDisplayText(rawTemplate, data) {
+                    
+                    const flattenObject = (obj, prefix = '') => {
+                        return Object.keys(obj).reduce((acc, key) => {
+                            const fullKey = prefix ? `${prefix}.${key}` : key;
+                            const value = obj[key];
+
+                            if (typeof value === 'object' && value !== null) {
+                                Object.assign(acc, flattenObject(value, fullKey));
+                            } else {
+                                acc[fullKey] = value;
+                            }
+
+                            return acc;
+                        }, {});
+                    };
+
+                    // Flatten the data for easy lookup
+                    const flatData = flattenObject(data);
+
+                    // Replace placeholders with display text
+                    let renderedContent = rawTemplate.replace(/\{\{(.*?)\}\}/g, (match, path) => {
+                        return flatData[path] !== undefined ? flatData[path] : match; // Use display text or keep the placeholder
+                    });
+
+                    // Set the editor content
+                    const editor = tinymce.activeEditor;
+                    if (editor) {
+                        editor.setContent(renderedContent);
+                        console.log('Editor content set:', renderedContent);
+                    } else {
+                        console.error('Editor is not initialized.');
+                    }
+                }
+
+
+
                 window.loadContent = (template, data) => {
-                    const renderedContent = replacePlaceholdersWithDisplayText(template, data);
-                    editor.setContent(renderedContent);
-                    console.log('Rendered Content Loaded:', renderedContent);
+                    // const renderedContent = replacePlaceholdersWithDisplayText(template, data);
+                    setEditorContentWithDisplayText(template, data);
+                    // editor.setContent(renderedContent);
+                    // console.log('Rendered Content Loaded:', renderedContent);
                 };
 
                 window.saveContent = () => {
@@ -221,10 +373,10 @@
             }
         });
 
-        // const template = '<p>Dear {{landlord.landlord_name}},</p><p>Your payment is pending {{contract.gross_amount}} from {{contract.rent_from}}</p>';
-        // setTimeout(() => {
-        //     loadContent(template, customObjData);
-        // }, 1000);
+        const template = '<p>Dear &nbsp;{{tenant.customer_name.text_en}}&nbsp;<br>Please pay your bills &nbsp;{{contract.net_amount_in_words.text_en}} before &nbsp;{{contract.rent_to.text_en}}&nbsp;</p>';
+        setTimeout(() => {
+            loadContent(template, customObjData);
+        }, 1000);
     </script>
 </body>
 </html>

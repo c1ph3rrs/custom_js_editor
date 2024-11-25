@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TinyMCE Editor with Variables</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.tiny.cloud/1/jfdujg0vceh6n8s78zuyo4j5js3iw3d8mmwgjo53o9yt8p9d/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <script>
+
+const customMenuOptions = {
+                tenant: {
+                    tenant_no: "Tenant No",
+                    trn: "TRN",
+                    customer_name: {
+                        text_en: "Tenant Name",
+                        //text_ar: "Tenant Name (Arabic)"
+                    },
+                    mobile_number: "Mobile Number",
+                    phone_number: "Phone Number",
+                    fax_number: "Fax. Number",
+                    email_address: "Email Address",
+                    po_box: "P.O. Box",
+                    area: "Area",
+                    city: "City",
+                    nationality: {
+                        text_en: "Nationality",
+                        //text_ar: "Nationality (Arabic)",
+                    },
+                    remarks: "Remarks",
+                }, 
+                property: {
+                    property_no: "Property ID",
+                    property_name: "Property Name",
+                    plot_no: "Plot Number",
+                    property_type: "Property Type",
+                    area: "Area",
+                    city: "City",
+                    property_price: "Property Price",
+                    property_description: "Property Description",
+                    no_of_floors: "Number of Floors"
+                },
+                contract: {
+                    purchase_invoice_no: "Purchase Invoice",
+                    contract_status: {
+                        text_en: "Contract Status in English",
+                        text_ar: "Contract Status in Arabic",
+                    },
+                    contract_type: {
+                        text_en: "Contract Type in English",
+                        text_ar: "Contract Type in Arabic",
+                    },
+                    contract_no: "Contract Number",
+                    iq_invoice_no: "iQ Invoice Number",
+                    unit_no: "Unit Number", 
+                    unit_type: "Unit Type",
+                    furnished_type:{
+                        text_en: "Furnished Type in English",
+                        text_ar: "Furnished Type in Arabic",
+                    },
+                    rent_from: {
+                        text_en: "Contract Starts From in English, dd/mm/yyyy",
+                        text_ar: "Contract Starts From in Arabic, dd/mm/yyyy",
+                    },
+                    rent_to: {
+                        text_en: "Contract Ends On in English, dd/mm/yyyy",
+                        text_ar: "Contract Ends On in Arabic, dd/mm/yyyy",
+                    },
+                    vat: {
+                        payment_date_en: "VAT Payment Date in English, dd/mm/yyyy",
+                        payment_date_ar: "VAT Payment Date in Arabic, dd/mm/yyyy",
+                        vat_item_title: "VAT Title",
+                        vat_per: {
+                            text_en: "VAT Percentage in English",
+                            text_ar: "VAT Percentage in Arabic",
+                        },
+                        vat_amount: {
+                            text_en: "VAT Amount in English",
+                            text_ar: "VAT Amount in Arabic",
+                        },
+                        is_vat_paid: {
+                            text_en: "VAT Paid? (Yes / No) in English",
+                            text_ar: "VAT Paid? (Yes / No) in Arabic",
+                        },
+                    }, 
+                    gross_amount: {
+                        text_en: "Gross Amount in English",
+                        text_ar: "Gross Amount in Arabic",
+                    },
+                    total_discount_amount: {
+                        text_en: "Total Discount Amount in English",
+                        text_ar: "Total Discount Amount in Arabic",
+                    },
+                    rental_amount: {
+                        text_en: "Rental Amount in English",
+                        text_ar: "Rental Amount in Arabic",
+                    },
+                    net_amount: {
+                        text_en: "Net Amount in English",
+                        text_ar: "Net Amount in Arabic",
+                    },
+                    net_amount_in_words: {
+                        text_en: "Net Amount in English, in words",
+                        text_ar: "Net Amount in Arabic, in words",
+                    },
+                    total_cheques: {
+                        text_en: "Total Installments in English",
+                        text_ar: "Total Installments in Arabic",
+                    },
+                    total_paid_cheques: {
+                        text_en: "Total Paid Installments in English",
+                        text_ar: "Total Paid Installments in Arabic",
+                    },
+                    early_close_charge: {
+                        text_en: "Early Close Charge in English",
+                        text_ar: "Early Close Charge in Arabic",
+                    },
+                    remarks: {
+                        text_en: "Remarks in English",
+                        text_ar: "Remarks in Arabic",
+                    },
+                    premises_condition: {
+                        text_en: 'Premises Condition in English',
+                        text_ar: 'Premises Condition in Arabic',
+                    },
+                    payment_condition: {
+                        text_en: 'Payment Condition in English',
+                        text_ar: 'Payment Condition in Arabic'
+                    }   
+                },
+                otherCharges: {
+                    sub_total: {
+                        text_en: 'Subtotal in English',
+                        text_ar: 'Subtotal in Arabic',
+                    },
+                    vat_title: 'VAT Title',
+                    vat: { 
+                        text_en: 'VAT Percent in English',
+                        text_ar: 'VAT Percent in Arabic',
+                    },
+                    vat_amount: {
+                        text_en: 'VAT Amount in English',
+                        text_ar: 'VAT Amount in Arabic',
+                    },
+                    total_amount: {
+                        text_en: 'Total Amount in English',
+                        text_ar: 'Total Amount in Arabic',
+                    },
+                }
+            };
+
+
+        $(document).ready(function() {
+        
+            
+        
+            tinymce.init({
+                selector: 'textarea#editor',
+                toolbar_mode: 'floating',
+                plugins: [
+                    "advlist", "anchor", "autolink", "charmap", "code", "fullscreen",
+                    "help", "image", "insertdatetime", "link", "lists", "media",
+                    "preview", "searchreplace", "table", "visualblocks", "accordion"
+                ],
+                toolbar: 'undo redo styles bold italic alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | code | hr | vertical-line ltr rtl',
+                menubar: 'file edit view insert format tools variable companyLogo',
+                menu: {
+                    variable: { title: 'Variables', items: 'tenant landlord property room_type contract premisesCondition paymentsCondition otherCharges companyDetails' }
+                },
+                image_title: true,
+                automatic_uploads: true,
+                file_picker_types: 'image',
+                file_picker_callback: (cb, value, meta) => {
+                    const url = prompt('Enter the image URL:');
+                    if (url) {
+                        cb(url, { title: 'Image from URL' });
+                    }
+                },
+                setup: (editor) => {
+        
+                    uiEditor = editor;
+        
+                    editor.ui.registry.addButton('vertical-line', {
+                        text: 'Vertical Line',
+                        onAction: () => {
+                            editor.insertContent('&nbsp;<div style="display: inline-block; width: 1px; height: 100px; background-color: #000;"></div>&nbsp;');
+                        }
+                    });
+        
+                    const replacePlaceholdersWithDisplayText = (template, data) => {
+                        return template.replace(/\{\{(.*?)\}\}/g, (match, path) => {
+                            const keys = path.split('.');
+                            let value = data;
+                            for (const key of keys) {
+                                value = value[key];
+                                if (value === undefined) return match;
+                            }
+                            return value;
+                        });
+                    };
+        
+                    
+        
+                    const createNestedMenu = () => {
+                        Object.keys(customMenuOptions).forEach((key) => {
+                            const subItems = Object.keys(customMenuOptions[key]).map((subKey) => {
+                                if (typeof customMenuOptions[key][subKey] === "object") {
+                                    const thirdLevelItems = Object.keys(customMenuOptions[key][subKey]).map((thirdKey) => ({
+                                        type: "menuitem",
+                                        text: customMenuOptions[key][subKey][thirdKey],
+                                        onAction: () => {
+                                            const displayText = customMenuOptions[key][subKey][thirdKey];
+                                            if (displayText === "Company Logo") {
+                                                editor.insertContent(
+                                                    '&nbsp;<img src="/images/iQ_logo.png" alt="Company Logo" style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1" contenteditable="false"/>&nbsp;'
+                                                );
+                                            } else {
+                                                editor.insertContent(
+                                                    `&nbsp;<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1" contenteditable="false">${displayText}</span>&nbsp;`
+                                                );
+                                            }
+                                        },
+                                    }));
+        
+                                    return {
+                                        type: "nestedmenuitem",
+                                        text: subKey.replace(/_/g, ' ').charAt(0).toUpperCase() + subKey.replace(/_/g, ' ').slice(1).replace(/([A-Z])/g, " $1").trim(),
+                                        getSubmenuItems: () => thirdLevelItems,
+                                    };
+                                } else {
+                                    return {
+                                        type: "menuitem",
+                                        text: customMenuOptions[key][subKey],
+                                        onAction: () => {
+                                            const displayText = customMenuOptions[key][subKey];
+                                            if (displayText === "Company Logo") {
+                                                editor.insertContent(
+                                                    '&nbsp;<img src="/images/iQ_logo.png" alt="Company Logo" style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1" contenteditable="false"/>&nbsp;'
+                                                );
+                                            } else {
+                                                editor.insertContent(
+                                                    `&nbsp;<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1" contenteditable="false">${displayText}</span>&nbsp;`
+                                                );
+                                            }
+                                        },
+                                    };
+                                }
+                            });
+        
+                            editor.ui.registry.addNestedMenuItem(key, {
+                                text: key.replace(/_/g, ' ').charAt(0).toUpperCase() + key.replace(/_/g, ' ').slice(1).replace(/([A-Z])/g, " $1").trim(),
+                                getSubmenuItems: () => subItems,
+                            });
+                        });
+                    };
+        
+                    createNestedMenu();
+        
+        
+                    function setEditorContentWithDisplayText(rawTemplate, data) {
+                    
+                        const flattenObject = (obj, prefix = '') => {
+                            return Object.keys(obj).reduce((acc, key) => {
+                                const fullKey = prefix ? `${prefix}.${key}` : key;
+                                const value = obj[key];
+
+                                if (typeof value === 'object' && value !== null) {
+                                    Object.assign(acc, flattenObject(value, fullKey));
+                                } else {
+                                    acc[fullKey] = value;
+                                }
+
+                                return acc;
+                            }, {});
+                        };
+
+                        // Flatten the data for easy lookup
+                        const flatData = flattenObject(data);
+
+                        // Replace placeholders with display text
+                        let renderedContent = rawTemplate.replace(/\{\{(.*?)\}\}/g, (match, path) => {
+                            return flatData[path] !== undefined ? flatData[path] : match; // Use display text or keep the placeholder
+                        });
+
+                        // Set the editor content
+                        const editor = tinymce.activeEditor;
+                        if (editor) {
+                            editor.setContent(renderedContent);
+                            console.log('Editor content set:', renderedContent);
+                        } else {
+                            console.error('Editor is not initialized.');
+                        }
+                    }
+
+                    const replaceDisplayTextWithPlaceholders = (content, data) => {
+                        const flattenObject = (obj, prefix = '') => {
+                            return Object.keys(obj).reduce((acc, key) => {
+                                const fullKey = prefix ? `${prefix}.${key}` : key;
+                                const value = obj[key];
+        
+                                if (typeof value === 'object' && value !== null) {
+                                    Object.assign(acc, flattenObject(value, fullKey));
+                                } else {
+                                    acc[value] = `{{${fullKey}}}`;
+                                }
+        
+                                return acc;
+                            }, {});
+                        };
+        
+                        const flatData = flattenObject(data);
+        
+                        Object.keys(flatData).forEach(displayText => {
+                            const placeholder = flatData[displayText];
+                            const regex = new RegExp(
+                                `(<span[^>]*>)${displayText.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(</span>)`,
+                                'g'
+                            );
+                            content = content.replace(regex, `$1${placeholder}$2`);
+                        });
+        
+                        return content;
+                    };
+        
+                    window.loadContent = (template, data) => {
+                        setEditorContentWithDisplayText(template, data); 
+                    };
+        
+                    window.saveContent = () => {
+
+                        const content = editor.getContent();
+                        console.log('Editor Content:', content);
+                        const rawContent = replaceDisplayTextWithPlaceholders(content, customMenuOptions);
+                        console.log('Content Saved with Placeholders:', rawContent);
+        
+                    };
+        
+                    // function flattenObjectData(obj, parent = '', res = {}) {
+                    //     for (let key in obj) {
+                    //         let propName = parent ? `${parent}.${key}` : key;
+                    //         if (typeof obj[key] === 'object' && obj[key] !== null) {
+                    //             flattenObjectData(obj[key], propName, res);
+                    //         } else {
+                    //             res[propName] = obj[key];
+                    //         }
+                    //     }
+                    //     return res;
+                    // }
+        
+                    // function loaderRenderTemplate(template, data) {
+                    //     const flatData = flattenObjectData(data);
+                    //     let renderedContent = template;
+        
+                    //     Object.keys(flatData).forEach(key => {
+                    //         const placeholder = `{{${key}}}`;
+                    //         const value = flatData[key];
+                    //         const regex = new RegExp(placeholder, 'g');
+                    //         renderedContent = renderedContent.replace(regex, value);
+                    //     });
+        
+                    //     return renderedContent;
+                    // }
+        
+                    // window.loadTemplateWithObjectVariables = (template, data) => {
+                    //     const renderedContent = loaderRenderTemplate(template, data);
+                    //     editor = tinymce.activeEditor;
+                    //     if (editor) {
+                    //         editor.setContent(renderedContent);
+                    //     }
+                    // } 
+                }
+            });
+                          
+            
+         
+        });
+
+        const template = '<p>Dear &nbsp;<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1;" contenteditable="false">{{tenant.customer_name.text_en}}</span>&nbsp;</p>';
+        
+        setTimeout(() => {
+            loadContent(template, customMenuOptions);
+        }, 1000);
+        
+        
+        </script>
+
+
+</head>
+<body>
+    <header>
+        <h1>Design Your Layout with Variables</h1>
+    </header>
+    <main>
+        <textarea id="editor"></textarea>
+        <button onclick="saveContent()">Save Content</button>
+        <button onclick="viewPreview()">View Preview</button>
+    </main>
+    <footer>
+        <p>&copy; 2024 Awesome Corp</p>
+    </footer>
+
+
+
+</body>
+</html>

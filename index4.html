@@ -20,12 +20,14 @@
     </footer>
     <script>
 
-
         const customMenuOptions = {
             tenant: {
                 tenant_no: "Tenant No",
                 trn: "TRN",
-                customer_name: "Tenant Name",
+                customer_name: {
+                    text_en: "Tenant Name (English)",
+                    text_ar: "Tenant Name (Arabic)"
+                },
                 mobile_number: "Mobile Number",
                 phone_number: "Phone Number",
                 fax_number: "Fax. Number",
@@ -33,25 +35,12 @@
                 po_box: "P.O. Box",
                 area: "Area",
                 city: "City",
-                nationality_english: "Nationality (English)",
-                nationality_arabic: "Nationality (Arabic)",
+                nationality: {
+                    text_en: "Nationality",
+                    //text_ar: "Nationality (Arabic)",
+                },
                 remarks: "Remarks",
-            },
-            landlord: {
-                landlord_no: "Landlord ID",
-                landlord_name: "Landlord Name",
-                mobile_number: "Mobile Number",
-                phone_number: "Phone Number",
-                fax_number: "Fax. Number",
-                email_address: "Email Address",
-                po_box: "P.O. Box",
-                area: "Area",
-                city: "City",
-                nationality_english: "Nationality (English)",
-                nationality_arabic: "Nationality (Arabic)",
-                landlord_commission: "Landlord Comission",
-                remarks: "Remarks",
-            },
+            }, 
             property: {
                 property_no: "Property ID",
                 property_name: "Property Name",
@@ -66,23 +55,45 @@
             },
             contract: {
                 purchase_invoice_no: "Purchase Invoice",
-                contract_status: "Contract Status",
-                contract_type: "Contract Type",
+                contract_status: {
+                    text_en: "Contract Status in English",
+                    text_ar: "Contract Status in Arabic",
+                },
+                contract_type: {
+                    text_en: "Contract Type in English",
+                    text_ar: "Contract Type in Arabic",
+                },
                 contract_no: "Contract Number",
                 iq_invoice_no: "iQ Invoice Number",
-                flat_no: "Unit Number",
-                furnished_type: "Furnished Type",
-                rent_from: "Rent From (dd/mm/yyyy)",
-                rent_to: "Rent To (dd/mm/yyyy)",
-                vat_payment_date: "VAT Payment Date (dd/mm/yyyy)",
+                flat_no: "Unit Number", 
+                furnished_type:{
+                    text_en: "Furnished Type in English",
+                    text_ar: "Furnished Type in Arabic",
+                },
+                rent_from: {
+                    text_en: "Contract Starts From in English, dd/mm/yyyy",
+                    text_ar: "Contract Starts From in Arabic, dd/mm/yyyy",
+                },
+                rent_to: {
+                    text_en: "Contract Ends On in English, dd/mm/yyyy",
+                    text_ar: "Contract Ends On in Arabic, dd/mm/yyyy",
+                },
+                vat: {
+                    payment_date_en: "VAT Payment Date in English, dd/mm/yyyy",
+                    payment_date_ar: "VAT Payment Date in Arabic, dd/mm/yyyy",
+                    vat_item_title: "VAT Title",
+                    vat_per: "VAT Percentage",
+                    vat_amount: 'VAT Amount',
+                    is_vat_paid: 'VAT Paid Yes / No .?',
+                }, 
                 gross_amount: "Gross Amount",
                 total_discount_amount: "Total Discount Amount",
-                vat_item_title: "VAT Title",
-                vat_per: "VAT Percentage",
-                vat_amount: 'VAT Amount',
-                is_vat_paid: 'VAT Paid (Yes/No)',
                 rental_amount: 'Rental Amount',
                 net_amount: 'Net Amount',
+                net_amount_in_words: {
+                    text_en: "Net Amount in English, in words",
+                    text_ar: "Net Amount in Arabic, in words",
+                },
                 total_cheques: 'Total Installments',
                 total_paid_cheques: 'Total Paid Installments',
                 total_paid_amount: 'Total Paid Amount',
@@ -92,14 +103,14 @@
                 total_due_amount: 'Total Due Amount',
                 early_close_charge: 'Early Close Charge',
                 remarks: 'Remarks',
-            },
-            premisesCondition: {
-                english_content: 'English Content',
-                arabic_content: 'Arabic Content',
-            },
-            paymentsCondition: {
-                english_content: 'English Content',
-                arabic_content: 'Arabic Content',
+                premises_condition: {
+                    text_en: 'Premises Condition in English',
+                    text_ar: 'Premises Condition in Arabic',
+                },
+                payment_condition: {
+                    text_en: 'Payment Condition in English',
+                    text_ar: 'Payment Condition in Arabic'
+                }   
             },
             otherCharges: {
                 sub_total: 'Subtotal',
@@ -107,98 +118,7 @@
                 vat: 'VAT Percent',
                 vat_amount: 'VAT Amount',
                 total_amount: 'Total Amount',
-            },
-        };
-
-        const customObjData = {
-            customer: {
-                tenant_no: "2024/TN42",
-                trn: "Tenant TRN",
-                customer_name: "Hayman",
-                mobile_number: "+974 44448888",
-                phone_number: "+974 12345678",
-                fax_number: "+974 11223344",
-                email_address: "jamal.hamza@example.com",
-                po_box: "12345",
-                area: "Doha",
-                city: "Doha",
-                nationality_english: "Pakistan",
-                nationality_arabic: "پاکستان",
-                remarks: "Customer in good standing.",
-            },
-            landlord: {
-                landlord_no: "2024/LL23",
-                landlord_name: "JsjXjh",
-                mobile_number: "+971 511730706",
-                phone_number: "+971 12345678",
-                fax_number: "+971 11223344",
-                email_address: "landlord@example.com",
-                po_box: "67890",
-                area: "Ajman",
-                city: "Ajman",
-                nationality_english: "Pakistan",
-                nationality_arabic: "پاکستان",
-                landlord_commission: 500,
-                remarks: "Landlord requires timely payments.",
-            },
-            property: {
-                property_no: "2024/PR34",
-                property_name: "H Star",
-                plot_no: "PLT-009",
-                property_type: "Building",
-                area: "Central Ajman",
-                city: "Ajman",
-                property_price: 1000000,
-                property_description: "A commercial building with retail spaces.",
-                no_of_floors: 4,
-            },
-            room_type: {
-                value: "Dukkan",
-            },
-            contract: {
-                purchase_invoice_no: "POS 9728 328 3289",
-                contract_status: "active",
-                contract_type: "residential",
-                contract_no: "00321452",
-                iq_invoice_no: "INV/2024/000102",
-                flat_no: "SHOP-2",
-                furnished_type: "unfurnished",
-                rent_from: "2024-10-13T00:00:00",
-                rent_to: "2025-10-12T00:00:00",
-                vat_payment_date: null,
-                gross_amount: 54000,
-                total_discount_amount: 0,
-                vat_item_title: "5% VAT - (Exclusive)",
-                vat_per: 5,
-                vat_amount: 2700,
-                is_vat_paid: true,
-                rental_amount: 54000,
-                net_amount: 56700,
-                total_cheques: 6,
-                total_paid_cheques: 2,
-                total_paid_amount: 18900,
-                total_partly_paid_cheques: 1,
-                total_partly_paid_amount: 4500,
-                total_due_cheques: 0,
-                total_due_amount: 0,
-                early_close_charge: 0,
-                remarks: "No additional remarks at this time.",
-            },
-            premises_condition: {
-                english_content: "The property is in good condition with no defects.",
-                arabic_content: "العقار في حالة جيدة ولا توجد به عيوب.",
-            },
-            payments_condition: {
-                english_content: "The payments will be made on a quarterly basis.",
-                arabic_content: "سيتم دفع المدفوعات على أساس ربع سنوي.",
-            },
-            other_charges: {
-                amount: "2000",
-                vat: 5,
-                sub_total: 2000,
-                vat_amount: 100,
-                total_amount: 2100,
-            },
+            }
         };
 
         tinymce.init({
@@ -212,7 +132,7 @@
             toolbar: 'undo redo styles bold italic alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | code | hr | vertical-line ltr rtl',
             menubar: 'file edit view insert format tools variable',
             menu: {
-                variable: { title: 'Variables', items: 'date customer landlord property room_type contract premisesCondition paymentsCondition otherCharges' }
+                variable: { title: 'Variables', items: 'tenant landlord property contract premisesCondition paymentsCondition otherCharges companyDetails' },
             },
             image_title: true,
             automatic_uploads: true,
@@ -225,7 +145,7 @@
             },
             setup: (editor) => {
 
-                uiEditor = editor;
+
 
                 editor.ui.registry.addButton('vertical-line', {
                     text: 'Vertical Line',
@@ -234,24 +154,9 @@
                     }
                 });
 
-                const replacePlaceholdersWithDisplayText = (template, data) => {
-                    return template.replace(/\{\{(.*?)\}\}/g, (match, path) => {
-                        const keys = path.split('.');
-                        let value = data;
-                        for (const key of keys) {
-                            value = value[key];
-                            if (value === undefined) return match; 
-                        }
-                        return value;
-                    });
-                };
 
                 const replaceDisplayTextWithPlaceholders = (content, data) => {
                     const flattenObject = (obj, prefix = '') => {
-                        if (obj === null || obj === undefined) {
-                            return {}; 
-                        }
-
                         return Object.keys(obj).reduce((acc, key) => {
                             const fullKey = prefix ? `${prefix}.${key}` : key;
                             const value = obj[key];
@@ -259,7 +164,7 @@
                             if (typeof value === 'object' && value !== null) {
                                 Object.assign(acc, flattenObject(value, fullKey));
                             } else {
-                                acc[fullKey] = value;
+                                acc[value] = `{{${fullKey}}}`;
                             }
 
                             return acc;
@@ -268,43 +173,83 @@
 
                     const flatData = flattenObject(data);
 
-                    console.log('Flattened Data:', flatData);
-                
-                    Object.keys(flatData).forEach(key => {
-                        const placeholder = `{{${key}}}`;
-                        const displayText = flatData[key];
-                        const regex = new RegExp(`\\b${displayText}\\b`, 'g');
+                    Object.keys(flatData).forEach(displayText => {
+                        const placeholder = flatData[displayText];
+                        const regex = new RegExp(
+                            `<span[^>]*>${displayText.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}</span>`,
+                            'g'
+                        );
                         content = content.replace(regex, placeholder);
                     });
 
                     return content;
                 };
 
+
+
+
+
                 const createNestedMenu = () => {
-                    Object.keys(customMenuOptions).forEach(key => {
-                        const subItems = Object.keys(customMenuOptions[key]).map(subKey => ({
-                            type: 'menuitem',
-                            text: customMenuOptions[key][subKey],
-                            onAction: () => {
-                                const displayText = customMenuOptions[key][subKey];
-                                editor.insertContent(`<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1">${displayText}</span>`);
-                            },
-                        }));
+                    Object.keys(customMenuOptions).forEach((key) => {
+                        const subItems = Object.keys(customMenuOptions[key]).map((subKey) => {
+                            if (typeof customMenuOptions[key][subKey] === "object") {
+                                const thirdLevelItems = Object.keys(customMenuOptions[key][subKey]).map((thirdKey) => ({
+                                    type: "menuitem",
+                                    text: customMenuOptions[key][subKey][thirdKey],
+                                    onAction: () => {
+                                        const displayText = customMenuOptions[key][subKey][thirdKey];
+                                        if (displayText === "Company Logo") {
+                                            editor.insertContent(
+                                                '&nbsp;<img src="path/to/company_logo.png" alt="Company Logo" style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1" contenteditable="false"/>&nbsp;'
+                                            );
+                                        } else {
+                                            editor.insertContent(
+                                                `&nbsp;<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1" contenteditable="false">${displayText}</span>&nbsp;`
+                                            );
+                                        }
+                                    },
+                                }));
+
+                                return {
+                                    type: "nestedmenuitem",
+                                    text: subKey.replace(/_/g, ' ').charAt(0).toUpperCase() + subKey.replace(/_/g, ' ').slice(1).replace(/([A-Z])/g, " $1").trim(),
+                                    getSubmenuItems: () => thirdLevelItems,
+                                };
+                            } else {
+                                return {
+                                    type: "menuitem",
+                                    text: customMenuOptions[key][subKey],
+                                    onAction: () => {
+                                        const displayText = customMenuOptions[key][subKey];
+                                        if (displayText === "Company Logo") {
+                                            editor.insertContent(
+                                                '&nbsp;<img src="path/to/company_logo.png" alt="Company Logo" style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1" contenteditable="false"/>&nbsp;'
+                                            );
+                                        } else {
+                                            editor.insertContent(
+                                                `&nbsp;<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1" contenteditable="false">${displayText}</span>&nbsp;`
+                                            );
+                                        }
+                                    },
+                                };
+                            }
+                        });
 
                         editor.ui.registry.addNestedMenuItem(key, {
-                            text: key.charAt(0).toUpperCase() + key.slice(1).replace(/([A-Z])/g, ' $1').trim(),
+                            text: key.replace(/_/g, ' ').charAt(0).toUpperCase() + key.replace(/_/g, ' ').slice(1).replace(/([A-Z])/g, " $1").trim(),
                             getSubmenuItems: () => subItems,
                         });
                     });
                 };
 
+
                 createNestedMenu();
 
-                window.loadContent = (template, data) => {
-                    const renderedContent = replacePlaceholdersWithDisplayText(template, data);
-                    editor.setContent(renderedContent);
-                    console.log('Rendered Content Loaded:', renderedContent);
-                };
+                // window.loadContent = (template, data) => {
+                //     const renderedContent = replacePlaceholdersWithDisplayText(template, data);
+                //     editor.setContent(renderedContent);
+                //     console.log('Rendered Content Loaded:', renderedContent);
+                // };
 
                 window.saveContent = () => {
                     const content = editor.getContent();
@@ -353,40 +298,31 @@
                     editor.execCommand('mcePreview');
                 }
 
-            editor.on('init', () => {
-                editor.getContainer().style.height = '100vh';
-            });
+                editor.on('init', () => {
+                    editor.getContainer().style.height = '100vh';
+                });
 
             }
 
         });
 
-        const template = '<p>Dear <span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1;">{{landlord.landlord_name}}</span></p>';
-        setTimeout(() => {
-            loadTemplateWithObjectVariables(template, customMenuOptions);
-        }, 1000);
+        // const template = '<p>Dear <span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1;">{{landlord.landlord_name}}</span></p>';
+        // setTimeout(() => {
+        //     loadTemplateWithObjectVariables(template, customMenuOptions);
+        // }, 1000);
 
         
     </script>
 </body>
 </html>
 
+<!-- when i click on save content still it is showing like this
+
+Content Saved with Placeholders: <p>Dear &nbsp;<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1;" contenteditable="false">Tenant Name (English)</span>&nbsp;</p>
+<p>Your contract &nbsp;<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1;" contenteditable="false">{{contract.contract_no}}</span> is expiring on &nbsp;<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1;" contenteditable="false">Contract Starts From (dd/mm/yyyy) (English)</span>&nbsp;</p>
+
+it must be like this
 
 
-<!-- 
-Subtotal
-Vat Title
-Vat Percentage
-Vat Amount
-Total Amount
-
-
-
-
-Unit Number // Contract
-Unit Type //
-
-Date // (dd/mm/yyyy)
-Customer => Tenant
-Paid (Y/N) => VAT Paid (YES/ No)
-Attactment Avaiable (Yes/No) -->
+Content Saved with Placeholders: <p>Dear &nbsp;<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1;" contenteditable="false">{{tenant.customer_name.text_en}}</span>&nbsp;</p>
+<p>Your contract &nbsp;<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1;" contenteditable="false">{{contract.contract_no}}</span> is expiring on &nbsp;<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1;" contenteditable="false">{{contract.from_data.text_en}}</span>&nbsp;</p> -->
