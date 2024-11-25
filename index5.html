@@ -10,6 +10,551 @@
     <script>
 
 const customMenuOptions = {
+    tenant: {
+        tenant_no: "Tenant No",
+        trn: "TRN",
+        customer_name: {
+            text_en: "Tenant Name",
+            //text_ar: "Tenant Name (Arabic)"
+        },
+        mobile_number: "Mobile Number",
+        phone_number: "Phone Number",
+        fax_number: "Fax. Number",
+        email_address: "Email Address",
+        po_box: "P.O. Box",
+        area: "Area",
+        city: "City",
+        nationality: {
+            text_en: "Nationality",
+            //text_ar: "Nationality (Arabic)",
+        },
+        remarks: "Remarks",
+    },
+    property: {
+        property_no: "Property ID",
+        property_name: "Property Name",
+        plot_no: "Plot Number",
+        property_type: "Property Type",
+        area: "Area",
+        city: "City",
+        property_price: "Property Price",
+        property_description: "Property Description",
+        no_of_floors: "Number of Floors"
+    },
+    contract: {
+        purchase_invoice_no: "Purchase Invoice",
+        contract_status: {
+            text_en: "Contract Status in English",
+            text_ar: "Contract Status in Arabic",
+        },
+        contract_type: {
+            text_en: "Contract Type in English",
+            text_ar: "Contract Type in Arabic",
+        },
+        contract_no: "Contract Number",
+        iq_invoice_no: "iQ Invoice Number",
+        unit_no: "Unit Number",
+        unit_type: "Unit Type",
+        furnished_type: {
+            text_en: "Furnished Type in English",
+            text_ar: "Furnished Type in Arabic",
+        },
+        rent_from: {
+            text_en: "Contract Starts From in English, dd/mm/yyyy",
+            text_ar: "Contract Starts From in Arabic, dd/mm/yyyy",
+        },
+        rent_to: {
+            text_en: "Contract Ends On in English, dd/mm/yyyy",
+            text_ar: "Contract Ends On in Arabic, dd/mm/yyyy",
+        },
+        vat: {
+            vat_paid_on: {
+                text_en: "VAT Payment Date in English, dd/mm/yyyy",
+                text_ar: "VAT Payment Date in Arabic, dd/mm/yyyy",
+            },
+            vat_item_title: "VAT Title",
+            vat_per: {
+                text_en: "VAT Percentage in English",
+                text_ar: "VAT Percentage in Arabic",
+            },
+
+            //follow this concept
+            vat_amount: {
+                amount_in_numbers: {
+                    text_en: "VAT Amount in English",
+                    text_ar: "VAT Amount in Arabic"
+                },
+                amount_in_words: {
+                    text_en: "VAT Amount in English, in words",
+                    text_ar: "VAT Amount in English, in wordsc"
+                }
+            },
+            is_vat_paid: {
+                text_en: "VAT Paid? (Yes / No) in English",
+                text_ar: "VAT Paid? (Yes / No) in Arabic",
+            },
+        },
+        gross_amount: {
+            amount_in_numbers: {
+                text_en: "Gross Amount in English",
+                text_ar: "Gross Amount in Arabic",
+            },
+            amount_in_words: {
+                text_en: "Gross Amount in English, in words",
+                text_ar: "Gross Amount in Arabic, in words",
+            },
+        },
+        total_discount_amount: {
+            amount_in_numbers: {
+                text_en: "Total Discount Amount in English",
+                text_ar: "Total Discount Amount in Arabic",
+            },
+            amount_in_words: {
+                text_en: "Total Discount Amount in English, in words",
+                text_ar: "Total Discount Amount in Arabic, in words",
+            },
+        },
+        rental_amount: {
+            amount_in_numbers: {
+                text_en: "Rental Amount in English",
+                text_ar: "Rental Amount in Arabic",
+            },
+            amount_in_words: {
+                text_en: "Rental Amount in English, in words",
+                text_ar: "Rental Amount in Arabic, in words",
+            },
+        },
+        net_amount: {
+            amount_in_numbers: {
+                text_en: "Net Amount in English",
+                text_ar: "Net Amount in Arabic",
+            },
+            amount_in_words: {
+                text_en: "Net Amount in English, in words",
+                text_ar: "Net Amount in Arabic, in words",
+            }
+        },
+        total_cheques: {
+            text_en: "Total Installments in English",
+            text_ar: "Total Installments in Arabic",
+        },
+        total_paid_cheques: {
+            text_en: "Total Paid Installments in English",
+            text_ar: "Total Paid Installments in Arabic",
+        },
+        early_close_charge: {
+            text_en: "Early Close Charge in English",
+            text_ar: "Early Close Charge in Arabic",
+        },
+        security_deposit: {
+            received: {
+                payment_method: {
+                    text_en: "Payment Method in English",
+                    text_ar: "Payment Method in Arabic",
+                },
+                cheque_ref_no: "Cheque / Ref. Number",
+                amount: {   
+                    amount_in_numbers: {
+                        text_en: "Amount in English",
+                        text_ar: "Amount in Arabic",
+                    },
+                    amount_in_words: {
+                        text_en: "Amount in English, in words",
+                        text_ar: "Amount in Arabic, in words",
+                    }
+                }
+            },
+            store_deposit: {
+                payment_method: {
+                    text_en: "Payment Method in English",
+                    text_ar: "Payment Method in Arabic",
+                },
+                cheque_ref_no: "Cheque / Ref. Number",
+                amount: {
+                    amount_in_numbers: {
+                        text_en: "Amount in English",
+                        text_ar: "Amount in Arabic",
+                    },
+                    amount_in_words: {
+                        text_en: "Amount in English, in words",
+                        text_ar: "Amount in Arabic, in words",
+                    }
+                },
+                date: {
+                    text_en: "Date in English, dd/mm/yyyy",
+                    text_ar: "Date in Arabic, dd/mm/yyyy",
+                },
+                remarks: "Remarks"
+            },
+            refund: {
+                payment_method: {
+                    text_en: "Payment Method in English",
+                    text_ar: "Payment Method in Arabic",
+                },
+                cheque_ref_no: "Cheque / Ref. Number",
+                amount: {
+                    amount_in_numbers: {
+                        text_en: "Amount in English",
+                        text_ar: "Amount in Arabic",
+                    },
+                    amount_in_words: {
+                        text_en: "Amount in English, in words",
+                        text_ar: "Amount in Arabic, in words",
+                    }
+                },
+                date: {
+                    text_en: "Date in English, dd/mm/yyyy",
+                    text_ar: "Date in Arabic, dd/mm/yyyy",
+                },
+                remarks: "Remarks"
+            }
+        },
+        remarks: "Remarks",
+        premises_condition: {
+            text_en: 'Premises Condition in English',
+            text_ar: 'Premises Condition in Arabic',
+        },
+        payment_condition: {
+            text_en: 'Payment Condition in English',
+            text_ar: 'Payment Condition in Arabic'
+        }
+    },
+    otherCharges: {
+        sub_total: {
+            amount_in_numbers: {
+                text_en: 'Subtotal in English',
+                text_ar: 'Subtotal in Arabic',
+            },
+            amount_in_words: {
+                text_en: 'Subtotal in English, in words',
+                text_ar: 'Subtotal in Arabic, in words',
+            }
+        },
+        vat_title: 'VAT Title',
+        vat: {
+            text_en: 'VAT Percent in English',
+            text_ar: 'VAT Percent in Arabic',
+        },
+        vat_amount: {
+            amount_in_numbers: {    
+                text_en: 'VAT Amount in English',
+                text_ar: 'VAT Amount in Arabic',
+            },
+            amount_in_words: {
+                text_en: 'VAT Amount in English, in words',
+                text_ar: 'VAT Amount in Arabic, in words',
+            }
+        },
+        total_amount: {
+            amount_in_numbers: {
+                text_en: 'Total Amount in English',
+                text_ar: 'Total Amount in Arabic',
+            },
+            amount_in_words: {
+                text_en: 'Total Amount in English, in words',
+                text_ar: 'Total Amount in Arabic, in words',
+            }
+        },
+    }
+};
+
+
+    const data = {
+        tenant: {
+            tenant_no: tenant.tenant_no,
+            trn: tenant.trn,
+            customer_name: {
+                text_en: tenant.customer_name
+            },
+            mobile_number: tenant.mobile_number,
+            phone_number: tenant.phone_number,
+            fax_number: tenant.fax_number,
+            email_address: tenant.email_address,
+            po_box: tenant.po_box,
+            area: tenant.area,
+            city: tenant.city,
+            nationality: {
+                text_en: (tenant.nationality != null ? tenant.nationality.value : ""),
+                text_ar: (tenant.nationality != null ? tenant.nationality.value : "")
+            },
+            remarks: tenant.remarks,
+        },
+        property: {
+            property_no: property_details.property_no,
+            property_name: property_details.property_name,
+            plot_no: property_details.plot_no,
+            property_type: property_details.property_type,
+            area: property_details.area,
+            city: property_details.city,
+            property_price: property_details.property_price,
+            property_description: property_details.property_description,
+            no_of_floors: property_details.no_of_floors
+        },
+        contract: {
+            purchase_invoice_no: contract.purchase_invoice_no,
+            contract_status: {
+                text_en: englishArabicTranslator(contract.contract_status, 'en'),
+                text_ar: englishArabicTranslator(contract.contract_status, 'ar'),
+            },
+            contract_type: {
+                text_en: englishArabicTranslator(contract.contract_type, 'en'),
+                text_ar: englishArabicTranslator(contract.contract_type, 'ar'),
+            },
+            contract_no: contract.contract_no,
+            iq_invoice_no: contract.iq_invoice_no,
+            unit_no: contract.flat_no,
+            unit_type: contract.room_type.value,
+            furnished_type: {
+                text_en: englishArabicTranslator(contract.furnished_type, 'en'),
+                text_ar: englishArabicTranslator(contract.furnished_type, 'ar'),
+            },
+            rent_from: {
+                text_en: moment(contract.rent_from, "YYYY-MM-DD").locale('en').format("DD/MM/YYYY"),
+                text_ar: numberToArabic(moment(contract.rent_from, "YYYY-MM-DD").locale('en').format("DD/MM/YYYY")),
+            },
+            rent_to: {
+                text_en: moment(contract.rent_to, "YYYY-MM-DD").locale('en').format("DD/MM/YYYY"),
+                text_ar: numberToArabic(moment(contract.rent_to, "YYYY-MM-DD").locale('en').format("DD/MM/YYYY")),
+            },
+            gross_amount: {
+                amount_in_numbers: {
+                    text_en: numberWithCommas(contract.gross_amount.toFixed(2)),
+                    text_ar: numberToArabic(numberWithCommas(contract.gross_amount.toFixed(2)))
+                },
+                amount_in_words: {
+                    text_en: numberToWords(contract.gross_amount.toFixed(2)),
+                    text_ar: numberToArabicWords(contract.gross_amount.toFixed(2))
+                },
+            },
+            total_discount_amount: {
+                amount_in_numbers: {
+                    text_en: numberWithCommas(contract.total_discount_amount.toFixed(2)),
+                    text_ar: numberToArabic(numberWithCommas(contract.total_discount_amount.toFixed(2)))
+                },
+                amount_in_words: {
+                    text_en: numberToWords(contract.total_discount_amount.toFixed(2)),
+                    text_ar: numberToArabicWords(contract.total_discount_amount.toFixed(2))
+                },
+            },
+            vat: { 
+                vat_paid_on: {
+                    text_en: moment(contract.vat_payment_date, "YYYY-MM-DD").locale('en').format("DD/MM/YYYY"),
+                    text_ar: numberToArabic(moment(contract.vat_payment_date, "YYYY-MM-DD").locale('en').format("DD/MM/YYYY")),
+                },
+                vat_item_title: contract.vat_item_title,
+                vat_per: {
+                    text_en: contract.vat_per,
+                    text_ar: numberToArabic(numberToArabic(contract.vat_per.toFixed(2))),
+                },
+                vat_amount: {
+                    amount_in_numbers: {
+                        text_en: numberWithCommas(contract.vat_amount.toFixed(2)),
+                        text_ar: numberToArabic(numberWithCommas(contract.vat_amount.toFixed(2)))
+                    },
+                    amount_in_words: {
+                        text_en: numberToWords(contract.vat_amount.toFixed(2)),
+                        text_ar: numberToArabicWords(contract.vat_amount.toFixed(2))
+                    },
+                    is_vat_paid: {
+                        text_en: (contract.is_vat_paid == null || contract.is_vat_paid == false) ? "No" : "Yes",
+                        text_ar: (contract.is_vat_paid == null || contract.is_vat_paid == false) ? "لا" : "نعم"
+                    },
+                },
+                is_vat_paid: {
+                    text_en: (contract.is_vat_paid == null || contract.is_vat_paid == false) ? "No" : "Yes",
+                    text_ar: (contract.is_vat_paid == null || contract.is_vat_paid == false) ? "لا" : "نعم",
+                },
+            },
+            rental_amount: {
+                amount_in_numbers: {
+                    text_en: numberWithCommas(contract.rental_amount.toFixed(2)),
+                    text_ar: numberToArabic(contract.rental_amount.toFixed(2))
+                },
+                amount_in_words: {
+                    text_en: numberToWords(contract.rental_amount.toFixed(2)),
+                    text_ar: numberToArabicWords(contract.rental_amount.toFixed(2))
+                },
+            },
+            net_amount: {
+                amount_in_numbers: {
+                    text_en: numberWithCommas(contract.net_amount.toFixed(2)),
+                    text_ar: numberToArabic(numberWithCommas(contract.net_amount.toFixed(2)))
+                },
+                amount_in_words: {
+                    text_en: numberToWords(contract.net_amount.toFixed(2)),
+                    text_ar: numberToArabicWords(contract.net_amount.toFixed(2))
+                },
+            },
+            total_cheques: {
+                text_en: contract.total_cheques,
+                text_ar: numberToArabic(contract.total_cheques),
+            },
+            total_paid_cheques: {
+                text_en: contract.total_paid_cheques,
+                text_ar: numberToArabic(contract.total_paid_cheques),
+            },
+            total_paid_amount: {
+                amount_in_numbers: {
+                    text_en: numberWithCommas(contract.total_paid_amount.toFixed(2)),
+                    text_ar: numberToArabic(numberWithCommas(contract.total_paid_amount.toFixed(2)))
+                },
+                amount_in_words: {
+                    text_en: numberToWords(contract.total_paid_amount.toFixed(2)),
+                    text_ar: numberToArabicWords(contract.total_paid_amount.toFixed(2))
+                },
+            },
+            total_partly_paid_cheques: {
+                text_en: contract.total_partly_paid_cheques,
+                text_ar: numberToArabic(contract.total_partly_paid_cheques),
+            },
+            total_partly_paid_amount: {
+                amount_in_numbers: {
+                    text_en: numberWithCommas(contract.total_partly_paid_amount.toFixed(2)),
+                    text_ar: numberToArabic(numberWithCommas(contract.total_partly_paid_amount.toFixed(2)))
+                },
+                amount_in_words: {
+                    text_en: numberToWords(contract.total_partly_paid_amount.toFixed(2)),
+                    text_ar: numberToArabicWords(contract.total_partly_paid_amount.toFixed(2))
+                },
+            },
+            total_due_cheques: {
+                text_en: contract.total_due_cheques,
+                text_ar: numberToArabic(contract.total_due_cheques),
+            },
+            total_due_amount: {
+                amount_in_numbers: {
+                    text_en: numberWithCommas(contract.total_due_amount.toFixed(2)),
+                    text_ar: numberToArabic(numberWithCommas(contract.total_due_amount.toFixed(2)))
+                },
+                amount_in_words: {
+                    text_en: numberToWords(contract.total_due_amount.toFixed(2)),
+                    text_ar: numberToArabicWords(contract.total_due_amount.toFixed(2))
+                },
+            },
+            early_close_charge: {
+                amount_in_numbers: {
+                    text_en: numberWithCommas(contract.early_close_charge.toFixed(2)),
+                    text_ar: numberToArabic(numberWithCommas(contract.early_close_charge.toFixed(2)))
+                },
+                amount_in_words: {
+                    text_en: numberToWords(contract.early_close_charge.toFixed(2)),
+                    text_ar: numberToArabicWords(contract.early_close_charge.toFixed(2))
+                },
+            },
+            security_deposit: {
+                received: {
+                    payment_method: {
+                        text_en: contract.security_deposit != null && contract.security_deposit.received != null ? englishArabicTranslator(contract.security_deposit.received.method, 'en') : "",
+                        text_ar: contract.security_deposit != null && contract.security_deposit.received != null ? englishArabicTranslator(contract.security_deposit.received.method, 'ar') : "",
+                    },
+                    cheque_ref_no: contract.security_deposit != null && contract.security_deposit.received != null ? contract.security_deposit.received.cheque_ref_no : "",
+                    amount: {
+                        amount_in_numbers: {
+                            text_en: numberWithCommas(contract.security_deposit != null && contract.security_deposit.received != null ? contract.security_deposit.received.amount.toFixed(2) : ''),
+                            text_ar: numberToArabic(numberWithCommas(contract.security_deposit != null && contract.security_deposit.received != null ? contract.security_deposit.received.amount.toFixed(2) : ''))
+                        },
+                        amount_in_words: {
+                            text_en: numberToWords(contract.security_deposit != null && contract.security_deposit.received != null ? contract.security_deposit.received.amount.toFixed(2) : ''),
+                            text_ar: numberToArabicWords(contract.security_deposit != null && contract.security_deposit.received != null ? contract.security_deposit.received.amount.toFixed(2) : '')
+                        },
+                    }
+                },
+                store_deposit: {
+                    payment_method: {
+                        text_en: contract.security_deposit != null && contract.security_deposit.deposit != null ? englishArabicTranslator(contract.security_deposit.deposit.method, 'en') : "",
+                        text_ar: contract.security_deposit != null && contract.security_deposit.deposit != null ? englishArabicTranslator(contract.security_deposit.deposit.method, 'ar') : "",
+                    },
+                    cheque_ref_no: contract.security_deposit != null && contract.security_deposit.deposit != null ? contract.security_deposit.deposit.cheque_ref_no : "",
+                    amount: {
+                        amount_in_numbers: {
+                            text_en: numberWithCommas(contract.security_deposit != null && contract.security_deposit.deposit != null ? contract.security_deposit.deposit.amount.toFixed(2) : ''),
+                            text_ar: numberToArabic(numberWithCommas(contract.security_deposit != null && contract.security_deposit.deposit != null ? contract.security_deposit.deposit.amount.toFixed(2) : ''))
+                        },
+                        amount_in_words: {
+                            text_en: numberToWords(contract.security_deposit != null && contract.security_deposit.deposit != null ? contract.security_deposit.deposit.amount.toFixed(2) : ''),
+                            text_ar: numberToArabicWords(contract.security_deposit != null && contract.security_deposit.deposit != null ? contract.security_deposit.deposit.amount.toFixed(2) : '')
+                        },
+                    },
+                    date: {
+                        text_en: contract.security_deposit != null && contract.security_deposit.deposit != null ? (moment(contract.security_deposit.deposit.date, "YYYY-MM-DD").locale('en').format("DD/MM/YYYY")) : '',
+                        text_ar: contract.security_deposit != null && contract.security_deposit.deposit != null ? numberToArabic(moment(contract.security_deposit.deposit.date, "YYYY-MM-DD").locale('en').format("DD/MM/YYYY")) : '',
+                    },
+                    remarks: contract.security_deposit != null && contract.security_deposit.deposit != null ? contract.security_deposit.deposit.remarks : "",
+                },
+                refund: {
+                    payment_method: {
+                        text_en: contract.security_deposit != null && contract.security_deposit.refund != null ? englishArabicTranslator(contract.security_deposit.refund.method, 'en') : "",
+                        text_ar: contract.security_deposit != null && contract.security_deposit.refund != null ? englishArabicTranslator(contract.security_deposit.refund.method, 'ar') : "",
+                    },
+                    cheque_ref_no: contract.security_deposit != null && contract.security_deposit.refund != null ? contract.security_deposit.refund.cheque_ref_no : "",
+                    amount: {
+                        amount_in_numbers: {
+                            text_en: numberWithCommas(contract.security_deposit != null && contract.security_deposit.refund != null ? contract.security_deposit.refund.amount.toFixed(2) : ''),
+                            text_ar: numberToArabic(numberWithCommas(contract.security_deposit != null && contract.security_deposit.refund != null ? contract.security_deposit.refund.amount.toFixed(2) : ''))
+                        },
+                        amount_in_words: {
+                            text_en: numberToWords(contract.security_deposit != null && contract.security_deposit.refund != null ? contract.security_deposit.refund.amount.toFixed(2) : ''),
+                            text_ar: numberToArabicWords(contract.security_deposit != null && contract.security_deposit.refund != null ? contract.security_deposit.refund.amount.toFixed(2) : '')
+                        },
+                    },
+                    date: {
+                        text_en: contract.security_deposit != null && contract.security_deposit.refund != null ? (moment(contract.security_deposit.refund.date, "YYYY-MM-DD").locale('en').format("DD/MM/YYYY")) : '',
+                        text_ar: contract.security_deposit != null && contract.security_deposit.refund != null ? numberToArabic(moment(contract.security_deposit.refund.date, "YYYY-MM-DD").locale('en').format("DD/MM/YYYY")) : '',
+                    },
+                    remarks: contract.security_deposit != null && contract.security_deposit.refund != null ? contract.security_deposit.refund.remarks : "",
+                }
+            },
+            remarks: contract.remarks,
+            premises_condition: {
+                text_en: (contract.premises_conditions != null ? contract.premises_conditions.text_en : ""),
+                text_ar: (contract.premises_conditions != null ? contract.premises_conditions.text_ar : ""),
+            },
+            payment_condition: {
+                text_en: (contract.payment_conditions != null ? contract.payment_conditions.text_en : ""),
+                text_ar: (contract.payment_conditions != null ? contract.payment_conditions.text_ar : "")
+            }
+        },
+        otherCharges: {
+            sub_total: {
+                amount_in_numbers: {
+                    text_en: numberWithCommas(contract.other_charges != null ? contract[0].gross_amount : ''),
+                    text_ar: numberToArabic(numberWithCommas(contract.other_charges != null ? contract[0].gross_amount : ''))
+                },
+                amount_in_words: {
+                    text_en: numberToWords(contract.other_charges != null ? contract[0].gross_amount : ''),
+                    text_ar: numberToArabicWords(contract.other_charges != null ? contract[0].gross_amount : '')
+                },
+            },
+            vat: {
+                text_en: contract.other_charges != null && contract.other_charges.vat.value != null ? contract[0].vat.value : '',
+                text_ar: numberToArabic(contract.other_charges != null && contract.other_charges.vat.value != null ? contract[0].vat.value : ''),
+            },
+            vat_title: contract.other_charges != null && contract.other_charges.vat != null ? contract[0].vat.title : '',
+            vat_amount: {
+                amount_in_numbers: {
+                    text_en: numberWithCommas(contract.other_charges != null ? contract[0].vat_amount.toFixed(2) : ''),
+                    text_ar: numberToArabic(numberWithCommas(contract.other_charges != null ? contract[0].vat_amount.toFixed(2) : ''))
+                },
+                amount_in_words: {
+                    text_en: numberToWords(contract.other_charges != null ? contract[0].vat_amount.toFixed(2) : ''),
+                    text_ar: numberToArabicWords(contract.other_charges != null ? contract[0].vat_amount.toFixed(2) : '')
+                },
+            },
+            total_amount: {
+                amount_in_numbers: {
+                    text_en: numberWithCommas(contract.other_charges != null ? contract[0].total_amount.toFixed(2) : ''),
+                    text_ar: numberToArabic(numberWithCommas(contract.other_charges != null ? contract[0].total_amount.toFixed(2) : ''))
+                },
+                amount_in_words: {
+                    text_en: numberToWords(contract.other_charges != null ? contract[0].total_amount.toFixed(2) : ''),
+                    text_ar: numberToArabicWords(contract.other_charges != null ? contract[0].total_amount.toFixed(2) : '')
+                },
+            },
+        },
+    };
+
+
+            const customMenuOptionss = {
                 tenant: {
                     tenant_no: "Tenant No",
                     trn: "TRN",
@@ -404,3 +949,163 @@ const customMenuOptions = {
 
 </body>
 </html>
+
+<!-- 
+{
+    "tenant": {
+        "tenant_no": "2024/TN1",
+        "trn": "",
+        "customer_name": {
+            "text_en": "Bouihbshje"
+        },
+        "mobile_number": "+971 583478943",
+        "phone_number": " ",
+        "fax_number": "",
+        "email_address": "itakjs@gmail.com",
+        "po_box": "",
+        "area": "",
+        "city": "",
+        "nationality": {
+            "text_en": "United States",
+            "text_ar": "United States"
+        },
+        "remarks": ""
+    },
+    "property": {
+        "property_no": "2024/PR1",
+        "property_name": "Maryum Tower",
+        "plot_no": "INA2BH38299/AJ/AE",
+        "property_type": {
+            "u_id": "F4EF1D",
+            "value": "Tower"
+        },
+        "area": "Industrial Area",
+        "city": "Ajman",
+        "property_price": 50000,
+        "property_description": "",
+        "no_of_floors": 10
+    },
+    "contract": {
+        "purchase_invoice_no": "",
+        "contract_status": {
+            "text_en": "active",
+            "text_ar": "active"
+        },
+        "contract_type": {
+            "text_en": "Residential",
+            "text_ar": "سكني"
+        },
+        "contract_no": "54375635643",
+        "iq_invoice_no": "INV/2024/0002",
+        "unit_no": "304",
+        "furnished_type": {
+            "text_en": "Unfurnished",
+            "text_ar": "غير مفروش"
+        },
+        "rent_from": {
+            "text_en": "01/01/2025",
+            "text_ar": "٠١/٠١/٢٠٢٥"
+        },
+        "rent_to": {
+            "text_en": "31/12/2025",
+            "text_ar": "31/12/2025"
+        },
+        "gross_amount": {
+            "text_en": "60,000.00",
+            "text_ar": "٦٠,٠٠٠.٠٠"
+        },
+        "total_discount_amount": {
+            "text_en": "0.00",
+            "text_ar": "٠.٠٠"
+        },
+        "vat": {
+            "payment_date_en": "Invalid date",
+            "payment_date_ar": "Invalid date",
+            "vat_item_title": null,
+            "vat_per": {
+                "text_en": 0,
+                "text_ar": "٠.٠٠"
+            },
+            "vat_amount": {
+                "text_en": "0.00",
+                "text_ar": "٠.٠٠"
+            },
+            "is_vat_paid": {
+                "text_en": "No",
+                "text_ar": "لا"
+            }
+        },
+        "rental_amount": {
+            "text_en": "60,000.00",
+            "text_ar": "٦٠,٠٠٠.٠٠"
+        },
+        "net_amount": {
+            "text_en": "60,000.00",
+            "text_ar": "٦٠,٠٠٠.٠٠"
+        },
+        "net_amount_in_words": {
+            "text_en": "Sixty Thousand Only",
+            "text_ar": "ستون ألف درهم"
+        },
+        "total_cheques": {
+            "text_en": 4,
+            "text_ar": "٤"
+        },
+        "total_paid_cheques": {
+            "text_en": 0,
+            "text_ar": "٠"
+        },
+        "total_paid_amount": {
+            "text_en": "0.00",
+            "text_ar": "٠.٠٠"
+        },
+        "total_partly_paid_cheques": {
+            "text_en": 0,
+            "text_ar": "٠"
+        },
+        "total_partly_paid_amount": {
+            "text_en": "0.00",
+            "text_ar": "٠.٠٠"
+        },
+        "total_due_cheques": {
+            "text_en": 0,
+            "text_ar": "٠"
+        },
+        "total_due_amount": {
+            "text_en": "0.00",
+            "text_ar": "٠.٠٠"
+        },
+        "early_close_charge": {
+            "text_en": "0.00",
+            "text_ar": "٠.٠٠"
+        },
+        "remarks": null,
+        "premises_condition": {
+            "text_en": "",
+            "text_ar": ""
+        },
+        "payment_condition": {
+            "text_en": "",
+            "text_ar": ""
+        }
+    },
+    "otherCharges": {
+        "sub_total": {
+            "text_en": "",
+            "text_ar": ""
+        },
+        "vat": {
+            "text_en": "",
+            "text_ar": ""
+        },
+        "vat_title": "",
+        "vat_amount": {
+            "text_en": "",
+            "text_ar": ""
+        },
+        "total_amount": {
+            "text_en": "",
+            "text_ar": ""
+        }
+    }
+} -->
