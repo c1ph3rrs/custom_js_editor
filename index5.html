@@ -9,691 +9,253 @@
 
     <script>
 
-const customMenuOptions = {
-    tenant: {
-        tenant_no: "Tenant No",
-        trn: "TRN",
-        customer_name: {
-            text_en: "Tenant Name",
-            //text_ar: "Tenant Name (Arabic)"
-        },
-        mobile_number: "Mobile Number",
-        phone_number: "Phone Number",
-        fax_number: "Fax. Number",
-        email_address: "Email Address",
-        po_box: "P.O. Box",
-        area: "Area",
-        city: "City",
-        nationality: {
-            text_en: "Nationality",
-            //text_ar: "Nationality (Arabic)",
-        },
-        remarks: "Remarks",
-    },
-    property: {
-        property_no: "Property ID",
-        property_name: "Property Name",
-        plot_no: "Plot Number",
-        property_type: "Property Type",
-        area: "Area",
-        city: "City",
-        property_price: "Property Price",
-        property_description: "Property Description",
-        no_of_floors: "Number of Floors"
-    },
-    contract: {
-        purchase_invoice_no: "Purchase Invoice",
-        contract_status: {
-            text_en: "Contract Status in English",
-            text_ar: "Contract Status in Arabic",
-        },
-        contract_type: {
-            text_en: "Contract Type in English",
-            text_ar: "Contract Type in Arabic",
-        },
-        contract_no: "Contract Number",
-        iq_invoice_no: "iQ Invoice Number",
-        unit_no: "Unit Number",
-        unit_type: "Unit Type",
-        furnished_type: {
-            text_en: "Furnished Type in English",
-            text_ar: "Furnished Type in Arabic",
-        },
-        rent_from: {
-            text_en: "Contract Starts From in English, dd/mm/yyyy",
-            text_ar: "Contract Starts From in Arabic, dd/mm/yyyy",
-        },
-        rent_to: {
-            text_en: "Contract Ends On in English, dd/mm/yyyy",
-            text_ar: "Contract Ends On in Arabic, dd/mm/yyyy",
-        },
-        vat: {
-            vat_paid_on: {
-                text_en: "VAT Payment Date in English, dd/mm/yyyy",
-                text_ar: "VAT Payment Date in Arabic, dd/mm/yyyy",
-            },
-            vat_item_title: "VAT Title",
-            vat_per: {
-                text_en: "VAT Percentage in English",
-                text_ar: "VAT Percentage in Arabic",
-            },
 
-            //follow this concept
-            vat_amount: {
-                amount_in_numbers: {
-                    text_en: "VAT Amount in English",
-                    text_ar: "VAT Amount in Arabic"
+        const customMenuOptions = {
+            tenant: {
+                tenant_no: "Tenant No",
+                trn: "TRN",
+                customer_name: {
+                    text_en: "Tenant Name",
+                    //text_ar: "Tenant Name (Arabic)"
                 },
-                amount_in_words: {
-                    text_en: "VAT Amount in English, in words",
-                    text_ar: "VAT Amount in English, in wordsc"
-                }
-            },
-            is_vat_paid: {
-                text_en: "VAT Paid? (Yes / No) in English",
-                text_ar: "VAT Paid? (Yes / No) in Arabic",
-            },
-        },
-        gross_amount: {
-            amount_in_numbers: {
-                text_en: "Gross Amount in English",
-                text_ar: "Gross Amount in Arabic",
-            },
-            amount_in_words: {
-                text_en: "Gross Amount in English, in words",
-                text_ar: "Gross Amount in Arabic, in words",
-            },
-        },
-        total_discount_amount: {
-            amount_in_numbers: {
-                text_en: "Total Discount Amount in English",
-                text_ar: "Total Discount Amount in Arabic",
-            },
-            amount_in_words: {
-                text_en: "Total Discount Amount in English, in words",
-                text_ar: "Total Discount Amount in Arabic, in words",
-            },
-        },
-        rental_amount: {
-            amount_in_numbers: {
-                text_en: "Rental Amount in English",
-                text_ar: "Rental Amount in Arabic",
-            },
-            amount_in_words: {
-                text_en: "Rental Amount in English, in words",
-                text_ar: "Rental Amount in Arabic, in words",
-            },
-        },
-        net_amount: {
-            amount_in_numbers: {
-                text_en: "Net Amount in English",
-                text_ar: "Net Amount in Arabic",
-            },
-            amount_in_words: {
-                text_en: "Net Amount in English, in words",
-                text_ar: "Net Amount in Arabic, in words",
-            }
-        },
-        total_cheques: {
-            text_en: "Total Installments in English",
-            text_ar: "Total Installments in Arabic",
-        },
-        total_paid_cheques: {
-            text_en: "Total Paid Installments in English",
-            text_ar: "Total Paid Installments in Arabic",
-        },
-        early_close_charge: {
-            text_en: "Early Close Charge in English",
-            text_ar: "Early Close Charge in Arabic",
-        },
-        security_deposit: {
-            received: {
-                payment_method: {
-                    text_en: "Payment Method in English",
-                    text_ar: "Payment Method in Arabic",
+                mobile_number: "Mobile Number",
+                phone_number: "Phone Number",
+                fax_number: "Fax. Number",
+                email_address: "Email Address",
+                po_box: "P.O. Box",
+                area: "Area",
+                city: "City",
+                nationality: {
+                    text_en: "Nationality",
+                    //text_ar: "Nationality (Arabic)",
                 },
-                cheque_ref_no: "Cheque / Ref. Number",
-                amount: {   
-                    amount_in_numbers: {
-                        text_en: "Amount in English",
-                        text_ar: "Amount in Arabic",
+                remarks: "Remarks",
+            },
+            property: {
+                property_no: "Property ID",
+                property_name: "Property Name",
+                plot_no: "Plot Number",
+                property_type: "Property Type",
+                area: "Area",
+                city: "City",
+                property_price: "Property Price",
+                property_description: "Property Description",
+                no_of_floors: "Number of Floors"
+            },
+            contract: {
+                purchase_invoice_no: "Purchase Invoice",
+                contract_status: {
+                    text_en: "Contract Status in English",
+                    text_ar: "Contract Status in Arabic",
+                },
+                contract_type: {
+                    text_en: "Contract Type in English",
+                    text_ar: "Contract Type in Arabic",
+                },
+                contract_no: "Contract Number",
+                iq_invoice_no: "iQ Invoice Number",
+                unit_no: "Unit Number",
+                unit_type: "Unit Type",
+                furnished_type: {
+                    text_en: "Furnished Type in English",
+                    text_ar: "Furnished Type in Arabic",
+                },
+                contract_start_date: {
+                    text_en: "Contract Starts From in English, dd/mm/yyyy",
+                    text_ar: "Contract Starts From in Arabic, dd/mm/yyyy",
+                },
+                contract_end_date: {
+                    text_en: "Contract Ends On in English, dd/mm/yyyy",
+                    text_ar: "Contract Ends On in Arabic, dd/mm/yyyy",
+                },
+                vat: {
+                    vat_paid_on: {
+                        text_en: "VAT Payment Date in English, dd/mm/yyyy",
+                        text_ar: "VAT Payment Date in Arabic, dd/mm/yyyy",
                     },
-                    amount_in_words: {
-                        text_en: "Amount in English, in words",
-                        text_ar: "Amount in Arabic, in words",
-                    }
-                }
-            },
-            store_deposit: {
-                payment_method: {
-                    text_en: "Payment Method in English",
-                    text_ar: "Payment Method in Arabic",
-                },
-                cheque_ref_no: "Cheque / Ref. Number",
-                amount: {
-                    amount_in_numbers: {
-                        text_en: "Amount in English",
-                        text_ar: "Amount in Arabic",
+                    vat_item_title: "VAT Title",
+                    vat_per: {
+                        text_en: "VAT Percentage in English",
+                        text_ar: "VAT Percentage in Arabic",
                     },
-                    amount_in_words: {
-                        text_en: "Amount in English, in words",
-                        text_ar: "Amount in Arabic, in words",
-                    }
-                },
-                date: {
-                    text_en: "Date in English, dd/mm/yyyy",
-                    text_ar: "Date in Arabic, dd/mm/yyyy",
-                },
-                remarks: "Remarks"
-            },
-            refund: {
-                payment_method: {
-                    text_en: "Payment Method in English",
-                    text_ar: "Payment Method in Arabic",
-                },
-                cheque_ref_no: "Cheque / Ref. Number",
-                amount: {
-                    amount_in_numbers: {
-                        text_en: "Amount in English",
-                        text_ar: "Amount in Arabic",
-                    },
-                    amount_in_words: {
-                        text_en: "Amount in English, in words",
-                        text_ar: "Amount in Arabic, in words",
-                    }
-                },
-                date: {
-                    text_en: "Date in English, dd/mm/yyyy",
-                    text_ar: "Date in Arabic, dd/mm/yyyy",
-                },
-                remarks: "Remarks"
-            }
-        },
-        remarks: "Remarks",
-        premises_condition: {
-            text_en: 'Premises Condition in English',
-            text_ar: 'Premises Condition in Arabic',
-        },
-        payment_condition: {
-            text_en: 'Payment Condition in English',
-            text_ar: 'Payment Condition in Arabic'
-        }
-    },
-    otherCharges: {
-        sub_total: {
-            amount_in_numbers: {
-                text_en: 'Subtotal in English',
-                text_ar: 'Subtotal in Arabic',
-            },
-            amount_in_words: {
-                text_en: 'Subtotal in English, in words',
-                text_ar: 'Subtotal in Arabic, in words',
-            }
-        },
-        vat_title: 'VAT Title',
-        vat: {
-            text_en: 'VAT Percent in English',
-            text_ar: 'VAT Percent in Arabic',
-        },
-        vat_amount: {
-            amount_in_numbers: {    
-                text_en: 'VAT Amount in English',
-                text_ar: 'VAT Amount in Arabic',
-            },
-            amount_in_words: {
-                text_en: 'VAT Amount in English, in words',
-                text_ar: 'VAT Amount in Arabic, in words',
-            }
-        },
-        total_amount: {
-            amount_in_numbers: {
-                text_en: 'Total Amount in English',
-                text_ar: 'Total Amount in Arabic',
-            },
-            amount_in_words: {
-                text_en: 'Total Amount in English, in words',
-                text_ar: 'Total Amount in Arabic, in words',
-            }
-        },
-    }
-};
-
-
-    const data = {
-        tenant: {
-            tenant_no: tenant.tenant_no,
-            trn: tenant.trn,
-            customer_name: {
-                text_en: tenant.customer_name
-            },
-            mobile_number: tenant.mobile_number,
-            phone_number: tenant.phone_number,
-            fax_number: tenant.fax_number,
-            email_address: tenant.email_address,
-            po_box: tenant.po_box,
-            area: tenant.area,
-            city: tenant.city,
-            nationality: {
-                text_en: (tenant.nationality != null ? tenant.nationality.value : ""),
-                text_ar: (tenant.nationality != null ? tenant.nationality.value : "")
-            },
-            remarks: tenant.remarks,
-        },
-        property: {
-            property_no: property_details.property_no,
-            property_name: property_details.property_name,
-            plot_no: property_details.plot_no,
-            property_type: property_details.property_type,
-            area: property_details.area,
-            city: property_details.city,
-            property_price: property_details.property_price,
-            property_description: property_details.property_description,
-            no_of_floors: property_details.no_of_floors
-        },
-        contract: {
-            purchase_invoice_no: contract.purchase_invoice_no,
-            contract_status: {
-                text_en: englishArabicTranslator(contract.contract_status, 'en'),
-                text_ar: englishArabicTranslator(contract.contract_status, 'ar'),
-            },
-            contract_type: {
-                text_en: englishArabicTranslator(contract.contract_type, 'en'),
-                text_ar: englishArabicTranslator(contract.contract_type, 'ar'),
-            },
-            contract_no: contract.contract_no,
-            iq_invoice_no: contract.iq_invoice_no,
-            unit_no: contract.flat_no,
-            unit_type: contract.room_type.value,
-            furnished_type: {
-                text_en: englishArabicTranslator(contract.furnished_type, 'en'),
-                text_ar: englishArabicTranslator(contract.furnished_type, 'ar'),
-            },
-            rent_from: {
-                text_en: moment(contract.rent_from, "YYYY-MM-DD").locale('en').format("DD/MM/YYYY"),
-                text_ar: numberToArabic(moment(contract.rent_from, "YYYY-MM-DD").locale('en').format("DD/MM/YYYY")),
-            },
-            rent_to: {
-                text_en: moment(contract.rent_to, "YYYY-MM-DD").locale('en').format("DD/MM/YYYY"),
-                text_ar: numberToArabic(moment(contract.rent_to, "YYYY-MM-DD").locale('en').format("DD/MM/YYYY")),
-            },
-            gross_amount: {
-                amount_in_numbers: {
-                    text_en: numberWithCommas(contract.gross_amount.toFixed(2)),
-                    text_ar: numberToArabic(numberWithCommas(contract.gross_amount.toFixed(2)))
-                },
-                amount_in_words: {
-                    text_en: numberToWords(contract.gross_amount.toFixed(2)),
-                    text_ar: numberToArabicWords(contract.gross_amount.toFixed(2))
-                },
-            },
-            total_discount_amount: {
-                amount_in_numbers: {
-                    text_en: numberWithCommas(contract.total_discount_amount.toFixed(2)),
-                    text_ar: numberToArabic(numberWithCommas(contract.total_discount_amount.toFixed(2)))
-                },
-                amount_in_words: {
-                    text_en: numberToWords(contract.total_discount_amount.toFixed(2)),
-                    text_ar: numberToArabicWords(contract.total_discount_amount.toFixed(2))
-                },
-            },
-            vat: { 
-                vat_paid_on: {
-                    text_en: moment(contract.vat_payment_date, "YYYY-MM-DD").locale('en').format("DD/MM/YYYY"),
-                    text_ar: numberToArabic(moment(contract.vat_payment_date, "YYYY-MM-DD").locale('en').format("DD/MM/YYYY")),
-                },
-                vat_item_title: contract.vat_item_title,
-                vat_per: {
-                    text_en: contract.vat_per,
-                    text_ar: numberToArabic(numberToArabic(contract.vat_per.toFixed(2))),
-                },
-                vat_amount: {
-                    amount_in_numbers: {
-                        text_en: numberWithCommas(contract.vat_amount.toFixed(2)),
-                        text_ar: numberToArabic(numberWithCommas(contract.vat_amount.toFixed(2)))
-                    },
-                    amount_in_words: {
-                        text_en: numberToWords(contract.vat_amount.toFixed(2)),
-                        text_ar: numberToArabicWords(contract.vat_amount.toFixed(2))
+                    vat_amount: {
+                        amount_in_numbers: {
+                            text_en: "VAT Amount in English",
+                            text_ar: "VAT Amount in Arabic"
+                        },
+                        amount_in_words: {
+                            text_en: "VAT Amount in English, in words",
+                            text_ar: "VAT Amount in Arabic, in words"
+                        }
                     },
                     is_vat_paid: {
-                        text_en: (contract.is_vat_paid == null || contract.is_vat_paid == false) ? "No" : "Yes",
-                        text_ar: (contract.is_vat_paid == null || contract.is_vat_paid == false) ? "لا" : "نعم"
+                        text_en: "VAT Paid? (Yes / No) in English",
+                        text_ar: "VAT Paid? (Yes / No) in Arabic",
                     },
                 },
-                is_vat_paid: {
-                    text_en: (contract.is_vat_paid == null || contract.is_vat_paid == false) ? "No" : "Yes",
-                    text_ar: (contract.is_vat_paid == null || contract.is_vat_paid == false) ? "لا" : "نعم",
-                },
-            },
-            rental_amount: {
-                amount_in_numbers: {
-                    text_en: numberWithCommas(contract.rental_amount.toFixed(2)),
-                    text_ar: numberToArabic(contract.rental_amount.toFixed(2))
-                },
-                amount_in_words: {
-                    text_en: numberToWords(contract.rental_amount.toFixed(2)),
-                    text_ar: numberToArabicWords(contract.rental_amount.toFixed(2))
-                },
-            },
-            net_amount: {
-                amount_in_numbers: {
-                    text_en: numberWithCommas(contract.net_amount.toFixed(2)),
-                    text_ar: numberToArabic(numberWithCommas(contract.net_amount.toFixed(2)))
-                },
-                amount_in_words: {
-                    text_en: numberToWords(contract.net_amount.toFixed(2)),
-                    text_ar: numberToArabicWords(contract.net_amount.toFixed(2))
-                },
-            },
-            total_cheques: {
-                text_en: contract.total_cheques,
-                text_ar: numberToArabic(contract.total_cheques),
-            },
-            total_paid_cheques: {
-                text_en: contract.total_paid_cheques,
-                text_ar: numberToArabic(contract.total_paid_cheques),
-            },
-            total_paid_amount: {
-                amount_in_numbers: {
-                    text_en: numberWithCommas(contract.total_paid_amount.toFixed(2)),
-                    text_ar: numberToArabic(numberWithCommas(contract.total_paid_amount.toFixed(2)))
-                },
-                amount_in_words: {
-                    text_en: numberToWords(contract.total_paid_amount.toFixed(2)),
-                    text_ar: numberToArabicWords(contract.total_paid_amount.toFixed(2))
-                },
-            },
-            total_partly_paid_cheques: {
-                text_en: contract.total_partly_paid_cheques,
-                text_ar: numberToArabic(contract.total_partly_paid_cheques),
-            },
-            total_partly_paid_amount: {
-                amount_in_numbers: {
-                    text_en: numberWithCommas(contract.total_partly_paid_amount.toFixed(2)),
-                    text_ar: numberToArabic(numberWithCommas(contract.total_partly_paid_amount.toFixed(2)))
-                },
-                amount_in_words: {
-                    text_en: numberToWords(contract.total_partly_paid_amount.toFixed(2)),
-                    text_ar: numberToArabicWords(contract.total_partly_paid_amount.toFixed(2))
-                },
-            },
-            total_due_cheques: {
-                text_en: contract.total_due_cheques,
-                text_ar: numberToArabic(contract.total_due_cheques),
-            },
-            total_due_amount: {
-                amount_in_numbers: {
-                    text_en: numberWithCommas(contract.total_due_amount.toFixed(2)),
-                    text_ar: numberToArabic(numberWithCommas(contract.total_due_amount.toFixed(2)))
-                },
-                amount_in_words: {
-                    text_en: numberToWords(contract.total_due_amount.toFixed(2)),
-                    text_ar: numberToArabicWords(contract.total_due_amount.toFixed(2))
-                },
-            },
-            early_close_charge: {
-                amount_in_numbers: {
-                    text_en: numberWithCommas(contract.early_close_charge.toFixed(2)),
-                    text_ar: numberToArabic(numberWithCommas(contract.early_close_charge.toFixed(2)))
-                },
-                amount_in_words: {
-                    text_en: numberToWords(contract.early_close_charge.toFixed(2)),
-                    text_ar: numberToArabicWords(contract.early_close_charge.toFixed(2))
-                },
-            },
-            security_deposit: {
-                received: {
-                    payment_method: {
-                        text_en: contract.security_deposit != null && contract.security_deposit.received != null ? englishArabicTranslator(contract.security_deposit.received.method, 'en') : "",
-                        text_ar: contract.security_deposit != null && contract.security_deposit.received != null ? englishArabicTranslator(contract.security_deposit.received.method, 'ar') : "",
-                    },
-                    cheque_ref_no: contract.security_deposit != null && contract.security_deposit.received != null ? contract.security_deposit.received.cheque_ref_no : "",
-                    amount: {
-                        amount_in_numbers: {
-                            text_en: numberWithCommas(contract.security_deposit != null && contract.security_deposit.received != null ? contract.security_deposit.received.amount.toFixed(2) : ''),
-                            text_ar: numberToArabic(numberWithCommas(contract.security_deposit != null && contract.security_deposit.received != null ? contract.security_deposit.received.amount.toFixed(2) : ''))
-                        },
-                        amount_in_words: {
-                            text_en: numberToWords(contract.security_deposit != null && contract.security_deposit.received != null ? contract.security_deposit.received.amount.toFixed(2) : ''),
-                            text_ar: numberToArabicWords(contract.security_deposit != null && contract.security_deposit.received != null ? contract.security_deposit.received.amount.toFixed(2) : '')
-                        },
-                    }
-                },
-                store_deposit: {
-                    payment_method: {
-                        text_en: contract.security_deposit != null && contract.security_deposit.deposit != null ? englishArabicTranslator(contract.security_deposit.deposit.method, 'en') : "",
-                        text_ar: contract.security_deposit != null && contract.security_deposit.deposit != null ? englishArabicTranslator(contract.security_deposit.deposit.method, 'ar') : "",
-                    },
-                    cheque_ref_no: contract.security_deposit != null && contract.security_deposit.deposit != null ? contract.security_deposit.deposit.cheque_ref_no : "",
-                    amount: {
-                        amount_in_numbers: {
-                            text_en: numberWithCommas(contract.security_deposit != null && contract.security_deposit.deposit != null ? contract.security_deposit.deposit.amount.toFixed(2) : ''),
-                            text_ar: numberToArabic(numberWithCommas(contract.security_deposit != null && contract.security_deposit.deposit != null ? contract.security_deposit.deposit.amount.toFixed(2) : ''))
-                        },
-                        amount_in_words: {
-                            text_en: numberToWords(contract.security_deposit != null && contract.security_deposit.deposit != null ? contract.security_deposit.deposit.amount.toFixed(2) : ''),
-                            text_ar: numberToArabicWords(contract.security_deposit != null && contract.security_deposit.deposit != null ? contract.security_deposit.deposit.amount.toFixed(2) : '')
-                        },
-                    },
-                    date: {
-                        text_en: contract.security_deposit != null && contract.security_deposit.deposit != null ? (moment(contract.security_deposit.deposit.date, "YYYY-MM-DD").locale('en').format("DD/MM/YYYY")) : '',
-                        text_ar: contract.security_deposit != null && contract.security_deposit.deposit != null ? numberToArabic(moment(contract.security_deposit.deposit.date, "YYYY-MM-DD").locale('en').format("DD/MM/YYYY")) : '',
-                    },
-                    remarks: contract.security_deposit != null && contract.security_deposit.deposit != null ? contract.security_deposit.deposit.remarks : "",
-                },
-                refund: {
-                    payment_method: {
-                        text_en: contract.security_deposit != null && contract.security_deposit.refund != null ? englishArabicTranslator(contract.security_deposit.refund.method, 'en') : "",
-                        text_ar: contract.security_deposit != null && contract.security_deposit.refund != null ? englishArabicTranslator(contract.security_deposit.refund.method, 'ar') : "",
-                    },
-                    cheque_ref_no: contract.security_deposit != null && contract.security_deposit.refund != null ? contract.security_deposit.refund.cheque_ref_no : "",
-                    amount: {
-                        amount_in_numbers: {
-                            text_en: numberWithCommas(contract.security_deposit != null && contract.security_deposit.refund != null ? contract.security_deposit.refund.amount.toFixed(2) : ''),
-                            text_ar: numberToArabic(numberWithCommas(contract.security_deposit != null && contract.security_deposit.refund != null ? contract.security_deposit.refund.amount.toFixed(2) : ''))
-                        },
-                        amount_in_words: {
-                            text_en: numberToWords(contract.security_deposit != null && contract.security_deposit.refund != null ? contract.security_deposit.refund.amount.toFixed(2) : ''),
-                            text_ar: numberToArabicWords(contract.security_deposit != null && contract.security_deposit.refund != null ? contract.security_deposit.refund.amount.toFixed(2) : '')
-                        },
-                    },
-                    date: {
-                        text_en: contract.security_deposit != null && contract.security_deposit.refund != null ? (moment(contract.security_deposit.refund.date, "YYYY-MM-DD").locale('en').format("DD/MM/YYYY")) : '',
-                        text_ar: contract.security_deposit != null && contract.security_deposit.refund != null ? numberToArabic(moment(contract.security_deposit.refund.date, "YYYY-MM-DD").locale('en').format("DD/MM/YYYY")) : '',
-                    },
-                    remarks: contract.security_deposit != null && contract.security_deposit.refund != null ? contract.security_deposit.refund.remarks : "",
-                }
-            },
-            remarks: contract.remarks,
-            premises_condition: {
-                text_en: (contract.premises_conditions != null ? contract.premises_conditions.text_en : ""),
-                text_ar: (contract.premises_conditions != null ? contract.premises_conditions.text_ar : ""),
-            },
-            payment_condition: {
-                text_en: (contract.payment_conditions != null ? contract.payment_conditions.text_en : ""),
-                text_ar: (contract.payment_conditions != null ? contract.payment_conditions.text_ar : "")
-            }
-        },
-        otherCharges: {
-            sub_total: {
-                amount_in_numbers: {
-                    text_en: numberWithCommas(contract.other_charges != null ? contract[0].gross_amount : ''),
-                    text_ar: numberToArabic(numberWithCommas(contract.other_charges != null ? contract[0].gross_amount : ''))
-                },
-                amount_in_words: {
-                    text_en: numberToWords(contract.other_charges != null ? contract[0].gross_amount : ''),
-                    text_ar: numberToArabicWords(contract.other_charges != null ? contract[0].gross_amount : '')
-                },
-            },
-            vat: {
-                text_en: contract.other_charges != null && contract.other_charges.vat.value != null ? contract[0].vat.value : '',
-                text_ar: numberToArabic(contract.other_charges != null && contract.other_charges.vat.value != null ? contract[0].vat.value : ''),
-            },
-            vat_title: contract.other_charges != null && contract.other_charges.vat != null ? contract[0].vat.title : '',
-            vat_amount: {
-                amount_in_numbers: {
-                    text_en: numberWithCommas(contract.other_charges != null ? contract[0].vat_amount.toFixed(2) : ''),
-                    text_ar: numberToArabic(numberWithCommas(contract.other_charges != null ? contract[0].vat_amount.toFixed(2) : ''))
-                },
-                amount_in_words: {
-                    text_en: numberToWords(contract.other_charges != null ? contract[0].vat_amount.toFixed(2) : ''),
-                    text_ar: numberToArabicWords(contract.other_charges != null ? contract[0].vat_amount.toFixed(2) : '')
-                },
-            },
-            total_amount: {
-                amount_in_numbers: {
-                    text_en: numberWithCommas(contract.other_charges != null ? contract[0].total_amount.toFixed(2) : ''),
-                    text_ar: numberToArabic(numberWithCommas(contract.other_charges != null ? contract[0].total_amount.toFixed(2) : ''))
-                },
-                amount_in_words: {
-                    text_en: numberToWords(contract.other_charges != null ? contract[0].total_amount.toFixed(2) : ''),
-                    text_ar: numberToArabicWords(contract.other_charges != null ? contract[0].total_amount.toFixed(2) : '')
-                },
-            },
-        },
-    };
-
-
-            const customMenuOptionss = {
-                tenant: {
-                    tenant_no: "Tenant No",
-                    trn: "TRN",
-                    customer_name: {
-                        text_en: "Tenant Name",
-                        //text_ar: "Tenant Name (Arabic)"
-                    },
-                    mobile_number: "Mobile Number",
-                    phone_number: "Phone Number",
-                    fax_number: "Fax. Number",
-                    email_address: "Email Address",
-                    po_box: "P.O. Box",
-                    area: "Area",
-                    city: "City",
-                    nationality: {
-                        text_en: "Nationality",
-                        //text_ar: "Nationality (Arabic)",
-                    },
-                    remarks: "Remarks",
-                }, 
-                property: {
-                    property_no: "Property ID",
-                    property_name: "Property Name",
-                    plot_no: "Plot Number",
-                    property_type: "Property Type",
-                    area: "Area",
-                    city: "City",
-                    property_price: "Property Price",
-                    property_description: "Property Description",
-                    no_of_floors: "Number of Floors"
-                },
-                contract: {
-                    purchase_invoice_no: "Purchase Invoice",
-                    contract_status: {
-                        text_en: "Contract Status in English",
-                        text_ar: "Contract Status in Arabic",
-                    },
-                    contract_type: {
-                        text_en: "Contract Type in English",
-                        text_ar: "Contract Type in Arabic",
-                    },
-                    contract_no: "Contract Number",
-                    iq_invoice_no: "iQ Invoice Number",
-                    unit_no: "Unit Number", 
-                    unit_type: "Unit Type",
-                    furnished_type:{
-                        text_en: "Furnished Type in English",
-                        text_ar: "Furnished Type in Arabic",
-                    },
-                    rent_from: {
-                        text_en: "Contract Starts From in English, dd/mm/yyyy",
-                        text_ar: "Contract Starts From in Arabic, dd/mm/yyyy",
-                    },
-                    rent_to: {
-                        text_en: "Contract Ends On in English, dd/mm/yyyy",
-                        text_ar: "Contract Ends On in Arabic, dd/mm/yyyy",
-                    },
-                    vat: {
-                        payment_date_en: "VAT Payment Date in English, dd/mm/yyyy",
-                        payment_date_ar: "VAT Payment Date in Arabic, dd/mm/yyyy",
-                        vat_item_title: "VAT Title",
-                        vat_per: {
-                            text_en: "VAT Percentage in English",
-                            text_ar: "VAT Percentage in Arabic",
-                        },
-                        vat_amount: {
-                            text_en: "VAT Amount in English",
-                            text_ar: "VAT Amount in Arabic",
-                        },
-                        is_vat_paid: {
-                            text_en: "VAT Paid? (Yes / No) in English",
-                            text_ar: "VAT Paid? (Yes / No) in Arabic",
-                        },
-                    }, 
-                    gross_amount: {
+                gross_amount: {
+                    amount_in_numbers: {
                         text_en: "Gross Amount in English",
                         text_ar: "Gross Amount in Arabic",
                     },
-                    total_discount_amount: {
+                    amount_in_words: {
+                        text_en: "Gross Amount in English, in words",
+                        text_ar: "Gross Amount in Arabic, in words",
+                    },
+                },
+                total_discount_amount: {
+                    amount_in_numbers: {
                         text_en: "Total Discount Amount in English",
                         text_ar: "Total Discount Amount in Arabic",
                     },
-                    rental_amount: {
+                    amount_in_words: {
+                        text_en: "Total Discount Amount in English, in words",
+                        text_ar: "Total Discount Amount in Arabic, in words",
+                    },
+                },
+                rental_amount: {
+                    amount_in_numbers: {
                         text_en: "Rental Amount in English",
                         text_ar: "Rental Amount in Arabic",
                     },
-                    net_amount: {
+                    amount_in_words: {
+                        text_en: "Rental Amount in English, in words",
+                        text_ar: "Rental Amount in Arabic, in words",
+                    },
+                },
+                net_amount: {
+                    amount_in_numbers: {
                         text_en: "Net Amount in English",
                         text_ar: "Net Amount in Arabic",
                     },
-                    net_amount_in_words: {
+                    amount_in_words: {
                         text_en: "Net Amount in English, in words",
                         text_ar: "Net Amount in Arabic, in words",
-                    },
-                    total_cheques: {
-                        text_en: "Total Installments in English",
-                        text_ar: "Total Installments in Arabic",
-                    },
-                    total_paid_cheques: {
-                        text_en: "Total Paid Installments in English",
-                        text_ar: "Total Paid Installments in Arabic",
-                    },
-                    early_close_charge: {
-                        text_en: "Early Close Charge in English",
-                        text_ar: "Early Close Charge in Arabic",
-                    },
-                    remarks: {
-                        text_en: "Remarks in English",
-                        text_ar: "Remarks in Arabic",
-                    },
-                    premises_condition: {
-                        text_en: 'Premises Condition in English',
-                        text_ar: 'Premises Condition in Arabic',
-                    },
-                    payment_condition: {
-                        text_en: 'Payment Condition in English',
-                        text_ar: 'Payment Condition in Arabic'
-                    }   
+                    }
                 },
-                otherCharges: {
-                    sub_total: {
+                total_cheques: {
+                    text_en: "Total Installments in English",
+                    text_ar: "Total Installments in Arabic",
+                },
+                total_paid_cheques: {
+                    text_en: "Total Paid Installments in English",
+                    text_ar: "Total Paid Installments in Arabic",
+                },
+                early_close_charge: {
+                    text_en: "Early Close Charge in English",
+                    text_ar: "Early Close Charge in Arabic",
+                },
+                security_deposit: {
+                    received: {
+                        payment_method: {
+                            text_en: "Payment Method in English",
+                            text_ar: "Payment Method in Arabic",
+                        },
+                        cheque_ref_no: "Cheque / Ref. Number",
+                        amount: {   
+                            amount_in_numbers: {
+                                text_en: "Amount in English",
+                                text_ar: "Amount in Arabic",
+                            },
+                            amount_in_words: {
+                                text_en: "Amount in English, in words",
+                                text_ar: "Amount in Arabic, in words",
+                            }
+                        }
+                    },
+                    store_deposit: {
+                        payment_method: {
+                            text_en: "Payment Method in English",
+                            text_ar: "Payment Method in Arabic",
+                        },
+                        cheque_ref_no: "Cheque / Ref. Number",
+                        amount: {
+                            amount_in_numbers: {
+                                text_en: "Amount in English",
+                                text_ar: "Amount in Arabic",
+                            },
+                            amount_in_words: {
+                                text_en: "Amount in English, in words",
+                                text_ar: "Amount in Arabic, in words",
+                            }
+                        },
+                        date: {
+                            text_en: "Date in English, dd/mm/yyyy",
+                            text_ar: "Date in Arabic, dd/mm/yyyy",
+                        },
+                        remarks: "Remarks"
+                    },
+                    refund: {
+                        payment_method: {
+                            text_en: "Payment Method in English",
+                            text_ar: "Payment Method in Arabic",
+                        },
+                        cheque_ref_no: "Cheque / Ref. Number",
+                        amount: {
+                            amount_in_numbers: {
+                                text_en: "Amount in English",
+                                text_ar: "Amount in Arabic",
+                            },
+                            amount_in_words: {
+                                text_en: "Amount in English, in words",
+                                text_ar: "Amount in Arabic, in words",
+                            }
+                        },
+                        date: {
+                            text_en: "Date in English, dd/mm/yyyy",
+                            text_ar: "Date in Arabic, dd/mm/yyyy",
+                        },
+                        remarks: "Remarks"
+                    }
+                },
+                remarks: "Remarks",
+                premises_condition: {
+                    text_en: 'Premises Condition in English',
+                    text_ar: 'Premises Condition in Arabic',
+                },
+                payment_condition: {
+                    text_en: 'Payment Condition in English',
+                    text_ar: 'Payment Condition in Arabic'
+                }
+            },
+            otherCharges: {
+                sub_total: {
+                    amount_in_numbers: {
                         text_en: 'Subtotal in English',
                         text_ar: 'Subtotal in Arabic',
                     },
-                    vat_title: 'VAT Title',
-                    vat: { 
-                        text_en: 'VAT Percent in English',
-                        text_ar: 'VAT Percent in Arabic',
-                    },
-                    vat_amount: {
+                    amount_in_words: {
+                        text_en: 'Subtotal in English, in words',
+                        text_ar: 'Subtotal in Arabic, in words',
+                    }
+                },
+                vat_title: 'VAT Title',
+                otherCharge_vat: {
+                    text_en: 'VAT Percent in English',
+                    text_ar: 'VAT Percent in Arabic',
+                },
+                vat_amount: {
+                    amount_in_numbers: {    
                         text_en: 'VAT Amount in English',
                         text_ar: 'VAT Amount in Arabic',
                     },
-                    total_amount: {
+                    amount_in_words: {
+                        text_en: 'VAT Amount in English, in words',
+                        text_ar: 'VAT Amount in Arabic, in words',
+                    }
+                },
+                total_amount: {
+                    amount_in_numbers: {
                         text_en: 'Total Amount in English',
                         text_ar: 'Total Amount in Arabic',
                     },
-                }
-            };
+                    amount_in_words: {
+                        text_en: 'Total Amount in English, in words',
+                        text_ar: 'Total Amount in Arabic, in words',
+                    }
+                },
+            }
+        };
 
 
         $(document).ready(function() {
@@ -733,78 +295,60 @@ const customMenuOptions = {
                         }
                     });
         
-                    const replacePlaceholdersWithDisplayText = (template, data) => {
-                        return template.replace(/\{\{(.*?)\}\}/g, (match, path) => {
-                            const keys = path.split('.');
-                            let value = data;
-                            for (const key of keys) {
-                                value = value[key];
-                                if (value === undefined) return match;
-                            }
-                            return value;
-                        });
-                    };
         
                     
         
                     const createNestedMenu = () => {
-                        Object.keys(customMenuOptions).forEach((key) => {
-                            const subItems = Object.keys(customMenuOptions[key]).map((subKey) => {
-                                if (typeof customMenuOptions[key][subKey] === "object") {
-                                    const thirdLevelItems = Object.keys(customMenuOptions[key][subKey]).map((thirdKey) => ({
-                                        type: "menuitem",
-                                        text: customMenuOptions[key][subKey][thirdKey],
-                                        onAction: () => {
-                                            const displayText = customMenuOptions[key][subKey][thirdKey];
-                                            if (displayText === "Company Logo") {
-                                                editor.insertContent(
-                                                    '&nbsp;<img src="/images/iQ_logo.png" alt="Company Logo" style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1" contenteditable="false"/>&nbsp;'
-                                                );
-                                            } else {
-                                                editor.insertContent(
-                                                    `&nbsp;<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1" contenteditable="false">${displayText}</span>&nbsp;`
-                                                );
-                                            }
-                                        },
-                                    }));
-        
+                        const createMenuItems = (options, path = '', depth = 0) => {
+                            return Object.keys(options).map((key) => {
+                                const value = options[key];
+                                const currentPath = path ? `${path}.${key}` : key;
+
+                                if (typeof value === "object" && depth < 5) {
+                                    let displayText = key.replace(/_/g, ' ').charAt(0).toUpperCase() + key.replace(/_/g, ' ').slice(1).replace(/([A-Z])/g, " $1").trim();
+                                    if (currentPath.toLowerCase().includes('vat')) {
+                                        displayText = displayText.replace(/\bVat\b/gi, 'VAT');
+                                    }
                                     return {
                                         type: "nestedmenuitem",
-                                        text: subKey.replace(/_/g, ' ').charAt(0).toUpperCase() + subKey.replace(/_/g, ' ').slice(1).replace(/([A-Z])/g, " $1").trim(),
-                                        getSubmenuItems: () => thirdLevelItems,
+                                        text: displayText,
+                                        getSubmenuItems: () => createMenuItems(value, currentPath, depth + 1),
                                     };
                                 } else {
                                     return {
                                         type: "menuitem",
-                                        text: customMenuOptions[key][subKey],
+                                        text: value,
                                         onAction: () => {
-                                            const displayText = customMenuOptions[key][subKey];
-                                            if (displayText === "Company Logo") {
-                                                editor.insertContent(
-                                                    '&nbsp;<img src="/images/iQ_logo.png" alt="Company Logo" style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1" contenteditable="false"/>&nbsp;'
-                                                );
-                                            } else {
-                                                editor.insertContent(
-                                                    `&nbsp;<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1" contenteditable="false">${displayText}</span>&nbsp;`
-                                                );
-                                            }
+                                            const placeholder = `{{${currentPath}}}`;
+                                            const displayLabel = value; // Use the descriptive label
+
+                                            editor.insertContent(
+                                                `&nbsp;<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1" contenteditable="false" data-path="${placeholder}">${displayLabel}</span>&nbsp;`
+                                            );
                                         },
                                     };
                                 }
                             });
-        
+                        };
+
+                        Object.keys(customMenuOptions).forEach((key) => {
+                            let displayText = key.replace(/_/g, ' ').charAt(0).toUpperCase() + key.replace(/_/g, ' ').slice(1).replace(/([A-Z])/g, " $1").trim();
+                            if (key.toLowerCase().includes('vat')) {
+                                displayText = displayText.replace(/\bVat\b/gi, 'VAT');
+                            }
                             editor.ui.registry.addNestedMenuItem(key, {
-                                text: key.replace(/_/g, ' ').charAt(0).toUpperCase() + key.replace(/_/g, ' ').slice(1).replace(/([A-Z])/g, " $1").trim(),
-                                getSubmenuItems: () => subItems,
+                                text: displayText,
+                                getSubmenuItems: () => createMenuItems(customMenuOptions[key], key),
                             });
                         });
                     };
+
+
         
                     createNestedMenu();
         
         
                     function setEditorContentWithDisplayText(rawTemplate, data) {
-                    
                         const flattenObject = (obj, prefix = '') => {
                             return Object.keys(obj).reduce((acc, key) => {
                                 const fullKey = prefix ? `${prefix}.${key}` : key;
@@ -820,100 +364,70 @@ const customMenuOptions = {
                             }, {});
                         };
 
-                        // Flatten the data for easy lookup
                         const flatData = flattenObject(data);
 
-                        // Replace placeholders with display text
-                        let renderedContent = rawTemplate.replace(/\{\{(.*?)\}\}/g, (match, path) => {
-                            return flatData[path] !== undefined ? flatData[path] : match; // Use display text or keep the placeholder
+                        const parser = new DOMParser();
+                        const doc = parser.parseFromString(rawTemplate, 'text/html');
+
+                        doc.querySelectorAll('[data-path]').forEach((el) => {
+                            const path = el.getAttribute('data-path').replace(/\{\{|\}\}/g, '');
+                            if (flatData[path] !== undefined) {
+                                el.textContent = flatData[path];
+                            }
                         });
 
-                        // Set the editor content
                         const editor = tinymce.activeEditor;
                         if (editor) {
-                            editor.setContent(renderedContent);
-                            console.log('Editor content set:', renderedContent);
+                            editor.setContent(doc.body.innerHTML); // Set the modified HTML as the editor content
+                            console.log('Editor content set:', doc.body.innerHTML);
                         } else {
                             console.error('Editor is not initialized.');
                         }
                     }
 
-                    const replaceDisplayTextWithPlaceholders = (content, data) => {
-                        const flattenObject = (obj, prefix = '') => {
-                            return Object.keys(obj).reduce((acc, key) => {
-                                const fullKey = prefix ? `${prefix}.${key}` : key;
-                                const value = obj[key];
-        
-                                if (typeof value === 'object' && value !== null) {
-                                    Object.assign(acc, flattenObject(value, fullKey));
-                                } else {
-                                    acc[value] = `{{${fullKey}}}`;
-                                }
-        
-                                return acc;
-                            }, {});
-                        };
-        
-                        const flatData = flattenObject(data);
-        
-                        Object.keys(flatData).forEach(displayText => {
-                            const placeholder = flatData[displayText];
-                            const regex = new RegExp(
-                                `(<span[^>]*>)${displayText.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(</span>)`,
-                                'g'
-                            );
-                            content = content.replace(regex, `$1${placeholder}$2`);
-                        });
-        
-                        return content;
+
+                    const flattenMenuOptions = (obj, prefix = '') => {
+                        return Object.keys(obj).reduce((acc, key) => {
+                            const fullKey = prefix ? `${prefix}.${key}` : key;
+                            const value = obj[key];
+
+                            if (typeof value === 'object' && value !== null && !value.text_en && !value.text_ar) {
+                                Object.assign(acc, flattenMenuOptions(value, fullKey));
+                            } else if (typeof value === 'object' && (value.text_en || value.text_ar)) {
+                                if (value.text_en) acc[value.text_en] = `${fullKey}.text_en`;
+                                if (value.text_ar) acc[value.text_ar] = `${fullKey}.text_ar`;
+                            } else if (typeof value === 'string') {
+                                acc[value] = fullKey; 
+                            }
+
+                            return acc;
+                        }, {});
                     };
-        
+
+                    const replaceDisplayTextWithPlaceholders = (content) => {
+                        const parser = new DOMParser();
+                        const doc = parser.parseFromString(content, 'text/html');
+
+                        doc.querySelectorAll('span[data-path]').forEach((span) => {
+                            const fullPath = span.getAttribute('data-path');
+                            span.textContent = fullPath; // Replace the visible label with the full path
+                        });
+
+                        return doc.body.innerHTML;
+                    };
+
+
+                    window.saveContent = () => {
+                        const content = editor.getContent(); // Get content from TinyMCE editor
+                        const rawContent = replaceDisplayTextWithPlaceholders(content, customMenuOptions);
+                        console.log('Content Saved with Placeholders:', rawContent);
+                    };
+
+
                     window.loadContent = (template, data) => {
                         setEditorContentWithDisplayText(template, data); 
                     };
         
-                    window.saveContent = () => {
-
-                        const content = editor.getContent();
-                        console.log('Editor Content:', content);
-                        const rawContent = replaceDisplayTextWithPlaceholders(content, customMenuOptions);
-                        console.log('Content Saved with Placeholders:', rawContent);
-        
-                    };
-        
-                    // function flattenObjectData(obj, parent = '', res = {}) {
-                    //     for (let key in obj) {
-                    //         let propName = parent ? `${parent}.${key}` : key;
-                    //         if (typeof obj[key] === 'object' && obj[key] !== null) {
-                    //             flattenObjectData(obj[key], propName, res);
-                    //         } else {
-                    //             res[propName] = obj[key];
-                    //         }
-                    //     }
-                    //     return res;
-                    // }
-        
-                    // function loaderRenderTemplate(template, data) {
-                    //     const flatData = flattenObjectData(data);
-                    //     let renderedContent = template;
-        
-                    //     Object.keys(flatData).forEach(key => {
-                    //         const placeholder = `{{${key}}}`;
-                    //         const value = flatData[key];
-                    //         const regex = new RegExp(placeholder, 'g');
-                    //         renderedContent = renderedContent.replace(regex, value);
-                    //     });
-        
-                    //     return renderedContent;
-                    // }
-        
-                    // window.loadTemplateWithObjectVariables = (template, data) => {
-                    //     const renderedContent = loaderRenderTemplate(template, data);
-                    //     editor = tinymce.activeEditor;
-                    //     if (editor) {
-                    //         editor.setContent(renderedContent);
-                    //     }
-                    // } 
                 }
             });
                           
@@ -921,7 +435,7 @@ const customMenuOptions = {
          
         });
 
-        const template = '<p>Dear &nbsp;<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1;" contenteditable="false">{{tenant.customer_name.text_en}}</span>&nbsp;</p>';
+        const template = '<p>&nbsp;<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1;" contenteditable="false" data-path="{{contract.vat.vat_amount.amount_in_numbers.text_en}}">{{contract.vat.vat_amount.amount_in_numbers.text_en}}</span>&nbsp; = &nbsp;<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1;" contenteditable="false" data-path="{{contract.vat.vat_amount.amount_in_words.text_en}}">{{contract.vat.vat_amount.amount_in_words.text_en}}</span>&nbsp;</p><p>&nbsp;<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1;" contenteditable="false" data-path="{{contract.vat.vat_amount.amount_in_numbers.text_ar}}">{{contract.vat.vat_amount.amount_in_numbers.text_ar}}</span>&nbsp; = &nbsp;<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1;" contenteditable="false" data-path="{{contract.vat.vat_amount.amount_in_words.text_ar}}">{{contract.vat.vat_amount.amount_in_words.text_ar}}</span>&nbsp;</p><p>*******************************</p><p>&nbsp;</p><p>&nbsp;<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1;" contenteditable="false" data-path="{{contract.gross_amount.amount_in_numbers.text_en}}">{{contract.gross_amount.amount_in_numbers.text_en}}</span> = &nbsp;<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1;" contenteditable="false" data-path="{{contract.gross_amount.amount_in_words.text_en}}">{{contract.gross_amount.amount_in_words.text_en}}</span>&nbsp;</p><p>&nbsp;<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1;" contenteditable="false" data-path="{{contract.gross_amount.amount_in_numbers.text_ar}}">{{contract.gross_amount.amount_in_numbers.text_ar}}</span> = &nbsp;<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1;" contenteditable="false" data-path="{{contract.gross_amount.amount_in_words.text_ar}}">{{contract.gross_amount.amount_in_words.text_ar}}</span>&nbsp;</p>';
         
         setTimeout(() => {
             loadContent(template, customMenuOptions);

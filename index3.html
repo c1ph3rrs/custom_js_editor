@@ -20,104 +20,301 @@
     <script>
 
         const customObjData = {
-            tenant: {
-                tenant_no: "T98765",
-                trn: "TRN567890",
-                customer_name: {
-                    text_en: "John Doe",
-                    text_ar: "جون دو"
-                },
-                mobile_number: "+971501234567",
-                phone_number: "+97144123456",
-                fax_number: "+97144123457",
-                email_address: "johndoe@example.com",
-                po_box: "12345",
-                area: "Downtown",
-                city: "Dubai",
-                nationality: {
-                    text_en: "American",
-                },
-                remarks: "Preferred tenant, handles payments promptly."
+    "tenant": {
+        "tenant_no": "2024/TN43",
+        "trn": "",
+        "customer_name": {
+            "text_en": "Roland Holland"
+        },
+        "mobile_number": "+971 555222940",
+        "phone_number": " ",
+        "fax_number": "",
+        "email_address": "",
+        "po_box": "",
+        "area": "",
+        "city": "",
+        "nationality": {
+            "text_en": "Belgium",
+            "text_ar": "Belgium"
+        },
+        "remarks": ""
+    },
+    "property": {
+        "property_no": "2024/PR38",
+        "property_name": "Dutch Tower",
+        "plot_no": "",
+        "property_type": {
+            "u_id": "B52303",
+            "value": "Building"
+        },
+        "area": "",
+        "city": "Sharjah",
+        "property_price": 0,
+        "property_description": "",
+        "no_of_floors": 4
+    },
+    "contract": {
+        "purchase_invoice_no": "",
+        "contract_status": {
+            "text_en": "active",
+            "text_ar": "active"
+        },
+        "contract_type": {
+            "text_en": "Residential",
+            "text_ar": "سكني"
+        },
+        "contract_no": "43265",
+        "iq_invoice_no": "INV/2024/123",
+        "unit_no": "101",
+        "unit_type": "3 BHK",
+        "furnished_type": {
+            "text_en": "Unfurnished",
+            "text_ar": "غير مفروش"
+        },
+        "contract_start_date": {
+            "text_en": "01/12/2024",
+            "text_ar": "٠١/١٢/٢٠٢٤"
+        },
+        "contract_end_date": {
+            "text_en": "30/11/2025",
+            "text_ar": "٣٠/١١/٢٠٢٥"
+        },
+        "gross_amount": {
+            "amount_in_numbers": {
+                "text_en": "58,000.00",
+                "text_ar": "٥٨,٠٠٠.٠٠"
             },
-            property: {
-                property_no: "P12345",
-                property_name: "Sunrise Apartments",
-                plot_no: "PLT56789",
-                property_type: "Residential",
-                area: "Jumeirah",
-                city: "Dubai",
-                property_price: "5000000",
-                property_description: "A luxury 3-bedroom apartment with sea views.",
-                no_of_floors: "15",
-                unit_type: "3BHK"
+            "amount_in_words": {
+                "text_en": "Fifty Eight Thousand Only",
+                "text_ar": "خمسون وثمانية ألف درهم"
+            }
+        },
+        "total_discount_amount": {
+            "amount_in_numbers": {
+                "text_en": "2,000.00",
+                "text_ar": "٢,٠٠٠.٠٠"
             },
-            contract: {
-                purchase_invoice_no: "INV12345",
-                contract_status: {
-                    text_en: "Active",
-                    text_ar: "نشط"
+            "amount_in_words": {
+                "text_en": "Two Thousand Only",
+                "text_ar": "اثنان ألف درهم"
+            }
+        },
+        "vat": {
+            "vat_paid_on": {
+                "text_en": "Invalid date",
+                "text_ar": "Invalid date"
+            },
+            "vat_item_title": "5% VAT - (Exclusive)",
+            "vat_per": {
+                "text_en": 5,
+                "text_ar": "٥.٠٠"
+            },
+            "vat_amount": {
+                "amount_in_numbers": {
+                    "text_en": "2,900.00",
+                    "text_ar": "٢,٩٠٠.٠٠"
                 },
-                contract_type: {
-                    text_en: "Fixed Term Lease",
-                    text_ar: "عقد إيجار محدد المدة"
+                "amount_in_words": {
+                    "text_en": "Two Thousand Nine Hundred Only",
+                    "text_ar": "اثنان ألف تسعة مئة درهم"
                 },
-                contract_no: "C56789",
-                iq_invoice_no: "IQ12345",
-                flat_no: "5A",
-                furnished_type: {
-                    text_en: "Fully Furnished",
-                    text_ar: "مفروش بالكامل"
-                },
-                rent_from: {
-                    text_en: "01/01/2024",
-                    text_ar: "01/01/2024"
-                },
-                rent_to: {
-                    text_en: "31/12/2024",
-                    text_ar: "31/12/2024"
-                },
-                vat: {
-                    payment_date_en: "15/01/2024",
-                    payment_date_ar: "15/01/2024",
-                    vat_item_title: "Residential VAT",
-                    vat_per: "5%",
-                    vat_amount: "2500",
-                    is_vat_paid: "Yes"
-                },
-                gross_amount: "50000",
-                total_discount_amount: "5000",
-                rental_amount: "45000",
-                net_amount: "42500",
-                net_amount_in_words: {
-                    text_en: "Forty-Two Thousand Five Hundred Dirhams",
-                    text_ar: "اثنان وأربعون ألف وخمسمائة درهم"
-                },
-                total_cheques: "12",
-                total_paid_cheques: "6",
-                total_paid_amount: "22500",
-                total_partly_paid_cheques: "2",
-                total_partly_paid_amount: "7500",
-                total_due_cheques: "4",
-                total_due_amount: "12500",
-                early_close_charge: "1500",
-                remarks: "Contract renewal pending for next year.",
-                premises_condition: {
-                    text_en: "Excellent",
-                    text_ar: "ممتاز"
-                },
-                payment_condition: {
-                    text_en: "Monthly advance payment",
-                    text_ar: "دفعة مقدمة شهرية"
+                "is_vat_paid": {
+                    "text_en": "Yes",
+                    "text_ar": "نعم"
                 }
             },
-            otherCharges: {
-                sub_total: "2000",
-                vat_title: "Service VAT",
-                vat: "5%",
-                vat_amount: "100",
-                total_amount: "2100"
+            "is_vat_paid": {
+                "text_en": "Yes",
+                "text_ar": "نعم"
             }
-        };
+        },
+        "rental_amount": {
+            "amount_in_numbers": {
+                "text_en": "60,000.00",
+                "text_ar": "٦٠٠٠٠.٠٠"
+            },
+            "amount_in_words": {
+                "text_en": "Sixty Thousand Only",
+                "text_ar": "ستون ألف درهم"
+            }
+        },
+        "net_amount": {
+            "amount_in_numbers": {
+                "text_en": "60,900.00",
+                "text_ar": "٦٠,٩٠٠.٠٠"
+            },
+            "amount_in_words": {
+                "text_en": "Sixty Thousand Nine Hundred Only",
+                "text_ar": "ستون ألف تسعة مئة درهم"
+            }
+        },
+        "total_cheques": {
+            "text_en": 3,
+            "text_ar": "٣"
+        },
+        "total_paid_cheques": {
+            "text_en": 1,
+            "text_ar": "١"
+        },
+        "total_paid_amount": {
+            "amount_in_numbers": {
+                "text_en": "21,000.00",
+                "text_ar": "٢١,٠٠٠.٠٠"
+            },
+            "amount_in_words": {
+                "text_en": "Twenty One Thousand Only",
+                "text_ar": "عشرون وواحد ألف درهم"
+            }
+        },
+        "total_partly_paid_cheques": {
+            "text_en": 0,
+            "text_ar": "٠"
+        },
+        "total_partly_paid_amount": {
+            "amount_in_numbers": {
+                "text_en": "0.00",
+                "text_ar": "٠.٠٠"
+            },
+            "amount_in_words": {
+                "text_en": "Zero",
+                "text_ar": "صفر"
+            }
+        },
+        "total_due_cheques": {
+            "text_en": 0,
+            "text_ar": "٠"
+        },
+        "total_due_amount": {
+            "amount_in_numbers": {
+                "text_en": "0.00",
+                "text_ar": "٠.٠٠"
+            },
+            "amount_in_words": {
+                "text_en": "Zero",
+                "text_ar": "صفر"
+            }
+        },
+        "early_close_charge": {
+            "amount_in_numbers": {
+                "text_en": "0.00",
+                "text_ar": "٠.٠٠"
+            },
+            "amount_in_words": {
+                "text_en": "Zero",
+                "text_ar": "صفر"
+            }
+        },
+        "security_deposit": {
+            "received": {
+                "payment_method": {
+                    "text_en": "",
+                    "text_ar": ""
+                },
+                "cheque_ref_no": "",
+                "amount": {
+                    "amount_in_numbers": {
+                        "text_en": "",
+                        "text_ar": ""
+                    },
+                    "amount_in_words": {
+                        "text_en": "Zero",
+                        "text_ar": "صفر"
+                    }
+                }
+            },
+            "store_deposit": {
+                "payment_method": {
+                    "text_en": "",
+                    "text_ar": ""
+                },
+                "cheque_ref_no": "",
+                "amount": {
+                    "amount_in_numbers": {
+                        "text_en": "",
+                        "text_ar": ""
+                    },
+                    "amount_in_words": {
+                        "text_en": "Zero",
+                        "text_ar": "صفر"
+                    }
+                },
+                "date": {
+                    "text_en": "",
+                    "text_ar": ""
+                },
+                "remarks": ""
+            },
+            "refund": {
+                "payment_method": {
+                    "text_en": "",
+                    "text_ar": ""
+                },
+                "cheque_ref_no": "",
+                "amount": {
+                    "amount_in_numbers": {
+                        "text_en": "",
+                        "text_ar": ""
+                    },
+                    "amount_in_words": {
+                        "text_en": "Zero",
+                        "text_ar": "صفر"
+                    }
+                },
+                "date": {
+                    "text_en": "",
+                    "text_ar": ""
+                },
+                "remarks": ""
+            }
+        },
+        "remarks": null,
+        "premises_condition": {
+            "text_en": "",
+            "text_ar": ""
+        },
+        "payment_condition": {
+            "text_en": "",
+            "text_ar": ""
+        }
+    },
+    "otherCharges": {
+        "sub_total": {
+            "amount_in_numbers": {
+                "text_en": "",
+                "text_ar": ""
+            },
+            "amount_in_words": {
+                "text_en": "Zero",
+                "text_ar": "صفر"
+            }
+        },
+        "vat": {
+            "text_en": "",
+            "text_ar": ""
+        },
+        "vat_title": "",
+        "vat_amount": {
+            "amount_in_numbers": {
+                "text_en": "",
+                "text_ar": ""
+            },
+            "amount_in_words": {
+                "text_en": "Zero",
+                "text_ar": "صفر"
+            }
+        },
+        "total_amount": {
+            "amount_in_numbers": {
+                "text_en": "",
+                "text_ar": ""
+            },
+            "amount_in_words": {
+                "text_en": "Zero",
+                "text_ar": "صفر"
+            }
+        }
+    }
+};
 
 
         const customMenuOptions = {
@@ -373,9 +570,9 @@
             }
         });
 
-        const template = '<p>Dear &nbsp;{{tenant.customer_name.text_en}}&nbsp;<br>Please pay your bills &nbsp;{{contract.net_amount_in_words.text_en}} before &nbsp;{{contract.rent_to.text_en}}&nbsp;</p>';
+        const template = '<p>&nbsp;<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1;" contenteditable="false" data-path="{{contract.vat.vat_amount.amount_in_numbers.text_en}}">{{contract.vat.vat_amount.amount_in_numbers.text_en}}</span>&nbsp; = &nbsp;<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1;" contenteditable="false" data-path="{{contract.vat.vat_amount.amount_in_words.text_en}}">{{contract.vat.vat_amount.amount_in_words.text_en}}</span>&nbsp;</p><p>&nbsp;<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1;" contenteditable="false" data-path="{{contract.vat.vat_amount.amount_in_numbers.text_ar}}">{{contract.vat.vat_amount.amount_in_numbers.text_ar}}</span>&nbsp; = &nbsp;<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1;" contenteditable="false" data-path="{{contract.vat.vat_amount.amount_in_words.text_ar}}">{{contract.vat.vat_amount.amount_in_words.text_ar}}</span>&nbsp;</p><p>*******************************</p><p>&nbsp;</p><p>&nbsp;<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1;" contenteditable="false" data-path="{{contract.gross_amount.amount_in_numbers.text_en}}">{{contract.gross_amount.amount_in_numbers.text_en}}</span> = &nbsp;<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1;" contenteditable="false" data-path="{{contract.gross_amount.amount_in_words.text_en}}">{{contract.gross_amount.amount_in_words.text_en}}</span>&nbsp;</p><p>&nbsp;<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1;" contenteditable="false" data-path="{{contract.gross_amount.amount_in_numbers.text_ar}}">{{contract.gross_amount.amount_in_numbers.text_ar}}</span> = &nbsp;<span style="padding: 0px 3px; border-radius: 4px; background-color: #f1f1f1;" contenteditable="false" data-path="{{contract.gross_amount.amount_in_words.text_ar}}">{{contract.gross_amount.amount_in_words.text_ar}}</span>&nbsp;</p>';
         setTimeout(() => {
-            loadContent(template, customObjData);
+            loadContent(template, customMenuOptions);
         }, 1000);
     </script>
 </body>
