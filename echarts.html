@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Income vs Expense (Above & Below X-Axis)</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.0/dist/echarts.min.js"></script>
+    <style>
+        #chart {
+            width: 600px;
+            height: 400px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="chart"></div>
+    <div id="chart1" style="width: 600px; height: 400px; margin: 0 auto;"></div>
+    <div id="chart2" style="width: 600px; height: 400px; margin: 0 auto;"></div>
+    <div id="chart3" style="width: 600px; height: 400px; margin: 0 auto;"></div>
+    <div id="chart4" style="width: 600px; height: 400px; margin: 0 auto;"></div>
+    <div id="chart5" style="width: 600px; height: 400px; margin: 0 auto;"></div>
+    <div id="chart6" style="width: 600px; height: 400px; margin: 0 auto;"></div>
+
+    <script>
+        const data = {
+            months: ['January', 'February', 'March', 'April', 'May', 'June'],
+            income: [510000, 508900, 408930, 791002, 937910, 683701],  
+            expense: [903000, 180700, 738291, 173921, 690320, 537261]  
+        };
+
+        // Bar Chart
+        const barChart = echarts.init(document.getElementById('chart1'));
+        const barOption = {
+            title: { text: 'Income vs Expense - Bar Chart' },
+            tooltip: { trigger: 'axis' },
+            legend: { data: ['Income', 'Expense'] },
+            xAxis: { type: 'category', data: data.months },
+            yAxis: { type: 'value' },
+            series: [
+                { name: 'Income', type: 'bar', data: data.income },
+                { name: 'Expense', type: 'bar', data: data.expense }
+            ]
+        };
+        barChart.setOption(barOption);
+
+        // Line Chart
+        const lineChart = echarts.init(document.getElementById('chart2'));
+        const lineOption = {
+            title: { text: 'Income vs Expense - Line Chart' },
+            tooltip: { trigger: 'axis' },
+            legend: { data: ['Income', 'Expense'] },
+            xAxis: { type: 'category', data: data.months },
+            yAxis: { type: 'value' },
+            series: [
+                { name: 'Income', type: 'line', data: data.income },
+                { name: 'Expense', type: 'line', data: data.expense }
+            ]
+        };
+        lineChart.setOption(lineOption);
+
+        // Pie Chart
+        const pieChart = echarts.init(document.getElementById('chart3'));
+        const pieOption = {
+            title: { text: 'Income vs Expense - Pie Chart' },
+            tooltip: { trigger: 'item' },
+            legend: { orient: 'vertical', left: 'left', data: ['Income', 'Expense'] },
+            series: [
+                {
+                    name: 'Amount',
+                    type: 'pie',
+                    radius: '50%',
+                    data: [
+                        { value: data.income.reduce((a, b) => a + b, 0), name: 'Income' },
+                        { value: data.expense.reduce((a, b) => a + b, 0), name: 'Expense' }
+                    ]
+                }
+            ]
+        };
+        pieChart.setOption(pieOption);
+
+        // Scatter Chart
+        const scatterChart = echarts.init(document.getElementById('chart4'));
+        const scatterOption = {
+            title: { text: 'Income vs Expense - Scatter Chart' },
+            tooltip: { trigger: 'axis' },
+            xAxis: { type: 'category', data: data.months },
+            yAxis: { type: 'value' },
+            series: [
+                { name: 'Income', type: 'scatter', data: data.income },
+                { name: 'Expense', type: 'scatter', data: data.expense }
+            ]
+        };
+        scatterChart.setOption(scatterOption);
+
+        // Radar Chart
+        const radarChart = echarts.init(document.getElementById('chart5'));
+        const radarOption = {
+            title: { text: 'Income vs Expense - Radar Chart' },
+            tooltip: {},
+            legend: { data: ['Income', 'Expense'] },
+            radar: {
+                indicator: data.months.map(month => ({ name: month, max: 1000000 }))
+            },
+            series: [
+                {
+                    name: 'Income vs Expense',
+                    type: 'radar',
+                    data: [
+                        { value: data.income, name: 'Income' },
+                        { value: data.expense, name: 'Expense' }
+                    ]
+                }
+            ]
+        };
+        radarChart.setOption(radarOption);
+
+        // Area Chart
+        const areaChart = echarts.init(document.getElementById('chart6'));
+        const areaOption = {
+            title: { text: 'Income vs Expense - Area Chart' },
+            tooltip: { trigger: 'axis' },
+            legend: { data: ['Income', 'Expense'] },
+            xAxis: { type: 'category', data: data.months },
+            yAxis: { type: 'value' },
+            series: [
+                { name: 'Income', type: 'line', data: data.income, areaStyle: {} },
+                { name: 'Expense', type: 'line', data: data.expense, areaStyle: {} }
+            ]
+        };
+        areaChart.setOption(areaOption);
+    </script>
+
+    <script>
+        const data2 = {
+            months: ['January', 'February', 'March', 'April', 'May', 'June'],
+            income: [510000, 508900, 408930, 791002, 937910, 683701],  
+            expense: [903000, 180700, 738291, 173921, 690320, 537261]  
+        };
+
+        
+        const myChart = echarts.init(document.getElementById('chart'));
+
+        
+        const option = {
+            title: {
+                text: 'Income vs Expense',
+                subtext: 'Monthly Comparison',
+                left: 'center'
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: { type: 'shadow' }
+            },
+            legend: {
+                data: ['Income', 'Expense'],
+                top: '10%'
+            },
+            xAxis: {
+                type: 'category',
+                data: data2.months,
+                axisTick: { alignWithLabel: true }
+            },
+            yAxis: {
+                type: 'value',
+                name: 'Amount',
+                axisLabel: {
+                    formatter: '{value} AED'
+                }
+            },
+            series: [
+                {
+                    name: 'Income',
+                    type: 'bar',
+                    barWidth: '30%',
+                    data: data2.income,
+                    itemStyle: {
+                        color: '#4CAF50'  
+                    },
+                    label: {
+                        show: true,
+                        position: 'insideTop',
+                        formatter: '{c} AED'
+                    }
+                },
+                {
+                    name: 'Expense',
+                    type: 'bar',
+                    barWidth: '30%',
+                    data: data2.expense.map(value => -value),  
+                    itemStyle: {
+                        color: '#F44336'  
+                    },
+                    label: {
+                        show: true,
+                        position: 'insideBottom',
+                        formatter: function(params) {
+                            return Math.abs(params.value) + ' AED';
+                        }
+                    }
+                }
+            ]
+        };
+
+        // Set the options for the chart
+        myChart.setOption(option);
+
+        // Optional: Resize chart when the window resizes
+        window.addEventListener('resize', function() {
+            myChart.resize();
+        });
+    </script>
+
+</body>
+</html>

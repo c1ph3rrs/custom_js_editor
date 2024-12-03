@@ -20,237 +20,265 @@
     <script>
 
         const customObjData = {
-    "tenant": {
-        "tenant_no": "2024/TN43",
-        "trn": "",
-        "customer_name": {
-            "text_en": "Roland Holland"
-        },
-        "mobile_number": "+971 555222940",
-        "phone_number": " ",
-        "fax_number": "",
-        "email_address": "",
-        "po_box": "",
-        "area": "",
-        "city": "",
-        "nationality": {
-            "text_en": "Belgium",
-            "text_ar": "Belgium"
-        },
-        "remarks": ""
-    },
-    "property": {
-        "property_no": "2024/PR38",
-        "property_name": "Dutch Tower",
-        "plot_no": "",
-        "property_type": {
-            "u_id": "B52303",
-            "value": "Building"
-        },
-        "area": "",
-        "city": "Sharjah",
-        "property_price": 0,
-        "property_description": "",
-        "no_of_floors": 4
-    },
-    "contract": {
-        "purchase_invoice_no": "",
-        "contract_status": {
-            "text_en": "active",
-            "text_ar": "active"
-        },
-        "contract_type": {
-            "text_en": "Residential",
-            "text_ar": "سكني"
-        },
-        "contract_no": "43265",
-        "iq_invoice_no": "INV/2024/123",
-        "unit_no": "101",
-        "unit_type": "3 BHK",
-        "furnished_type": {
-            "text_en": "Unfurnished",
-            "text_ar": "غير مفروش"
-        },
-        "contract_start_date": {
-            "text_en": "01/12/2024",
-            "text_ar": "٠١/١٢/٢٠٢٤"
-        },
-        "contract_end_date": {
-            "text_en": "30/11/2025",
-            "text_ar": "٣٠/١١/٢٠٢٥"
-        },
-        "gross_amount": {
-            "amount_in_numbers": {
-                "text_en": "58,000.00",
-                "text_ar": "٥٨,٠٠٠.٠٠"
-            },
-            "amount_in_words": {
-                "text_en": "Fifty Eight Thousand Only",
-                "text_ar": "خمسون وثمانية ألف درهم"
-            }
-        },
-        "total_discount_amount": {
-            "amount_in_numbers": {
-                "text_en": "2,000.00",
-                "text_ar": "٢,٠٠٠.٠٠"
-            },
-            "amount_in_words": {
-                "text_en": "Two Thousand Only",
-                "text_ar": "اثنان ألف درهم"
-            }
-        },
-        "vat": {
-            "vat_paid_on": {
-                "text_en": "Invalid date",
-                "text_ar": "Invalid date"
-            },
-            "vat_item_title": "5% VAT - (Exclusive)",
-            "vat_per": {
-                "text_en": 5,
-                "text_ar": "٥.٠٠"
-            },
-            "vat_amount": {
-                "amount_in_numbers": {
-                    "text_en": "2,900.00",
-                    "text_ar": "٢,٩٠٠.٠٠"
+            "tenant": {
+                "tenant_no": "2024/TN43",
+                "trn": "",
+                "customer_name": {
+                    "text_en": "Roland Holland"
                 },
-                "amount_in_words": {
-                    "text_en": "Two Thousand Nine Hundred Only",
-                    "text_ar": "اثنان ألف تسعة مئة درهم"
-                },
-                "is_vat_paid": {
-                    "text_en": "Yes",
-                    "text_ar": "نعم"
-                }
-            },
-            "is_vat_paid": {
-                "text_en": "Yes",
-                "text_ar": "نعم"
-            }
-        },
-        "rental_amount": {
-            "amount_in_numbers": {
-                "text_en": "60,000.00",
-                "text_ar": "٦٠٠٠٠.٠٠"
-            },
-            "amount_in_words": {
-                "text_en": "Sixty Thousand Only",
-                "text_ar": "ستون ألف درهم"
-            }
-        },
-        "net_amount": {
-            "amount_in_numbers": {
-                "text_en": "60,900.00",
-                "text_ar": "٦٠,٩٠٠.٠٠"
-            },
-            "amount_in_words": {
-                "text_en": "Sixty Thousand Nine Hundred Only",
-                "text_ar": "ستون ألف تسعة مئة درهم"
-            }
-        },
-        "total_cheques": {
-            "text_en": 3,
-            "text_ar": "٣"
-        },
-        "total_paid_cheques": {
-            "text_en": 1,
-            "text_ar": "١"
-        },
-        "total_paid_amount": {
-            "amount_in_numbers": {
-                "text_en": "21,000.00",
-                "text_ar": "٢١,٠٠٠.٠٠"
-            },
-            "amount_in_words": {
-                "text_en": "Twenty One Thousand Only",
-                "text_ar": "عشرون وواحد ألف درهم"
-            }
-        },
-        "total_partly_paid_cheques": {
-            "text_en": 0,
-            "text_ar": "٠"
-        },
-        "total_partly_paid_amount": {
-            "amount_in_numbers": {
-                "text_en": "0.00",
-                "text_ar": "٠.٠٠"
-            },
-            "amount_in_words": {
-                "text_en": "Zero",
-                "text_ar": "صفر"
-            }
-        },
-        "total_due_cheques": {
-            "text_en": 0,
-            "text_ar": "٠"
-        },
-        "total_due_amount": {
-            "amount_in_numbers": {
-                "text_en": "0.00",
-                "text_ar": "٠.٠٠"
-            },
-            "amount_in_words": {
-                "text_en": "Zero",
-                "text_ar": "صفر"
-            }
-        },
-        "early_close_charge": {
-            "amount_in_numbers": {
-                "text_en": "0.00",
-                "text_ar": "٠.٠٠"
-            },
-            "amount_in_words": {
-                "text_en": "Zero",
-                "text_ar": "صفر"
-            }
-        },
-        "security_deposit": {
-            "received": {
-                "payment_method": {
-                    "text_en": "",
-                    "text_ar": ""
-                },
-                "cheque_ref_no": "",
-                "amount": {
-                    "amount_in_numbers": {
-                        "text_en": "",
-                        "text_ar": ""
-                    },
-                    "amount_in_words": {
-                        "text_en": "Zero",
-                        "text_ar": "صفر"
-                    }
-                }
-            },
-            "store_deposit": {
-                "payment_method": {
-                    "text_en": "",
-                    "text_ar": ""
-                },
-                "cheque_ref_no": "",
-                "amount": {
-                    "amount_in_numbers": {
-                        "text_en": "",
-                        "text_ar": ""
-                    },
-                    "amount_in_words": {
-                        "text_en": "Zero",
-                        "text_ar": "صفر"
-                    }
-                },
-                "date": {
-                    "text_en": "",
-                    "text_ar": ""
+                "mobile_number": "+971 555222940",
+                "phone_number": " ",
+                "fax_number": "",
+                "email_address": "",
+                "po_box": "",
+                "area": "",
+                "city": "",
+                "nationality": {
+                    "text_en": "Belgium",
+                    "text_ar": "Belgium"
                 },
                 "remarks": ""
             },
-            "refund": {
-                "payment_method": {
+            "property": {
+                "property_no": "2024/PR38",
+                "property_name": "Dutch Tower",
+                "plot_no": "",
+                "property_type": {
+                    "u_id": "B52303",
+                    "value": "Building"
+                },
+                "area": "",
+                "city": "Sharjah",
+                "property_price": 0,
+                "property_description": "",
+                "no_of_floors": 4
+            },
+            "contract": {
+                "purchase_invoice_no": "",
+                "contract_status": {
+                    "text_en": "active",
+                    "text_ar": "active"
+                },
+                "contract_type": {
+                    "text_en": "Residential",
+                    "text_ar": "سكني"
+                },
+                "contract_no": "43265",
+                "iq_invoice_no": "INV/2024/123",
+                "unit_no": "101",
+                "unit_type": "3 BHK",
+                "furnished_type": {
+                    "text_en": "Unfurnished",
+                    "text_ar": "غير مفروش"
+                },
+                "contract_start_date": {
+                    "text_en": "01/12/2024",
+                    "text_ar": "٠١/١٢/٢٠٢٤"
+                },
+                "contract_end_date": {
+                    "text_en": "30/11/2025",
+                    "text_ar": "٣٠/١١/٢٠٢٥"
+                },
+                "gross_amount": {
+                    "amount_in_numbers": {
+                        "text_en": "58,000.00",
+                        "text_ar": "٥٨,٠٠٠.٠٠"
+                    },
+                    "amount_in_words": {
+                        "text_en": "Fifty Eight Thousand Only",
+                        "text_ar": "خمسون وثمانية ألف درهم"
+                    }
+                },
+                "total_discount_amount": {
+                    "amount_in_numbers": {
+                        "text_en": "2,000.00",
+                        "text_ar": "٢,٠٠٠.٠٠"
+                    },
+                    "amount_in_words": {
+                        "text_en": "Two Thousand Only",
+                        "text_ar": "اثنان ألف درهم"
+                    }
+                },
+                "vat": {
+                    "vat_paid_on": {
+                        "text_en": "Invalid date",
+                        "text_ar": "Invalid date"
+                    },
+                    "vat_item_title": "5% VAT - (Exclusive)",
+                    "vat_per": {
+                        "text_en": 5,
+                        "text_ar": "٥.٠٠"
+                    },
+                    "vat_amount": {
+                        "amount_in_numbers": {
+                            "text_en": "2,900.00",
+                            "text_ar": "٢,٩٠٠.٠٠"
+                        },
+                        "amount_in_words": {
+                            "text_en": "Two Thousand Nine Hundred Only",
+                            "text_ar": "اثنان ألف تسعة مئة درهم"
+                        },
+                        "is_vat_paid": {
+                            "text_en": "Yes",
+                            "text_ar": "نعم"
+                        }
+                    },
+                    "is_vat_paid": {
+                        "text_en": "Yes",
+                        "text_ar": "نعم"
+                    }
+                },
+                "rental_amount": {
+                    "amount_in_numbers": {
+                        "text_en": "60,000.00",
+                        "text_ar": "٦٠٠٠٠.٠٠"
+                    },
+                    "amount_in_words": {
+                        "text_en": "Sixty Thousand Only",
+                        "text_ar": "ستون ألف درهم"
+                    }
+                },
+                "net_amount": {
+                    "amount_in_numbers": {
+                        "text_en": "60,900.00",
+                        "text_ar": "٦٠,٩٠٠.٠٠"
+                    },
+                    "amount_in_words": {
+                        "text_en": "Sixty Thousand Nine Hundred Only",
+                        "text_ar": "ستون ألف تسعة مئة درهم"
+                    }
+                },
+                "total_cheques": {
+                    "text_en": 3,
+                    "text_ar": "٣"
+                },
+                "total_paid_cheques": {
+                    "text_en": 1,
+                    "text_ar": "١"
+                },
+                "total_paid_amount": {
+                    "amount_in_numbers": {
+                        "text_en": "21,000.00",
+                        "text_ar": "٢١,٠٠٠.٠٠"
+                    },
+                    "amount_in_words": {
+                        "text_en": "Twenty One Thousand Only",
+                        "text_ar": "عشرون وواحد ألف درهم"
+                    }
+                },
+                "total_partly_paid_cheques": {
+                    "text_en": 0,
+                    "text_ar": "٠"
+                },
+                "total_partly_paid_amount": {
+                    "amount_in_numbers": {
+                        "text_en": "0.00",
+                        "text_ar": "٠.٠٠"
+                    },
+                    "amount_in_words": {
+                        "text_en": "Zero",
+                        "text_ar": "صفر"
+                    }
+                },
+                "total_due_cheques": {
+                    "text_en": 0,
+                    "text_ar": "٠"
+                },
+                "total_due_amount": {
+                    "amount_in_numbers": {
+                        "text_en": "0.00",
+                        "text_ar": "٠.٠٠"
+                    },
+                    "amount_in_words": {
+                        "text_en": "Zero",
+                        "text_ar": "صفر"
+                    }
+                },
+                "early_close_charge": {
+                    "amount_in_numbers": {
+                        "text_en": "0.00",
+                        "text_ar": "٠.٠٠"
+                    },
+                    "amount_in_words": {
+                        "text_en": "Zero",
+                        "text_ar": "صفر"
+                    }
+                },
+                "security_deposit": {
+                    "received": {
+                        "payment_method": {
+                            "text_en": "",
+                            "text_ar": ""
+                        },
+                        "cheque_ref_no": "",
+                        "amount": {
+                            "amount_in_numbers": {
+                                "text_en": "",
+                                "text_ar": ""
+                            },
+                            "amount_in_words": {
+                                "text_en": "Zero",
+                                "text_ar": "صفر"
+                            }
+                        }
+                    },
+                    "store_deposit": {
+                        "payment_method": {
+                            "text_en": "",
+                            "text_ar": ""
+                        },
+                        "cheque_ref_no": "",
+                        "amount": {
+                            "amount_in_numbers": {
+                                "text_en": "",
+                                "text_ar": ""
+                            },
+                            "amount_in_words": {
+                                "text_en": "Zero",
+                                "text_ar": "صفر"
+                            }
+                        },
+                        "date": {
+                            "text_en": "",
+                            "text_ar": ""
+                        },
+                        "remarks": ""
+                    },
+                    "refund": {
+                        "payment_method": {
+                            "text_en": "",
+                            "text_ar": ""
+                        },
+                        "cheque_ref_no": "",
+                        "amount": {
+                            "amount_in_numbers": {
+                                "text_en": "",
+                                "text_ar": ""
+                            },
+                            "amount_in_words": {
+                                "text_en": "Zero",
+                                "text_ar": "صفر"
+                            }
+                        },
+                        "date": {
+                            "text_en": "",
+                            "text_ar": ""
+                        },
+                        "remarks": ""
+                    }
+                },
+                "remarks": null,
+                "premises_condition": {
                     "text_en": "",
                     "text_ar": ""
                 },
-                "cheque_ref_no": "",
-                "amount": {
+                "payment_condition": {
+                    "text_en": "",
+                    "text_ar": ""
+                }
+            },
+            "otherCharges": {
+                "sub_total": {
                     "amount_in_numbers": {
                         "text_en": "",
                         "text_ar": ""
@@ -260,61 +288,33 @@
                         "text_ar": "صفر"
                     }
                 },
-                "date": {
+                "vat": {
                     "text_en": "",
                     "text_ar": ""
                 },
-                "remarks": ""
+                "vat_title": "",
+                "vat_amount": {
+                    "amount_in_numbers": {
+                        "text_en": "",
+                        "text_ar": ""
+                    },
+                    "amount_in_words": {
+                        "text_en": "Zero",
+                        "text_ar": "صفر"
+                    }
+                },
+                "total_amount": {
+                    "amount_in_numbers": {
+                        "text_en": "",
+                        "text_ar": ""
+                    },
+                    "amount_in_words": {
+                        "text_en": "Zero",
+                        "text_ar": "صفر"
+                    }
+                }
             }
-        },
-        "remarks": null,
-        "premises_condition": {
-            "text_en": "",
-            "text_ar": ""
-        },
-        "payment_condition": {
-            "text_en": "",
-            "text_ar": ""
-        }
-    },
-    "otherCharges": {
-        "sub_total": {
-            "amount_in_numbers": {
-                "text_en": "",
-                "text_ar": ""
-            },
-            "amount_in_words": {
-                "text_en": "Zero",
-                "text_ar": "صفر"
-            }
-        },
-        "vat": {
-            "text_en": "",
-            "text_ar": ""
-        },
-        "vat_title": "",
-        "vat_amount": {
-            "amount_in_numbers": {
-                "text_en": "",
-                "text_ar": ""
-            },
-            "amount_in_words": {
-                "text_en": "Zero",
-                "text_ar": "صفر"
-            }
-        },
-        "total_amount": {
-            "amount_in_numbers": {
-                "text_en": "",
-                "text_ar": ""
-            },
-            "amount_in_words": {
-                "text_en": "Zero",
-                "text_ar": "صفر"
-            }
-        }
-    }
-};
+        };
 
 
         const customMenuOptions = {
