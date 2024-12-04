@@ -16,18 +16,18 @@
 <body>
 
     <div id="chart"></div>
-    <div id="chart1" style="width: 600px; height: 400px; margin: 0 auto;"></div>
-    <div id="chart2" style="width: 600px; height: 400px; margin: 0 auto;"></div>
-    <div id="chart3" style="width: 600px; height: 400px; margin: 0 auto;"></div>
-    <div id="chart4" style="width: 600px; height: 400px; margin: 0 auto;"></div>
-    <div id="chart5" style="width: 600px; height: 400px; margin: 0 auto;"></div>
-    <div id="chart6" style="width: 600px; height: 400px; margin: 0 auto;"></div>
+    <div id="chart1" style="width: 700px; height: 400px; margin: 0 auto;"></div>
+    <div id="chart2" style="width: 700px; height: 400px; margin: 0 auto;"></div>
+    <div id="chart3" style="width: 700px; height: 400px; margin: 0 auto;"></div>
+    <div id="chart4" style="width: 700px; height: 400px; margin: 0 auto;"></div>
+    <div id="chart5" style="width: 700px; height: 400px; margin: 0 auto;"></div>
+    <div id="chart6" style="width: 700px; height: 400px; margin: 0 auto;"></div>
 
     <script>
         const data = {
-            months: ['January', 'February', 'March', 'April', 'May', 'June'],
-            income: [510000, 508900, 408930, 791002, 937910, 683701],  
-            expense: [903000, 180700, 738291, 173921, 690320, 537261]  
+            months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September'],
+            income: [510000, 508900, 408930, 791002, 937910, 683701, 893231, 127832, 290327],  
+            expense: [903000, 180700, 738291, 173921, 690320, 537261, 973617, 578912, 98201]  
         };
 
         // Bar Chart
@@ -130,16 +130,8 @@
             ]
         };
         areaChart.setOption(areaOption);
-    </script>
 
-    <script>
-        const data2 = {
-            months: ['January', 'February', 'March', 'April', 'May', 'June'],
-            income: [510000, 508900, 408930, 791002, 937910, 683701],  
-            expense: [903000, 180700, 738291, 173921, 690320, 537261]  
-        };
 
-        
         const myChart = echarts.init(document.getElementById('chart'));
 
         
@@ -159,7 +151,7 @@
             },
             xAxis: {
                 type: 'category',
-                data: data2.months,
+                data: data.months,
                 axisTick: { alignWithLabel: true }
             },
             yAxis: {
@@ -174,30 +166,24 @@
                     name: 'Income',
                     type: 'bar',
                     barWidth: '30%',
-                    data: data2.income,
+                    data: data.income,
                     itemStyle: {
                         color: '#4CAF50'  
                     },
                     label: {
-                        show: true,
-                        position: 'insideTop',
-                        formatter: '{c} AED'
+                        show: false
                     }
                 },
                 {
                     name: 'Expense',
                     type: 'bar',
                     barWidth: '30%',
-                    data: data2.expense.map(value => -value),  
+                    data: data.expense.map(value => -value),  
                     itemStyle: {
                         color: '#F44336'  
                     },
                     label: {
-                        show: true,
-                        position: 'insideBottom',
-                        formatter: function(params) {
-                            return Math.abs(params.value) + ' AED';
-                        }
+                        show: false
                     }
                 }
             ]
@@ -210,7 +196,11 @@
         window.addEventListener('resize', function() {
             myChart.resize();
         });
+
+
+
     </script>
+
 
 </body>
 </html>
